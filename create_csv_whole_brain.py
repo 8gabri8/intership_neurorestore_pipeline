@@ -4,9 +4,14 @@ import os
 import find_leaves_atlas
 
 """
-This Script takes as inputs 
-    - all the csv that contain the number of dots for each ROI --> 1csv for each slice
-and returns a single csv 
+This Script for each brain creates a csv file that contains the ROI and reltive synapses count. 
+This file is created by merging all together all the single tsv files of a siingle brain.
+
+The script will work only if a specific filesystem disposition is followed
+
+It takes as inputs : the folder that contains all the brain (in this case "final_dataset")
+
+The single csv file for each brain is saved in the "all_xsl_synapses
 
 Attention:
     - the non-leaves ROI are removed
@@ -14,9 +19,13 @@ Attention:
 
 """
 
-# INPUTS
+# MANDATORY INPUTS
 path_atlas = "/home/gabri/Desktop/test_abba/prova_ABBA_automatic/src/main/resources/Adult Mouse Brain - Allen Brain Atlas V3p1-Ontology.json"
-dir_xls = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Analysis/Connectome Analysis/IF/651/_Measurements"
+dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
+#dir_xls = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Analysis/Connectome Analysis/IF/651/_Measurements"
+
+
+
 
 # Run the script find_leaves_atlas.csv to create a file with only leaves ROIs
 path_leaves_ROI = find_leaves_atlas.f(path_atlas)

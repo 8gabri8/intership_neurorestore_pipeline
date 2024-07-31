@@ -12,7 +12,7 @@ import qupath.lib.gui.tools.MeasurementExporter
 import qupath.lib.objects.PathCellObject
 
 //create folder xls files (if it doesnt alredy exist)
-def dir_name = buildFilePath(PROJECT_BASE_DIR, 'all_xls_synapses') //PROJECT_BASE_DIR  is the folder opf the QuPath Project
+def dir_name = buildFilePath(PROJECT_BASE_DIR, '_Measurements') //PROJECT_BASE_DIR  is the folder opf the QuPath Project
 if (!fileExists(dir_name)) {
     mkdirs(dir_name)
 }
