@@ -1,4 +1,8 @@
-// creat xls fileS of a Whole brain in QuPath --> RUN FOR PROJECT OPTION
+// Scripts that for each slice creates a tsv file with the number of synapses for each ROI
+// Scripts works on a single slice/image, so it is supposed to be run with "project" option to do all the images
+
+//MANDATORY INPUTS:
+path_classifier = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Hortense/synapse_classifier.json" //path to the pretrained classifier
 
 // setting up the image and necessary QuPath classes
 import qupath.lib.objects.PathAnnotationObject
@@ -16,7 +20,7 @@ if (!fileExists(dir_name)) {
 //Image processsed now
 print getCurrentImageName() 
 
-//Check to process only images with a registration from ABBA
+//Check to process only images with a registration from ABBA --> otherwise do not process
 qupath.ext.biop.abba.AtlasTools.loadWarpedAtlasAnnotations(getCurrentImageData(), "acronym", true)
 int afterAnnotationCount = getAnnotationObjects().size()
 if (afterAnnotationCount == 0 ) {
@@ -33,12 +37,11 @@ clearAllObjects()
 // Select the whole image
 createFullImageAnnotation(true)
 
-// Cell detector
+// Cell detector (find detection that are putative to be synapses)
 runPlugin('qupath.imagej.detect.cells.WatershedCellDetection', '{"detectionImage":"CY3","requestedPixelSizeMicrons":0.6465,"backgroundRadiusMicrons":8.0,"backgroundByReconstruction":false,"medianRadiusMicrons":0.0,"sigmaMicrons":0.3,"minAreaMicrons":0.5,"maxAreaMicrons":25.0,"threshold":110.0,"watershedPostProcess":true,"cellExpansionMicrons":1.0,"includeNuclei":false,"smoothBoundaries":true,"makeMeasurements":true}')
     //NB. flagged: "split right/left" and "Acronym"
     
-// Classifier
-path_classifier = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Hortense/synapse_classifier.json" //insert the path to your classifier
+// Classifier (use already trained classifier to refine detections that are really synapses)
 runObjectClassifier(path_classifier)
 	//with these command now we have 2 columns
 		//Num Detections

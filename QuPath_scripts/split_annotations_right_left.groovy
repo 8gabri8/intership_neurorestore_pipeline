@@ -5,7 +5,7 @@ import qupath.lib.objects.PathAnnotationObject
 import qupath.lib.objects.classes.PathClass
 import qupath.lib.roi.ROIs
 
-//Script to chnage, for each annoation, the Name field with the content of the Classificatioj field
+//Script to change, for each annoatation, the "Name" field with the content of the "Classification" field
 //In this way the spatial info (left/right) is preserved
 
 // Get the current image data

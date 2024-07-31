@@ -1,3 +1,7 @@
+// This scripts automate the various registration steps to perform in ABBA. 
+// Initial and Final manual registration are not covered by the script.
+
+
 // Manual: Open ABBA
 
 // Manual: Load Project in ABBA
@@ -55,15 +59,14 @@ run("ABBA - Elastix Registration (Spline)",
     "background_offset_value_moving=0.0 " + 
     "nb_control_points_x=20");
     
-// ATTENTION: after Deepslice, some slices will not me mathced with an atls
+// ATTENTION: after Deepslice, some slices will not me mathced with an atlas
 	//this will lead all the following registration to give error.
-	//Do not despair: just wait that everthing finished, clik ok on the messages of error
-	//and remobe manually the non-registered sloces
+	//Do not despair: just wait that everything is finished, clik ok on the messages of error
+	//and remove manually the non-registered slices
 
 // Manual: Manual correction "non si scappa..."
 
 // Manual: Export Registartions to Qupath project
 
-// -----moev to Quapth
+// ----- move to Quapth
 
-// Manually: Run script xsl foe project
