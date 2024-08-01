@@ -1,6 +1,29 @@
 // Scripts that for each slice creates a tsv file with the number of synapses for each ROI
 // Scripts works on a single slice/image, so it is supposed to be run with "project" option to do all the images
 
+// Script Operations:
+
+// - Select only the images that have received a registration from ABBA.
+//   This ensures that the quantification is performed exclusively on images
+//   that have been correctly aligned with the ABBA (Allen Brain Atlas).
+
+// - Import the atlas warped from ABBA to provide anatomical reference points.
+//   This step integrates the atlas into the analysis, enabling accurate localization
+//   of anatomical regions within each image.
+
+// - Utilize the "Cell Detector" tool to identify potential synapses in the images.
+//   This tool scans the images to find detections that are likely to represent synapses,
+//   allowing for targeted analysis of these structures.
+
+// - Apply a classifier to improve the accuracy of synapse identification.
+//   By refining the initial detections, the classifier enhances the precision of synapse
+//   identification, reducing false positives and improving overall data quality.
+
+// - Export the synapse count for each region to an Excel (.xls) file for further analysis.
+//   This step compiles the quantified data into an Excel spreadsheet, facilitating
+//   subsequent analysis and visualization of the synapse distributions across regions.
+
+
 //MANDATORY INPUTS:
 path_classifier = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Hortense/synapse_classifier.json" //path to the pretrained classifier
 

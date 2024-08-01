@@ -88,7 +88,7 @@ def process_atlas_json(json_file):
 
     # Write DataFrame to CSV file
     csv_file = os.path.join(directory_path, 'leaves_regions_atlas.csv')
-    print("Saving csv as:", csv_file)
+    print("Saving leaves ROI csv as:", csv_file)
     df.to_csv(csv_file, index=False)
 
     return csv_file
