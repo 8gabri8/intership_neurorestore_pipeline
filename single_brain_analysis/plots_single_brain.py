@@ -5,9 +5,16 @@ import seaborn as sns
 import numpy as np
 
 
+"""
+Script creates useful plot for the analysis of a single brain.
+
+The script is meant to work an multiple brain at once, so pass the folder of the whole project
+"""
+
 ##############################################
 ### MANDATORY INPUTS #########################
 ##############################################
+
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 1 #how many brains use for testing
@@ -73,6 +80,7 @@ for i, csv_file in enumerate(csv_files):
 
     # Read csv file
     df = pd.read_csv(csv_file)
+
 
     ###
     # PLOT 1: Scatter plot for Synapses vs Area
