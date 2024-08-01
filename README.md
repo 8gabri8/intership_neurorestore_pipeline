@@ -33,7 +33,7 @@ Run the script [create_csv_whole_brain.py](create_csv_whole_brain.py) for mergin
 Once we obtained the csv file for each brain, we can perform a simple analysis of the realtive data.
 Here are reported a series of scripts for this type of analysis:
 - [plots_single_brain.py](single_brain_analysis/plots_single_brain.py) generates a series of insightful images for individual brain scans. It is designed to process multiple brain images within a single project. By specifying the project directory path as input, the script will handle retrieving individual files and creating necessary folders for output
-- [single_brain_viz.ipynb](single_brain_analysis/single_brain_viz.ipynb) allow the user to create and investigate the single brain reuslts using 2D and 3D visualization, alogn with HeatMap display
+- [single_brain_viz.ipynb](single_brain_analysis/single_brain_viz.ipynb) allow the user to create and investigate the single brain reuslts using 2D and 3D visualization, alogn with HeatMap display. **Note**: in order to achive split between left and right ROIs in the same image a deep modification of brainglob_heatmap packages is necessary (see script for more details).
 
 
 

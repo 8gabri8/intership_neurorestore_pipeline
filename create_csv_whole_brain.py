@@ -66,6 +66,7 @@ if test:
         print(directory)
     print("\n")
 
+# Now for each brain create the relative csv file
 for i, measurement_directory in enumerate(measurement_directories):
 
     # Run the script find_leaves_atlas.csv to create a file with only leaves ROIs
