@@ -19,13 +19,15 @@ In QuPath:
 
     ![...](assets/images/qupath_quantification_script.png)
 
-Script Functions:
+> **Note:** For specific steps performed in `measurements_slices_xls.groovy`, please check the script documentation.
 
-Import Atlas: Import the atlas warped from ABBA (Allen Brain Atlas) to provide anatomical reference points.
-Detect Synapses: Utilize the "cell detector" tool to find all synapses in the images.
-Refine Classification: Apply a classifier to improve the accuracy of synapse identification.
-Export Results: Export the synapse count for each region to an Excel (.xls) file for further analysis.
-Execute Script:
+## Merging all .tsv files in one csv for one Brain
+The previous step creates one .tsv file for each slice/brain image of the project. 
+Run the script [create_csv_whole_brain.py](create_csv_whole_brain.py) for merging all these .tsv files in one single csv file.
+
+>**Note**: the script is meant to run on multiple brains at the same time, pay attention to give as input the root folder of the whole project and to respect the structure of the filesystem expted by the script.
+
+
 
 
 
