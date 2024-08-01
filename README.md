@@ -21,11 +21,20 @@ In QuPath:
 
 > **Note:** For specific steps performed in `measurements_slices_xls.groovy`, please check the script documentation.
 
-## Merging all .tsv files in one csv for one Brain
+## Merging all .tsv files in one .csv for one Brain
 The previous step creates one .tsv file for each slice/brain image of the project. 
 Run the script [create_csv_whole_brain.py](create_csv_whole_brain.py) for merging all these .tsv files in one single csv file.
 
 >**Note**: the script is meant to run on multiple brains at the same time, pay attention to give as input the root folder of the whole project and to respect the structure of the filesystem expted by the script.
+
+>**Note**: the script will output 2 csv files, they store the same information, but have different formattting.
+
+## Single Brain Analysis
+Once we obtained the csv file for each brain, we can perform a simple analysis of the realtive data.
+Here are reported a series of scripts for this type of analysis:
+- dc
+
+
 
 
 

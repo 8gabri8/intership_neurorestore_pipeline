@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import find_leaves_atlas # module created by me
+import find_leaves_atlas #a module created by me
  
 """
 This Script for each brain creates a csv file that contains the ROI and reltive synapses count. 
@@ -10,19 +10,20 @@ The script will work only if a specific filesystem disposition is followed
 
 It takes as inputs : the folder that contains all the brain (in this case "final_dataset")
 
-The single csv file for each brain is saved in the "all_xsl_synapses
+The single csv file for each brain is saved in the same folder that constains all the csv
 
 Attention:
     - the non-leaves ROI are removed
     - the metric calculates is: sum(dots all slices) / sum(area all slices)
+    - 2 different final csv files will be created (same information conveid, just chnaged the format)
 
 """
 
 # MANDATORY INPUTS
-path_atlas = "/home/gabri/Desktop/intership_neurorestore_pipeline/assets/Adult Mouse Brain - Allen Brain Atlas V3p1-Ontology.json"
+path_atlas = "/home/gabri/Desktop/test_abba/prova_ABBA_automatic/src/main/resources/Adult Mouse Brain - Allen Brain Atlas V3p1-Ontology.json"
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
-n_test = 4 #how many brains use for testing
+n_test = 2 #how many brains use for testing
     
 def find_measurement_dirs(base_directory):
     """
@@ -105,8 +106,45 @@ for i, measurement_directory in enumerate(measurement_directories):
                 df.loc[df["ROI"] == roi, "Synapses"] += num_synapses
                 df.loc[df["ROI"] == roi, "Area"] += area
 
+    # Put "Region" column
+    df_region = df.copy()
+    df_region[['Side', 'Region']] = df['ROI'].str.split(': ', expand=True)
+
+    # Calculate cell density (Synapses per Unit Area)
+    df_region['Cell Density'] = df_region['Synapses'] / df_region['Area']
+    df_region = df_region.fillna(0) # ATTENTION: Handle missing values, NaN converted to 0 !!!
+    #print("\nMissing Values:\n", df.isnull().sum())
+
+    # Save csv
     csv_file = measurement_directory + '/whole_brain.csv'
     print(f"Saving {i+1}-th csv as: " + csv_file)
-    df.to_csv(csv_file, index=False)
+    df_region.to_csv(csv_file, index=False)
+
+
+    # Create the same df, but with a different formatting
+    # Step 1: Split 'ROI' column into 'Side' and 'Region'
+    df[['Side', 'Region']] = df['ROI'].str.split(': ', expand=True)
+
+    # Step 2: Separate data by 'Side'
+    left_df = df[df['Side'] == 'Left'].drop(columns=['Side'])
+    right_df = df[df['Side'] == 'Right'].drop(columns=['Side'])
+
+    # Step 3: Rename columns to prepare for merging
+    left_df = left_df.rename(columns={'Synapses': 'Synapses_Left', 'Area': 'Area_Left'})
+    right_df = right_df.rename(columns={'Synapses': 'Synapses_Right', 'Area': 'Area_Right'})
+
+    # Step 4: Merge the left and right DataFrames on 'Region'
+    combined_df = pd.merge(left_df, right_df, on='Region', how='outer')
+
+    # Step 5: Rename the 'Region' column to 'ROI'
+    #combined_df = combined_df.rename(columns={'Region': 'ROI'})
+
+    # Step 6: subsample columns
+    combined_df = combined_df[["Region", "Synapses_Left", "Area_Left", "Synapses_Right", "Area_Right"]]
+
+    # Save csv
+    csv_file = measurement_directory + '/whole_brain_splitted_LR.csv'
+    print(f"Saving {i+1}-th csv as: " + csv_file)
+    combined_df.to_csv(csv_file, index=False)
 
 
