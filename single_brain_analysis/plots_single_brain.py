@@ -181,12 +181,12 @@ for i, csv_file in enumerate(csv_files):
     bg_atlas = BrainGlobeAtlas(atlas_name, check_latest=False)
 
     #Choose how many and from to cut
-    start_cut = 8000 #from olfacotry bulb
-    end_cut = 9000 #to myelenchephalon
+    start_cut = 10000 #from olfacotry bulb
+    end_cut = 11000 #to myelenchephalon
     step = 500
 
     #Create 2 sets of heatmaps for right and left hemipshere
-    for side in ["Right", "Left"]:
+    for side in ["Right"]:
 
         df_side = df[df["Side"] == side]  # Take the ROI only from one side
 
@@ -214,18 +214,18 @@ for i, csv_file in enumerate(csv_files):
                 atlas_name=atlas_name,
                 format='2D', 
                 hemisphere=side.lower(), #Attention lower case
-                label_regions=True
+                label_regions=True,
             )
 
             print(f"\n\n\hello {side}\n\n")
             
             # Save the figure as PDF
-            fig = f.my_plot() 
+            fig = f.my_plot(show_cbar=False) 
                 # ATTENTION: MY PLOT IS A CUSTUM FUNCTION
                     #just go in the file brainrender-env/lib/python3.9/site-packages/brainglobe_heatmap/heatmaps.py
                     #create a new fucntion my_plot that copies the function plot()
                     #and comment out the plt.show() at the end
-            fig.savefig(os.path.join(heatmaps_dir + "/" + side, f'{side}-{cut}.pdf'), dpi=100)
+            fig.savefig(os.path.join(heatmaps_dir + "/" + side, f'{side}-{cut}.png'), dpi=100)
 
 
     

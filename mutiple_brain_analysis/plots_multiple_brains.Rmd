@@ -105,8 +105,6 @@ for (region in regions_injection) {  # Iterate over the region_injection
   
   write_csv(df_evolution, paste0(dir_images, "/evolution_timeline.csv"))
 
-
-  
 }
 
 ```
@@ -131,23 +129,12 @@ for (region in regions_injection) {  # Iterate over the region_injection
   
   print(region)
   
-  # Create temp copy of df
-  count_data = df
-  meta_data = df_meta
+  # Read df evolution
+  df_evolution_region = read_csv(file.path(base_dir, "images", region, "evolution_timeline.csv"))
   
-  # Select mice injected in specific region
-  count_data = count_data[count_data$`Region.Injection` == region_injection,]
-  
-  # Change the shape of the df
-  count_data <- count_data %>%
-    select(ROI, `Cell.Density`, `Brain.ID`) %>%
-    pivot_wider(names_from = `Brain.ID`, values_from = `Cell.Density`)
-  
-  # Select mice injected in specific region
-  meta_data = meta_data[meta_data$`Brain.ID` %in% colnames(count_data),]
-  
-  # Take the possbile values fo timepoints
-  timepoints = rev(unique(df_meta$TimePoint)) #rev for invert order
+  # Find timepoints of this injection region
+  timepoints = df_meta %>% filter(Region.Injection == region) %>% select(TimePoint)
+  timepoints = rev(unique(timepoints$TimePoint))
   
   # TimePoint plot
   timepoints_plots = list()
@@ -155,36 +142,33 @@ for (region in regions_injection) {  # Iterate over the region_injection
   #make a plot for each time point
   for (timepoint in timepoints){
     
-    temp_meta = meta_data[meta_data$TimePoint == timepoint, ] #Take only the mouse of these time point
-    temp_data = count_data[, colnames(count_data) %in% c(temp_meta$`Brain.ID`,"ROI")] #Take only the relative brains
+    # Name of the mean column and Std in the df
+    means_col_name <- paste0("Mean ", timepoint)
+    stds_col_name <- paste0("Std ", timepoint)
     
-    #Calculate mean and std
-    temp_data_no_first_col <- temp_data[, -1] #remove first column that are the nam eof the ROI
-    row_means <- apply(temp_data_no_first_col, 1, mean)
-    row_means[is.nan(row_means)] = 0
-    row_stds <- apply(temp_data_no_first_col, 1, sd)
-    row_stds[is.nan(row_stds)] = 0
-                     
-    # Add columns to df
-    temp_data <- temp_data %>%
-      mutate(row_mean = row_means, row_std = row_stds)
+    # Suset to only columns relative to this timeponr
+    t = df_evolution_region %>% select(ROI, means_col_name, stds_col_name)
     
-    # Sort the data frame by 'row_mean' in descending order
+    #change name col
+    names(t)[names(t) == means_col_name] = "means"
+    names(t)[names(t) == stds_col_name] = "stds"
+
+    # Sort the data frame by 'mean' in descending order
     # Select the first most dense regions
-    temp_data_sorted <- temp_data %>%
-      arrange(desc(row_mean)) %>%
+    t_sorted <- t %>%
+      arrange(desc(means)) %>%
       slice_head(n = n_roi_displayed)
     
     # to force the ROI to be displayed on the x axis on the same order of the most dense
-    temp_data_sorted <- temp_data_sorted %>%
+    t_sorted <- t_sorted %>%
       mutate(ROI = factor(ROI, levels = ROI))
     
-    #print(temp_data_sorted)
+    #print(t_sorted)
     
     # Create the bar plot with error bars
-    plot = ggplot(temp_data_sorted, aes(x = ROI, y = row_mean)) +
+    plot = ggplot(t_sorted, aes(x = ROI, y = means)) +
       geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
-      geom_errorbar(aes(ymin = row_mean - row_std, ymax = row_mean + row_std), 
+      geom_errorbar(aes(ymin = means - stds, ymax = means + stds), 
                     width = 0.2, color = "red") +
       labs(title = timepoint, x = paste0("First most dense ", n_roi_displayed, " ROI"), y = "Density") +
       coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
@@ -206,12 +190,11 @@ for (region in regions_injection) {  # Iterate over the region_injection
   if (!dir.exists(dir_images)) {
     dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
   }
-  ggsave(file.path(dir_images, paste0("barplots_density_different_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 4)
+  #ggsave(file.path(dir_images, paste0("barplots_density_different_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 4)
 
 
   
 }
-
 
 ```
 
@@ -240,7 +223,7 @@ for (region in regions_injection) {  # Iterate over the region_injection
   meta_data = df_meta
   
   # Select mice injected in specific region
-  count_data = count_data[count_data$`Region.Injection` == region_injection,]
+  count_data = count_data[count_data$`Region.Injection` == region,]
   
   # Change the shape of the df
   count_data <- count_data %>%
@@ -383,7 +366,7 @@ for (region in regions_injection) {  # Iterate over the region_injection
   df_evolution_region = read_csv(file.path(base_dir, "images", region, "evolution_timeline.csv"))
   
   # Create all possible combination of 2 timepoits
-  timepoints = meta_data %>% filter(Region.Injection == region) %>% select(TimePoint)
+  timepoints = df_meta %>% filter(Region.Injection == region) %>% select(TimePoint)
   timepoints = rev(unique(timepoints$TimePoint))
   combinations_timepoints = combn(timepoints, 2, simplify = FALSE)
   
@@ -450,7 +433,7 @@ for (region in regions_injection) {  # Iterate over the region_injection
     #print(plot)
     
     #put plot in list
-    comb_plots[[timepoint]] <- plot
+    comb_plots[[paste0(comb[1], comb[2])]] <- plot
   }
 
   # Print the combined plot
@@ -550,4 +533,90 @@ volcano_plot <- ggplot(results_df, aes(x = log2FoldChange, y = -log10(padj))) +
 # Print the plot
 volcano_plot
 
+```
+
+```{r}
+# GOAL:
+  # Take a region of injection (ex "DR)
+  # For each timePoint (ex. "Uninjured")
+    # For each ROI 
+      # Calculate the mean density across the mouse of the timepoit choosen
+  # Take the most "n_roi_displayed" dense region for each time point
+    # (so each timepint will have a differt set of ROI)
+  # Create a barplot for each time point
+    #Put it in the same figure
+
+# Regions of injection to plot (even more than one)
+regions_injection = c("DR")
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(region)
+  
+  # Read df evolution
+  df_evolution_region = read_csv(file.path(base_dir, "images", region, "evolution_timeline.csv"))
+  
+  # Find timepoints of this injection region
+  timepoints = df_meta %>% filter(Region.Injection == region) %>% select(TimePoint)
+  timepoints = rev(unique(timepoints$TimePoint))
+  
+  # TimePoint plot
+  timepoints_plots = list()
+  
+  #make a plot for each time point
+  for (timepoint in timepoints){
+    
+    # Name of the mean column and Std in the df
+    means_col_name <- paste0("Mean ", timepoint)
+    stds_col_name <- paste0("Std ", timepoint)
+    
+    # Suset to only columns relative to this timeponr
+    t = df_evolution_region %>% select(ROI, means_col_name, stds_col_name)
+    
+    #change name col
+    names(t)[names(t) == means_col_name] = "means"
+    names(t)[names(t) == stds_col_name] = "stds"
+
+    # Sort the data frame by 'mean' in descending order
+    # Select the first most dense regions
+    t_sorted <- t %>%
+      arrange(desc(means)) %>%
+      slice_head(n = n_roi_displayed)
+    
+    # to force the ROI to be displayed on the x axis on the same order of the most dense
+    t_sorted <- t_sorted %>%
+      mutate(ROI = factor(ROI, levels = ROI))
+    
+    #print(t_sorted)
+    
+    # Create the bar plot with error bars
+    plot = ggplot(t_sorted, aes(x = ROI, y = means)) +
+      geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
+      geom_errorbar(aes(ymin = means - stds, ymax = means + stds), 
+                    width = 0.2, color = "red") +
+      labs(title = timepoint, x = paste0("First most dense ", n_roi_displayed, " ROI"), y = "Density") +
+      coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt x-axis labels
+
+    #print(plot)
+    
+    #put plot in list
+    timepoints_plots[[timepoint]] <- plot
+  }
+
+  # Print the combined plot
+  combined_plot <- wrap_plots(timepoints_plots, ncol = length(timepoints_plots))
+  print(combined_plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  #ggsave(file.path(dir_images, paste0("barplots_density_different_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 4)
+
+
+  
+}
 ```

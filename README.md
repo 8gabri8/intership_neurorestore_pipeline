@@ -33,12 +33,17 @@ Run the script **[create_csv_whole_brain.py](create_csv_whole_brain.py)** for me
 Once we obtained the csv file for each brain, we can perform a simple analysis of the realtive data.
 Here are reported a series of scripts for this type of analysis:
 - **[plots_single_brain.py](single_brain_analysis/plots_single_brain.py)** generates a series of insightful images for individual brain scans. It is designed to process multiple brain images within a single project. By specifying the project directory path as input, the script will handle retrieving individual files and creating necessary folders for output
-- **[single_brain_viz.ipynb](single_brain_analysis/single_brain_viz.ipynb)** allows the user to create and investigate the single brain reuslts using 2D and 3D visualization, alogn with HeatMap display. **Note**: in order to achive split between left and right ROIs in the same image a deep modification of brainglob_heatmap packages is necessary (see script for more details).
+- **[single_brain_3D_viz.ipynb](single_brain_analysis/single_brain_3D_viz.ipynb)** allows the user to create and investigate the single brain reuslts using 3D visualization, alogn with HeatMap display. **Note**: in order to achive split between left and right ROIs in the same image a deep modification of brainglob_heatmap packages is necessary (see script for more details).
 
 ## Multiple Brain Analysis
 Once we have obtained the CSV files for each brain, we can perform comparative analysis across different brain datasets. Below are some scripts that facilitate this type of analysis:
 
 - **[create_csv_all_brains.py](mutiple_brain_analysis/create_csv_all_brains.py)**: This script generates a single CSV file that consolidates information from all individual brain datasets into one comprehensive file.
+- **[plots_multiple_brains.Rmd](mutiple_brain_analysis/plots_multiple_brains.Rmd)**: This script generates a series of images related to data across all brains of the study.
+
+## Unused Scripts
+During the course of the internship, many scripts were created. The folder **[old](old/)** contains scripts that are not currently used in the pipeline but may still be useful for other types of analysis (e.g., _detecting spots in images with the Spotiflow ImageJ plugin_). Naturally, the reltive documentation is less cured.
+
 
 
 
