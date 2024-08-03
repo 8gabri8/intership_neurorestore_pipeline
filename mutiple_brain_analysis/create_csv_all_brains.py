@@ -104,7 +104,7 @@ all_df.to_csv(path_csv, index=False)
 
 ############################################################################
 
-### Make a df with only metadata info
+### Make a df with only METADATA info
 
 # Select only meta columns
 meta_df = all_df.drop(columns=["ROI", "Synapses", "Area", "Cell Density"])
@@ -116,3 +116,55 @@ meta_df = meta_df.drop_duplicates()
 path_csv = output_folder + "/all_brains_meta.csv"
 print(f"\nSaving final csv as {path_csv}\n")
 meta_df.to_csv(path_csv, index=False)
+
+############################################################################
+
+# Find all measurements directories
+measurement_directories = find_measurement_dirs(dir_project)
+
+# Find all "whole_brain.csv" file
+csv_files = [csv+"/whole_brain_splitted_LR.csv" for csv in measurement_directories]
+
+# Create an Empty df to fill with all the csv of each brain
+all_df = pd.DataFrame(columns=["Region", "Synapses_Left", "Area_Left", "Synapses_Right", "Area_Right", "Brain ID", "Region Injection", "Side Injection", "Side Lesion", "TimePoint"])
+
+# For each brain creates a set of images
+for i, csv_file in enumerate(csv_files):
+
+    print(f"Processing {i+1}th brain:\n\t" + csv_file)
+
+    # Extarct brain ID
+    brain_ID = os.path.basename(os.path.dirname(os.path.dirname(csv_file))) #take the granparent folder (2 layer above the csv file)
+    # Ectract TimePoint
+    time_point = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(csv_file))))
+    # Extract Region Injection
+    region_injection = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(csv_file)))))
+
+    # Read csv file
+    df_single = pd.read_csv(csv_file)
+
+    # Create temp df
+    temp_df = pd.DataFrame({
+        "Region": df_single["Region"],
+        "Synapses_Left": df_single["Synapses_Left"],
+        "Area_Left": df_single["Area_Left"],
+        "Synapses_Right": df_single["Synapses_Right"],
+        "Area_Right": df_single["Area_Right"],
+        "Brain ID": brain_ID,
+        "Region Injection": region_injection,
+        "Side Injection": "Missing", 
+        "Side Lesion": "Missing",
+        "TimePoint": time_point
+    })
+
+    # Concatenate vertically the df
+    all_df = pd.concat([all_df, temp_df], ignore_index=True)
+
+# Little Checks
+#print(all_df)
+#print(output_folder)
+
+# Saving
+path_csv = output_folder + "/all_brains_LR.csv"
+print(f"\nSaving final csv as {path_csv}\n")
+all_df.to_csv(path_csv, index=False)

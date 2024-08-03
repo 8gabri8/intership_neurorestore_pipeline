@@ -3,12 +3,16 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import brainglobe_heatmap as bgh #Please use a VE where brainrender is installed
+from brainglobe_atlasapi import BrainGlobeAtlas
 
 
 """
 Script creates useful plot for the analysis of a single brain.
 
 The script is meant to work an multiple brain at once, so pass the folder of the whole project
+
+NB use a VE where brainrender is installed
 """
 
 ##############################################
@@ -19,6 +23,10 @@ dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 1 #how many brains use for testing
 n_roi_displayed = 30 # number of the ROI to display in a plot
+single_brain = None #None OR /run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/8 weeks/__100__/_Measurements
+    #if you want:
+        #run the script for all the brains in the project: single brain = None
+        #run the script for a specific brain; single_brain = "path_to_Measuremets_dir"
 
 ##############################################
 ### FIND CSV FILES ###########################
@@ -57,7 +65,10 @@ def find_measurement_dirs(base_directory):
     return measurement_dirs
 
 # Find all "_Measurements" directories
-measurement_directories = find_measurement_dirs(dir_project)
+if single_brain == None:
+    measurement_directories = find_measurement_dirs(dir_project)
+else:
+    measurement_directories = single_brain
 
 # Find all "whole_brain.csv" file
 csv_files = [csv+"/whole_brain.csv" for csv in measurement_directories]
@@ -80,7 +91,6 @@ for i, csv_file in enumerate(csv_files):
 
     # Read csv file
     df = pd.read_csv(csv_file)
-
 
     ###
     # PLOT 1: Scatter plot for Synapses vs Area
@@ -151,4 +161,72 @@ for i, csv_file in enumerate(csv_files):
     #plt.tight_layout()
     fig.savefig(dir_images_name + "/barplots_most_dense_ROI_with_contralateral.png")
 
+    ###
+    # PLOT 4: 2D Heatmaps
+    ###
+
+    #Create several 2D Heatmpas of ONLY ONE HEMISPHERE og the brain
+    #Show all regions, not a subset of the msot dense
+
+    #Create a folder where to store them
+    heatmaps_dir = dir_images_name + "/2D_heatmaps" 
+    heatmaps_dir_left = dir_images_name + "/2D_heatmaps/Left" 
+    heatmaps_dir_right = dir_images_name + "/2D_heatmaps/Right" 
+    os.makedirs(heatmaps_dir, exist_ok=True)
+    os.makedirs(heatmaps_dir_left, exist_ok=True)
+    os.makedirs(heatmaps_dir_right, exist_ok=True)
+
+    # Select an atlas
+    atlas_name = "allen_mouse_25um"
+    bg_atlas = BrainGlobeAtlas(atlas_name, check_latest=False)
+
+    #Choose how many and from to cut
+    start_cut = 8000 #from olfacotry bulb
+    end_cut = 9000 #to myelenchephalon
+    step = 500
+
+    #Create 2 sets of heatmaps for right and left hemipshere
+    for side in ["Right", "Left"]:
+
+        df_side = df[df["Side"] == side]  # Take the ROI only from one side
+
+        # Use only the ROI that are present in the atlas
+        df_side = df_side[df_side['Region'].isin(bg_atlas.lookup_df["acronym"].to_list())]
+
+        # Create the dictionary --> NB take the name withounf left or right
+        # ex: dict{"CA1": 10, "ENT": 40, ...}
+        cell_density_data = dict(zip(df_side['Region'], df_side['Cell Density']))
+
+        #print(cell_density_data)
+
+        # Iterate over cuts range
+        for cut in range(start_cut, end_cut, step):
+            
+            # Create Heatmap object
+            f = bgh.Heatmap(
+                cell_density_data,
+                position=cut,
+                orientation="frontal",  # Adjust orientation as needed
+                title=f"Side: {side} - Slice position: {cut}",
+                vmin=0,
+                vmax=0.01,
+                cmap='Reds',
+                atlas_name=atlas_name,
+                format='2D', 
+                hemisphere=side.lower(), #Attention lower case
+                label_regions=True
+            )
+
+            print(f"\n\n\hello {side}\n\n")
+            
+            # Save the figure as PDF
+            fig = f.my_plot() 
+                # ATTENTION: MY PLOT IS A CUSTUM FUNCTION
+                    #just go in the file brainrender-env/lib/python3.9/site-packages/brainglobe_heatmap/heatmaps.py
+                    #create a new fucntion my_plot that copies the function plot()
+                    #and comment out the plt.show() at the end
+            fig.savefig(os.path.join(heatmaps_dir + "/" + side, f'{side}-{cut}.pdf'), dpi=100)
+
+
+    
 
