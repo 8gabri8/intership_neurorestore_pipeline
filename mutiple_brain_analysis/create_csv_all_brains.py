@@ -13,7 +13,7 @@ It takes as inputs : the folder that contains all the brain (in this case "conne
 # MANDATORY INPUTS
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis"
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
-n_test = 2 #how many brains use for testing
+n_test = 5 #how many brains use for testing
 
 ############################################################################
 
@@ -59,7 +59,7 @@ measurement_directories = find_measurement_dirs(dir_project)
 csv_files = [csv+"/whole_brain.csv" for csv in measurement_directories]
 
 # Create an Empty df to fill with all the csv of each brain
-all_df = pd.DataFrame(columns=["ROI", "Synapses", "Area", "Cell Density", "Brain ID", "Side Injection", "Side Lesion", "TimePoint"])
+all_df = pd.DataFrame(columns=["ROI", "Synapses", "Area", "Cell Density", "Brain ID", "Region Injection", "Side Injection", "Side Lesion", "TimePoint"])
 
 # For each brain creates a set of images
 for i, csv_file in enumerate(csv_files):
@@ -70,6 +70,8 @@ for i, csv_file in enumerate(csv_files):
     brain_ID = os.path.basename(os.path.dirname(os.path.dirname(csv_file))) #take the granparent folder (2 layer above the csv file)
     # Ectract TimePoint
     time_point = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(csv_file))))
+    # Extract Region Injection
+    region_injection = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(csv_file)))))
 
     # Read csv file
     df_single = pd.read_csv(csv_file)
@@ -81,6 +83,7 @@ for i, csv_file in enumerate(csv_files):
         "Area": df_single["Area"],
         "Cell Density": df_single["Cell Density"],
         "Brain ID": brain_ID,
+        "Region Injection": region_injection,
         "Side Injection": "Missing", 
         "Side Lesion": "Missing",
         "TimePoint": time_point
@@ -97,3 +100,19 @@ for i, csv_file in enumerate(csv_files):
 path_csv = output_folder + "/all_brains.csv"
 print(f"\nSaving final csv as {path_csv}\n")
 all_df.to_csv(path_csv, index=False)
+
+
+############################################################################
+
+### Make a df with only metadata info
+
+# Select only meta columns
+meta_df = all_df.drop(columns=["ROI", "Synapses", "Area", "Cell Density"])
+
+# Collapse duplicated rows (only one col for brain)
+meta_df = meta_df.drop_duplicates()
+
+# Saving
+path_csv = output_folder + "/all_brains_meta.csv"
+print(f"\nSaving final csv as {path_csv}\n")
+meta_df.to_csv(path_csv, index=False)

@@ -23,7 +23,7 @@ Attention:
 path_atlas = "/home/gabri/Desktop/test_abba/prova_ABBA_automatic/src/main/resources/Adult Mouse Brain - Allen Brain Atlas V3p1-Ontology.json"
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
-n_test = 2 #how many brains use for testing
+n_test = 5 #how many brains use for testing
     
 def find_measurement_dirs(base_directory):
     """
