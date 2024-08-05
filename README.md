@@ -34,6 +34,7 @@ Once we obtained the csv file for each brain, we can perform a simple analysis o
 Here are reported a series of scripts for this type of analysis:
 - **[plots_single_brain.py](single_brain_analysis/plots_single_brain.py)** generates a series of insightful images for individual brain scans. It is designed to process multiple brain images within a single project. By specifying the project directory path as input, the script will handle retrieving individual files and creating necessary folders for output
 - **[single_brain_3D_viz.ipynb](single_brain_analysis/single_brain_3D_viz.ipynb)** allows the user to create and investigate the single brain reuslts using 3D visualization, alogn with HeatMap display. **Note**: in order to achive split between left and right ROIs in the same image a deep modification of brainglob_heatmap packages is necessary (see script for more details).
+- **[heatmap_2D_single_brain.ipynb](single_brain_analysis/heatmap_2D_single_brain.ipynb)** creates 2D heatmaps of each brain, where differt hemispheres have differt values, along with a vodeo of the relative images.
 
 ## Multiple Brain Analysis
 Once we have obtained the CSV files for each brain, we can perform comparative analysis across different brain datasets. Below are some scripts that facilitate this type of analysis:
