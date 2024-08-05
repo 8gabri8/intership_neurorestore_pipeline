@@ -52,7 +52,7 @@ for (region in regions_injection) {  # Iterate over the region_injection
   meta_data = df_meta
   
   # Select mice injected in specific region
-  count_data = count_data[count_data$`Region.Injection` == region_injection,]
+  count_data = count_data[count_data$`Region.Injection` == region,]
   
   # Change the shape of the df
   count_data <- count_data %>%

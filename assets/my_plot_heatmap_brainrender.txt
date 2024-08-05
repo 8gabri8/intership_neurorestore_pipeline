@@ -1,0 +1,84 @@
+def my_plot(
+    self,
+    show_legend: bool = False,
+    xlabel: str = "μm",
+    ylabel: str = "μm",
+    hide_axes: bool = False,
+    filename: Optional[str] = None,
+    cbar_label: Optional[str] = None,
+    show_colorbar: bool = True,  # ATTENTION ADDED BY ME, Add this parameter to control the colorbar
+    **kwargs,
+) -> plt.Figure:
+    """
+    Plots the heatmap in 2D using matplotlib
+    """
+    projected, _ = self.slicer.get_structures_slice_coords(
+        self.regions_meshes, self.scene.root
+    )
+
+    f, ax = plt.subplots(figsize=(9, 9))
+    for r, coords in projected.items():
+        name, segment = r.split("_segment_")
+        ax.fill(
+            coords[:, 0],
+            coords[:, 1],
+            color=self.colors[name],
+            label=name if segment == "0" and name != "root" else None,
+            lw=1,
+            ec="k",
+            zorder=-1 if name == "root" else None,
+            alpha=0.3 if name == "root" else None,
+        )
+
+    if show_colorbar:
+        # make colorbar
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+
+        norm = mpl.colors.Normalize(vmin=self.vmin, vmax=self.vmax)
+        if self.label_regions is True:
+            cbar = f.colorbar(
+                mpl.cm.ScalarMappable(
+                    norm=None,
+                    cmap=mpl.cm.get_cmap(self.cmap, len(self.values)),
+                ),
+                cax=cax,
+            )
+        else:
+            cbar = f.colorbar(
+                mpl.cm.ScalarMappable(norm=norm, cmap=self.cmap), cax=cax
+            )
+
+        if cbar_label is not None:
+            cbar.set_label(cbar_label)
+
+        if self.label_regions is True:
+            cbar.ax.set_yticklabels([r.strip() for r in self.values.keys()])
+
+    # style axes
+    ax.invert_yaxis()
+    ax.axis("equal")
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+
+    ax.set(title=self.title)
+
+    if isinstance(self.orientation, str) or np.sum(self.orientation) == 1:
+        # orthogonal projection
+        ax.set(xlabel=xlabel, ylabel=ylabel)
+
+    if hide_axes:
+        ax.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_visible(False)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set(xlabel="", ylabel="")
+
+    if filename is not None:
+        plt.savefig(filename, dpi=300)
+
+    if show_legend:
+        ax.legend()
+    #plt.show() #ATTENTION, REMOVED BY ME
+
+    return f
