@@ -2,6 +2,21 @@
 
 This folder contains a series of scripts that are used for implementiang a regitration and quantification pipeline.
 
+## Virtual Environment
+In order to run the jupyter nootebooks and scripts inside this folder, we advise you to create a conda enviroment using the []() file.
+
+   - **Create a Virtual Environment:**
+     Use the following command to create a virtual environment from the provided [brainrender-env.yml](assets/yml/brainrender-env.yml) file:
+     ```bash
+     conda env create -f brainrender-env.yml
+     ```
+
+   - **Activate the Environment:**
+     Once created, activate the environment using:
+     ```bash
+     conda activate brainrender-env
+     ```
+
 
 ## Export Registratiosn from ABBA to QuPath
 In ABBA:

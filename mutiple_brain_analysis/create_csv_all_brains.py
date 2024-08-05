@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import sys
  
 """
 This Script will create a csv file with all the info relative to all the brains of the study
@@ -12,14 +13,20 @@ It takes as inputs : the folder that contains all the brain (in this case "conne
 
 # MANDATORY INPUTS
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis"
+path_manual_data = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/paper_notes_histology_book.csv" #path to the csv file that contirna the data present in the book in the ystology facility
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 5 #how many brains use for testing
 
-############################################################################
+##############################################
+### CREATE ALL_BRAINS.CSV ####################
+##############################################
 
 # Create dir to store the results
 output_folder = dir_project + "/mutiple_brain_analysis"
 os.makedirs(output_folder, exist_ok=True)
+
+# read the paper book metadata
+paper_book = pd.read_csv(path_manual_data)
 
 def find_measurement_dirs(base_directory):
     """
@@ -72,6 +79,16 @@ for i, csv_file in enumerate(csv_files):
     time_point = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(csv_file))))
     # Extract Region Injection
     region_injection = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(csv_file)))))
+    # Extract side of injection
+    try:
+        side_injection = paper_book[paper_book["Brain ID"] == int(brain_ID)]["Side Injection"].values[0]
+    except:
+        side_injection = "Missing"
+    # Exctract Side Lesion
+    try:
+        side_lesion = paper_book[paper_book["Brain ID"] == int(brain_ID)]["Side Lesion"].values[0]
+    except:
+        side_lesion = "Missing"
 
     # Read csv file
     df_single = pd.read_csv(csv_file)
@@ -84,7 +101,7 @@ for i, csv_file in enumerate(csv_files):
         "Cell Density": df_single["Cell Density"],
         "Brain ID": brain_ID,
         "Region Injection": region_injection,
-        "Side Injection": "Missing", 
+        "Side Injection": side_injection, 
         "Side Lesion": "Missing",
         "TimePoint": time_point
     })
@@ -102,7 +119,9 @@ print(f"\nSaving final csv as {path_csv}\n")
 all_df.to_csv(path_csv, index=False)
 
 
-############################################################################
+##############################################
+### CREATE ALL_BRAINS_METADATA.CSV ###########
+##############################################
 
 ### Make a df with only METADATA info
 
@@ -117,7 +136,9 @@ path_csv = output_folder + "/all_brains_meta.csv"
 print(f"\nSaving final csv as {path_csv}\n")
 meta_df.to_csv(path_csv, index=False)
 
-############################################################################
+##############################################
+### CREATE ALL_BRAINS_LF.CSV #################
+##############################################
 
 # Find all measurements directories
 measurement_directories = find_measurement_dirs(dir_project)
