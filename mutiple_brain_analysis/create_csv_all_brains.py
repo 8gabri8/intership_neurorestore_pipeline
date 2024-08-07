@@ -1,21 +1,40 @@
 import pandas as pd
 import os
 import sys
- 
-"""
-This Script will create a csv file with all the info relative to all the brains of the study
-
-The script will work only if a specific filesystem disposition is followed
-
-It takes as inputs : the folder that contains all the brain (in this case "connectome_analysis")
 
 """
+This script processes and consolidates data from multiple brain measurement directories into CSV files.
 
-# MANDATORY INPUTS
+**Functionality:**
+1. Searches for directories named '_Measurements' within a specified project directory.
+2. Reads individual CSV files containing brain measurement data and compiles them into comprehensive datasets.
+3. Generates three CSV files:
+   - `all_brains.csv`: Consolidated data for all brain measurements.
+   - `all_brains_meta.csv`: Metadata extracted from the consolidated dataset.
+   - `all_brains_LR.csv`: Data from brain measurements with left and right hemisphere split.
+
+**Inputs:**
+- `dir_project`: Directory containing brain measurement data.
+- `path_manual_data`: Path to a CSV file with additional metadata for the brains.
+
+**Parameters:**
+- `test`: Flag to enable debugging mode with a limited number of brains.
+- `n_test`: Number of brains to process in debugging mode.
+
+**Note:**
+Ensure the specific filesystem structure is followed for the script to function correctly. 
+The script will create necessary output directories and save results in the specified format.
+"""
+
+##############################################
+### MANDATORY INPUTS #########################
+##############################################
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis"
-path_manual_data = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/paper_notes_histology_book.csv" #path to the csv file that contirna the data present in the book in the ystology facility
+#path to the csv file that contirna the data present in the book in the ystology facility
+path_manual_data = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/paper_notes_histology_book.csv" 
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 5 #how many brains use for testing
+
 
 ##############################################
 ### CREATE ALL_BRAINS.CSV ####################
