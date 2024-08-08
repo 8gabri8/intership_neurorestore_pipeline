@@ -33,7 +33,7 @@ dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical
 #path to the csv file that contirna the data present in the book in the ystology facility
 path_manual_data = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/paper_notes_histology_book.csv" 
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
-n_test = 5 #how many brains use for testing
+n_test = 15 #how many brains use for testing
 
 
 ##############################################
@@ -83,6 +83,7 @@ measurement_directories = find_measurement_dirs(dir_project)
 
 # Find all "whole_brain.csv" file
 csv_files = [csv+"/whole_brain.csv" for csv in measurement_directories]
+#[print(csv_file) for csv_file in csv_files] ; sys.exit()
 
 # Create an Empty df to fill with all the csv of each brain
 all_df = pd.DataFrame(columns=["ROI", "Synapses", "Area", "Cell Density", "Brain ID", "Region Injection", "Side Injection", "Side Lesion", "TimePoint"])

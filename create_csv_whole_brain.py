@@ -23,7 +23,7 @@ Attention:
 path_atlas = "/home/gabri/Desktop/test_abba/prova_ABBA_automatic/src/main/resources/Adult Mouse Brain - Allen Brain Atlas V3p1-Ontology.json"
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
-n_test = 5 #how many brains use for testing
+n_test = 15 #how many brains use for testing
     
 def find_measurement_dirs(base_directory):
     """
@@ -81,7 +81,7 @@ for i, measurement_directory in enumerate(measurement_directories):
     {
         "ROI" : leaves_ROI_df["Acronym"],
         "Synapses" : [0] * len(leaves_ROI_df["Acronym"]), #initialize to 0
-        "Area" : [0] * len(leaves_ROI_df["Acronym"]) #initialize to 0
+        "Area" : [0.0] * len(leaves_ROI_df["Acronym"]) #initialize to 0.0 FLOAT!!!
     }
     )
     list_roi_leaves = df['ROI'].astype(str).tolist()
@@ -102,6 +102,7 @@ for i, measurement_directory in enumerate(measurement_directories):
             roi = row["Classification"]
             num_synapses = row["Num CY3"]
             area = row["Area µm^2"]
+            
 
             if roi in list_roi_leaves: #if ROI is a leaf-ROI
                 df.loc[df["ROI"] == roi, "Synapses"] += num_synapses
@@ -118,7 +119,7 @@ for i, measurement_directory in enumerate(measurement_directories):
 
     # Save csv
     csv_file = measurement_directory + '/whole_brain.csv'
-    print(f"Saving {i+1}-th csv as: " + csv_file)
+    print(f"Saving {i+1}-th csv as: " + csv_file + "\n")
     df_region.to_csv(csv_file, index=False)
 
     ##########################################################################
