@@ -170,7 +170,7 @@ data_summary <- function(data, varname, groupnames){
 
 ```{r}
 # Regions of injection to plot (even more than one)
-regions_injection = c("DR", "GPe")
+regions_injection = c("PARN", "DR", "GPe")
 
 # Create df with grouped data
 d = data_summary(df, varname="Cell.Density", 

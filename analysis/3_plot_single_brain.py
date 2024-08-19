@@ -19,6 +19,8 @@ The script performs the following tasks:
    - **Bar Plot (Top 30 ROIs)**: Creates a bar plot of the top 30 ROIs sorted by cell density.
    - **Bar Plot (Top 30 ROIs with Contralateral Comparison)**: Produces a bar plot comparing the top 30 ROIs' cell density with their contralateral counterparts.
 
+ATTENTION:
+- the data for the creation of the plots is taken from the single csv files, not the "all_brains.csv"
 """
 
 ##############################################
@@ -26,10 +28,10 @@ The script performs the following tasks:
 ##############################################
 
 # Choose if run the script for single brain or all brains.
-single_brain = None #None OR /run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/8 weeks/__100__/_Measurements
+single_brain = None
     #if you want:
         #run the script for all the brains in the project: single brain = None
-        #run the script for a specific brain; single_brain = "path_to_Measuremets_dir"
+        #run the script for a specific brain; single_brain = "path_to_Measuremets_dir" (ex. /run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/8 weeks/100/_Measurements)
 
 # number of the ROI to display in a plot
 n_roi_displayed = 30 
@@ -37,9 +39,8 @@ n_roi_displayed = 30
 # Dir of the project (if script is run on batch mode, i.e. for all brains of the project)
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 
-#flag this if you want to run the script in debugging mode, i.e process only the fist few brains
-test = True 
-n_test = 1 #how many brains use for testing
+test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
+n_test = 15 #how many brains use for testing
 
 ##############################################
 ### FIND CSV FILES ###########################
@@ -84,8 +85,7 @@ else:
     measurement_directories = single_brain
 
 # Find all "whole_brain.csv" file
-csv_files = [csv+"/whole_brain.csv" for csv in measurement_directories]
-
+csv_files = [csv + "/whole_brain.csv" for csv in measurement_directories]
 
 ##############################################
 ### CREATE IMAGES ############################
@@ -94,12 +94,12 @@ csv_files = [csv+"/whole_brain.csv" for csv in measurement_directories]
 # For each brain creates a set of images
 for i, csv_file in enumerate(csv_files):
 
-    print(f"Processing {i+1}th brain: " + csv_file)
+    print(f"Processing {i+1}th brain: " + csv_file + "\n")
 
-    # Make a dir for images (if doesn't yet exist)
+    # Create results Dir if not yet present
     grandparent_folder = os.path.dirname(os.path.dirname(csv_file)) #take the granparent folder (2 layer above the csv file)
-    dir_images_name = grandparent_folder + "/_Images"
-    print(dir_images_name)
+    dir_images_name = grandparent_folder + "/Results"
+    #print(dir_images_name)
     os.makedirs(dir_images_name, exist_ok=True)
 
     # Read csv file
@@ -135,6 +135,12 @@ for i, csv_file in enumerate(csv_files):
     plt.xticks(rotation=45)
     ax.grid(axis='y')
     #fig.show()
+
+    # Add Full name of ROIs
+    textstr = df_sorted[["Region", "Name"]].to_string(index=False)
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5) # Properties text
+    ax.text(0.75, 0.95, textstr, transform=ax.transAxes, fontsize=8, verticalalignment='top', multialignment="left", bbox=props)
+
     fig.savefig(dir_images_name + "/barplots_most_dense_ROI.pdf")
 
 
@@ -172,7 +178,18 @@ for i, csv_file in enumerate(csv_files):
     ax.legend()
     plt.xticks(ind, name_max_regions, rotation = 45)
     #plt.tight_layout()
+
+    # Add Full name of ROIs
+    textstr = df_sorted_max[["Region", "Name"]].to_string(index=False)
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5) # Properties text
+    ax.text(0.75, 0.95, textstr, transform=ax.transAxes, fontsize=8, verticalalignment='top', multialignment="left", bbox=props)
+
     fig.savefig(dir_images_name + "/barplots_most_dense_ROI_with_contralateral.pdf")
+
+    #######
+
+    # Save memory
+    plt.close('all')
 
 
     
