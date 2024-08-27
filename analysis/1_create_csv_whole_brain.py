@@ -58,7 +58,7 @@ Special Considerations:
 ##############################################
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/final_dataset"
 bg_atlas = BrainGlobeAtlas("allen_mouse_50um", check_latest=False) # Atlas to use
-test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
+test = False #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 15 #how many brains use for testing
 
 ##############################################

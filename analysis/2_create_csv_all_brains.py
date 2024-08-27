@@ -33,7 +33,7 @@ This script processes and consolidates data from multiple brain measurement dire
 dir_project = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis"
 #path to the csv file that contirna the data present in the book in the histology facility
 path_manual_data = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/paper_notes_histology_book.csv" 
-test = True #flag this if you want to run the script in debugging mode, i.e only few brains processed
+test = False #flag this if you want to run the script in debugging mode, i.e only few brains processed
 n_test = 15 #how many brains use for testing
 
 ##############################################
