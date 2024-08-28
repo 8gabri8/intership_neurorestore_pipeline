@@ -131,17 +131,23 @@ print(res)
 
 ## Automatic EdgeR: LRT
 ```{r}
+# Attention the name of the conditipon columns shoudl be "labels"
 df_meta_changed = df_meta
 df_meta_changed = df_meta_changed %>% rename(label = TimePoint)
-str(df_meta_changed)
-differential_activity (input = counts, 
-                       meta = df_meta, 
-                       replicate_col = 'replicate',
-                       label_col = 'label',
-                       min_features = 0,
-                       de_family = 'pseudobulk',
-                       de_method = 'edgeR',
-                       de_type = 'LRT')
+
+df_meta_changed$label <- relevel(df_meta_changed$label, ref = "Uninjured") # Set "Uninjured as the reference level
+
+
+da = differential_activity(input = counts, 
+                           meta = df_meta_changed, 
+                           replicate_col = 'replicate',
+                           label_col = 'label',
+                           min_features = 0,
+                           de_family = 'pseudobulk',
+                           de_method = 'edgeR',
+                           de_type = 'LRT')
+
+print(da)
 ```
 
 
@@ -156,8 +162,11 @@ differential_activity (input = counts,
 
 
 
-## Differential_activity.R Function
+# Differential_activity.R Function
 ```{r}
+library(forcats)
+
+
 #' Run differential activation (based on bulk RNA-seq analysis)
 #' 
 #' Run differential activation (based on bulk RNA-seq analysis)
@@ -216,7 +225,11 @@ differential_activity = function(input,
   if (n_distinct(targets$label) > 2)
     return(NULL)
   # create design
-  design = model.matrix(~ label_col, data = targets)
+  #design = model.matrix(~ label_col, data = targets)
+  design = model.matrix(~ label, data = targets)
+  
+  # Check desing matrix
+  print(design)
   
   DA = switch(de_method,
               edgeR = {
