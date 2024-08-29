@@ -17,6 +17,12 @@ In order to run the jupyter nootebooks and scripts inside this folder, we advise
      conda activate brainrender-env
      ```
 
+## Partial Automated pipeline in ABBA
+After importing the QuPath project into ABBA and have performed the beginning quality control (e.g. slice rotatation, label removal, ...), you can run the Fiji script **[abba_automated_registration.ijm](ABBA_scripts/abba_automated_registration.ijm)**. The main ateps are: slect all slices in ABBA, open  the Fiji macro runner paste the code and run it.
+> **Note**:  it is important to note that this script only partially automate the pipeline in ABBA, it is manly meant to execute all together the series of differt registartion methods (linear, splines, ...) in a faster and easier way. 
+
+> **Note**: Please check the paramters of each registration method and chnage them according to your needs.
+
 
 ## Export Registratiosn from ABBA to QuPath
 In ABBA:
@@ -60,8 +66,6 @@ Once we have obtained the CSV files for each brain, we can perform comparative a
 
 - **[5_plot_single_timepoint.ipynb](analysis/5_plot_single_timepoint.ipynb)**: This script generates a plots and heatmas relative a single timepoint for a specific region fo injection (please see the code for more specific documentation).
 - **[6_plot_multiple_timepoints.ipynb](analysis/6_plot_multiple_timepoints.ipynb)**: This script creates plots that summarize the evolution of the density in differt ROIs across differt timepoints. The Region of Injection is keept constant.
-
-
 
 
 ## Differential Expression (DE) Analysis

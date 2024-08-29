@@ -4,18 +4,25 @@ format: html
 editor: visual
 ---
 
-Run DE analisys for a specific Injection Region.
-Deafault test: edgeR with LRT, Benjamini-Hochber FDR control (p-valu adjustmet), no normalization prior to glm fitting
+Run DE analysis for a specific injection region. The default test used is **edgeR** with **Likelihood Ratio Test (LRT)**, along with **Benjamini-Hochberg FDR control** for p-value adjustment. No normalization is performed prior to GLM fitting.
 
-**ATTENTION**:
-- It analyses "Synapses" counts
-- To know if a region is significant it uses the p-value-adj
-- analysis only leaves
-- using the functuion differential_activity you can perform other tests
+**ATTENTION**:\
+- This analysis focuses on "Synapses" counts.\
+- The significance of a region is determined using the adjusted p-value (p-value-adj).\
+- The analysis is performed only on the leaves (terminal nodes).
+
+**Customizing Your Analysis**:\
+By modifying the script, you can:\
+- Adjust the p-value using different methods.\
+- Choose to normalize the data or not, and if so, select from various normalization methods.\
+- Use the `differential_activity` function to perform alternative tests.\
+- Instead of using just leaves, you could try to use other hierarchical level.
 
 # Libraries
 
 ```{r}
+library(edgeR)
+library(ggplot2)
 library(magrittr)
 library(tidyr)
 library(dplyr)
@@ -24,6 +31,7 @@ library(forcats)
 ```
 
 # Differential_activity.R Function
+
 ```{r}
 #' Run differential activation (based on bulk RNA-seq analysis)
 #' 
@@ -230,18 +238,25 @@ differential_activity = function(input,
 ```
 
 # Mandatory Inputs
+
 ```{r}
+### TO CHANGE EVERY TIME
+
 # Select one region of Injection
 region_injection = "DR"
+# Save folder
+save_path = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
+
+
+
+### TO CHNAGE AT OCCURENCE
+
 # Contrast to compare
 contrasts = list(c("1 weeks", "8 weeks"), c("Uninjured", "1 weeks"), c("Uninjured", "8 weeks"))
 # max p-avleu over with a region is no more signification (referred to adjusted p-value)
 p_value = 0.05
 # How many most differt ROI display
 n_roi_diplayed = 20
-# Save folder
-save_path = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results"
-
 # Load data
 df_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains.csv")
 df_meta_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains_meta.csv")
@@ -271,7 +286,7 @@ for (contrast in contrasts){
   df_meta = df_meta_all[(df_meta_all$TimePoint %in% contrast) & 
                         (df_meta_all$`Region.Injection` == region_injection),]
   df_meta$TimePoint = as.factor(df_meta$TimePoint)
-  df_meta = df_meta %>% rename(label = TimePoint) # ATTENTION: MUST BE CALLED "LABEL" FOR NEXTY FUNCTION
+  df_meta = df_meta %>% dplyr::rename(label = TimePoint) # ATTENTION: MUST BE CALLED "LABEL" FOR NEXTY FUNCTION
   df_meta$label <- relevel(df_meta$label, ref = baseline) # ATTENTION: SET THE BALINE CONDTION THAT YOU WANT
 
   
@@ -321,18 +336,17 @@ for (contrast in contrasts){
 print(df_da_all_contrasts) #1680 ROIs x 2contarts = 5040
 ```
 
-
-
 # Asses Archetypes
+
 ```{r}
 # Just change name
 da = df_da_all_contrasts
 
 
 
-## Archetype 1: 1w < UN and 1w < 8w --> "RECOVERY"
+## Archetype 1: 1w < UN and 1w < 8w --> RECOVERY UP
 ## (gradually improving and reaching baseline levels by increasing)
-arch_a1 = "Recovery"
+arch_a1 = "RecoveryUp"
 a1 = da %>%
   filter(p_val_adj < 0.05) %>%
   filter(direction %in% c("1 weeks < Uninjured", "1 weeks < 8 weeks")) %>% # Take only the rows of these 2 conditions
@@ -366,9 +380,9 @@ a1_rank = da %>%
 
 
 
-## Archetype 2: UN < 1wk and 8w < 1w 
+## Archetype 2: UN < 1wk and 8w < 1w --> RECOVERY DOWN
 ## (gradually improving and reaching baseline levels by decreasing)
-arch_a2 = "Recovery Down"
+arch_a2 = "RecoveryDown"
 a2 = da %>%
   filter(p_val_adj < 0.05) %>%
   filter(direction %in% c("Uninjured < 1 weeks", "8 weeks < 1 weeks")) %>%
@@ -400,45 +414,44 @@ a2_rank = da %>%
 
 
 
-# ## Archetype 3: (1w, 3w, 8w) < UN 
-# ## (region getting fucked by the injury that could be interesting 
-# ## to look into and target)
-# a3 = da %>%
-#   filter(p_val < 0.05) %>%
-#   filter(direction %in% c("1 weeks < Uninjured", "3 weeks < Uninjured", # ???? 3 weeks ????
-#                           "8 weeks < Uninjured")) %>%
-#   # ask which ones have both criteria
-#   group_by(region) %>%
-#   mutate(count = n()) %>%
-#   filter(count == 3) %>%
-#   ungroup() %>%
-#   mutate(archetype = arch_a3, region_injection = region_injection)
-# 
-# # try looking by rank even if they are not significant
-# a3_rank = da %>%
-#   filter(direction %in% c("1w < Uninjured", "3w < Uninjured",
-#                           "8w < Uninjured")) %>%
-#   # ask which ones have both criteria
-#   group_by(region) %>%
-#   mutate(count = n()) %>%
-#   filter(count == 3) %>%
-#   group_by(direction) %>%
-#   arrange(p_val) %>%
-#   mutate(rank = rank(p_val)) %>%
-#   group_by(region) %>%
-#   mutate(sum_rank = sum(rank)) %>%
-#   ungroup() %>%
-#   arrange(sum_rank) %>%
-#   dplyr::select(region, sum_rank) %>%
-#   distinct()
-# head(a3_rank, 20)
+## Archetype 3: 1w < UN  and 8w < UN--> DISCOENNECTION
+## (Lose connections)
+arch_a3 = "Disconnection"
+a3 = da %>%
+  filter(p_val_adj < 0.05) %>%
+  filter(direction %in% c("1 weeks < Uninjured", "8 weeks < 1 weeks")) %>%
+  # ask which ones have both criteria
+  group_by(region) %>%
+  mutate(count = n()) %>%
+  filter(count == 2) %>%
+  ungroup() %>%
+  mutate(archetype = arch_a3, region_injection = region_injection)
+
+# try looking by rank even if they are not significant
+a3_rank = da %>%
+  filter(direction %in% c("1 weeks < Uninjured", "8 weeks < 1 weeks")) %>%
+  # ask which ones have both criteria
+  group_by(region) %>%
+  mutate(count = n()) %>%
+  filter(count == 2) %>%
+  group_by(direction) %>%
+  arrange(p_val_adj) %>%
+  mutate(rank = rank(p_val_adj)) %>%
+  group_by(region) %>%
+  mutate(sum_rank = sum(rank)) %>%
+  ungroup() %>%
+  arrange(sum_rank) %>%
+  dplyr::select(region, sum_rank) %>%
+  distinct() %>%
+  tail(n_roi_diplayed) %>%
+  mutate(archetype = arch_a3, region_injection = region_injection)
 
 
 
 ## Archetype 4: UN < 1w and 1w < 8w --> New Connections
 ## (region gradually becoming more and more active to compensate 
 ## for the loss of function)
-arch_a4 = "New Connections"
+arch_a4 = "NewConnections"
 a4 = da %>%
   filter(p_val_adj < 0.05) %>%
   filter(direction %in% c("Uninjured < 1 weeks", "1 weeks < 8 weeks")) %>%
@@ -471,39 +484,114 @@ a4_rank = da %>%
 
 ```
 
+# Save results
 
 ```{r}
 # Merge all of them together
-df_significant = rbind(a1, a2, a4)
-df_rank = rbind(a1_rank, a2_rank, a4_rank)
+df_significant = rbind(a1, a2, a3, a4)
+df_rank = rbind(a1_rank, a2_rank, a3_rank, a4_rank)
 
 # Save
-save_folder = paste0(save_path, "/DE_analysis_", region_injection)
-if (!file.exists(save_folder)) {
-  dir.create(save_folder)
-}
-write.csv(df_significant, paste0(save_folder, "/significant_roi_archetypes_", region_injection, ".csv"))
-write.csv(df_rank, paste0(save_folder, "/rank_roi_archetypes_", region_injection, ".csv"))
+# save_folder = paste0(save_path, "/DE_analysis_", region_injection)
+# if (!file.exists(save_folder)) {
+#   dir.create(save_folder)
+# }
+write.csv(df_significant, paste0(save_path, "/significant_roi_archetypes_", region_injection, ".csv"), row.names = FALSE)
+write.csv(df_rank, paste0(save_path, "/rank_roi_archetypes_", region_injection, ".csv"), row.names = FALSE)
 
 ```
 
+# Plots
 
+```{r}
+#+++++++++++++++++++++++++
+# Function to calculate the mean, standard deviation (SD), and standard error (SE)
+# for each group
+#+++++++++++++++++++++++++
+# data : a data frame
+# varname : the name of a column containing the variable to be summarized
+# groupnames : vector of column names to be used as grouping variables
+data_summary <- function(data, varname, groupnames){
+  #require(plyr)
+  
+  # Function to calculate mean, standard deviation, and standard error
+  summary_func <- function(x, col){
+    n <- sum(!is.na(x[[col]]))  # Number of non-missing values
+    mean_val <- mean(x[[col]], na.rm=TRUE)  # Mean
+    sd_val <- sd(x[[col]], na.rm=TRUE)  # Standard Deviation
+    se_val <- sd_val / sqrt(n)  # Standard Error
+    
+    c(mean = mean_val, std = sd_val, se = se_val)
+  }
+  
+  # Apply the summary function to each group
+  data_sum <- ddply(data, groupnames, .fun=summary_func, varname)
+  
+  # Rename the 'mean' column to the variable name
+  #data_sum <- rename(data_sum, c("mean" = varname))
+  
+  return(data_sum)
+}
+```
 
+```{r}
+# Order of the x-axis of various plots
+desired_order <- c("Uninjured", "1 weeks", "8 weeks")
 
+# archteypes
+archetypes = c(arch_a1, arch_a2, arch_a3, arch_a4)
 
+# Plot the sifingicat ROI of a spefic archetypes
+for (arch in archetypes){
+  
+  # Extract sifgcat ROI of this archetype
+  ROI_significant_arch = unique(df_significant[df_significant$archetype == arch,]$region)
+  
+  if(length(ROI_significant_arch) == 0){ 
+    print(paste0("No significatn ROI for ", arch))
+    next
+  }
+  
+  # Extarct values relatvie to the rois and refion inecjetion
+  df_ROIs = df_all[(df_all$`Region.Injection` == region_injection) &
+                  (df_all$ROI %in% ROI_significant_arch),
+                  ]
+  
+  # calculate mean, std and sem for each ROI
+  ds = data_summary(df_ROIs , 
+                    varname="Synapses", 
+                    groupnames=c("TimePoint", "Region.Injection", "ROI"))
+  
+  # Plot for each ROI
+  for ( roi in ROI_significant_arch ){
+  
+    df_roi = ds %>% filter((ROI == roi))
+    
+    # Filter data for the current ROI
+    df_roi <- df_roi %>%
+              mutate(TimePoint = factor(TimePoint, levels = desired_order)) %>%
+              arrange(TimePoint)
+      
+    
+    # Line plot using ggplot2
+    plot <- ggplot(df_roi, aes(x = TimePoint, y = mean, group = ROI)) +
+      geom_line(color = "blue", size = 1) +
+      geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2, color = "red") +
+      geom_point(color = "blue") +
+      labs(x = "Timepoint", y = "Mean Synapses Count", 
+           title = paste0("Evolution of ROI synapses count\n", roi, "\nInjection Region: ", region_injection))
 
+    print(plot)
+    
+    #Save the figure
+    roi_clean <- gsub("[, :/]", "", roi)
+    path_plot = paste0(save_path, "/Lineplots/", arch, "/", roi_clean, ".pdf")
+    ggsave(path_plot, plot, width = 5, height = 5)
+  
+  
+  }
+    
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
