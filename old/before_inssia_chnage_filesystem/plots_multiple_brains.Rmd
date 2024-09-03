@@ -1,0 +1,911 @@
+# Mandatory Inputs
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+library(knitr)
+library(cowplot)
+```
+
+```{r}
+# csv that contains the data of the study
+df = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/mutiple_brain_analysis/all_brains.csv")
+# csv that containes the metadato of the samples
+df_meta = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/connectome_analysis/mutiple_brain_analysis/all_brains_meta.csv")
+# Dir where to save all the plots
+base_dir = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Mutiple_brain_analysis" 
+# Csv with ROI nomenclature and full name
+df_roi_names = read_csv("/home/gabri/Desktop/intership_neurorestore_pipeline/assets/leaves_regions_atlas.csv")
+```
+
+# Evolution csv
+
+```{r}
+# GOAL:
+  # Take a region of injection (ex "DR)
+  # Create a csv where
+    # Each row is a ROI
+    # Each column is the mean(or std) densoty for the ROI at a specific timepoint
+#to otbian smethign like this:
+#ROI           Mean_Uninjured   Std_Uninjured   Mean_8 weeks   Std_8 weeks
+#Left: FRP1    0.000040         0.000057        0.000040       0.000057
+#Right: FRP1   0.000094         0.000133        0.000094       0.000133
+#Left: FRP2/3  0                0               0              0
+
+
+# Regions of injection to plot (even more than one)
+regions_injection = c("DR")
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(region)
+  
+  #Crete df to fill. Intialize with only the roi names
+  df_evolution <- df %>%
+    select(ROI) %>%
+    distinct()#take only unqiue, indeed orignal df, have the roi repteas as many times as the brains
+  
+  # Create temp copy of df
+  count_data = df
+  meta_data = df_meta
+  
+  # Select mice injected in specific region
+  count_data = count_data[count_data$`Region.Injection` == region,]
+  
+  # Change the shape of the df
+  count_data <- count_data %>%
+    select(ROI, `Cell.Density`, `Brain.ID`) %>%
+    pivot_wider(names_from = `Brain.ID`, values_from = `Cell.Density`)
+  
+  # Select mice injected in specific region
+  meta_data = meta_data[meta_data$`Brain.ID` %in% colnames(count_data),]
+  
+  # Take the possbile values fo timepoints
+  timepoints = rev(unique(df_meta$TimePoint)) #rev for invert order
+  
+  #make a plot for each time point
+  for (timepoint in timepoints){
+    
+    temp_meta = meta_data[meta_data$TimePoint == timepoint, ] #Take only the mouse of these time point
+    temp_data = count_data[, colnames(count_data) %in% c(temp_meta$`Brain.ID`,"ROI")] #Take only the relative brains
+    
+    #Calculate mean and std
+    temp_data_no_first_col <- temp_data[, -1] #remove first column that are the nam eof the ROI
+    row_means <- apply(temp_data_no_first_col, 1, mean)
+    row_means[is.nan(row_means)] = 0
+    row_stds <- apply(temp_data_no_first_col, 1, sd)
+    row_stds[is.nan(row_stds)] = 0
+                     
+    # Add columns to df
+    temp_data <- temp_data %>%
+      mutate(row_mean = row_means, row_std = row_stds)
+    
+    #print(temp_data_sorted)
+    
+    #Add columns to evolution_df
+    new_columns <- temp_data %>%
+      select(row_mean, row_std) %>%
+      rename_with(~paste0(c("Mean ", "Std "), timepoint), everything())
+    df_evolution <- df_evolution %>%
+      bind_cols(new_columns)
+
+  }
+
+  
+  #Save the csv
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  
+  print(df_evolution)
+  
+  write_csv(df_evolution, paste0(dir_images, "/evolution_timeline.csv"))
+
+}
+
+```
+
+# Plots
+
+```{r}
+n_roi_displayed = 10
+all_region_injection = unique(df$Region.Injection)
+full_name_plot = TRUE # True if you want full name on the x-axis of the plots
+# Order of the x-axis of various plots
+desired_order <- c("Uninjured", "1 weeks", "8 weeks")
+# Combinations for lofGC
+combinations_timepoints <- list(
+  c("Uninjured", "1 weeks"),
+  c("Uninjured", "8 weeks"),
+  c("1 weeks", "8 weeks")
+)
+# Values that indicates that the logFC is Inf
+logFC_bound = 1000
+
+
+#+++++++++++++++++++++++++
+# Function to calculate the mean and the standard deviation
+  # for each group
+#+++++++++++++++++++++++++
+# data : a data frame
+# varname : the name of a column containing the variable
+  #to be summariezed
+# groupnames : vector of column names to be used as
+  # grouping variables
+data_summary <- function(data, varname, groupnames){
+  require(plyr)
+  summary_func <- function(x, col){
+    c(mean = mean(x[[col]], na.rm=TRUE),
+      std = sd(x[[col]], na.rm=TRUE))
+  }
+  data_sum<-ddply(data, groupnames, .fun=summary_func,
+                  varname)
+  data_sum <- rename(data_sum, c("mean" = varname))
+ return(data_sum)
+}
+```
+
+## Barplot Density Different X-Axis
+
+**GOAL:**
+
+1.  **Define Regions of Injection:**
+    -   Specify the regions to be analyzed (e.g., "DR").
+2.  **Create Aggregated Data:**
+    -   Summarize the data by calculating the mean cell density for each combination of TimePoint, Region Injection, and ROI.
+3.  **Generate Plots for Each Region:**
+    -   For each region, filter the summarized data.
+    -   Extract unique timepoints in reverse order.
+4.  **Create Plots for Each Timepoint:**
+    -   For each timepoint:
+        -   Filter data and select the top `n_roi_displayed` ROIs based on mean density.
+        -   Generate a bar plot showing the mean density with error bars.
+        -   Optionally, add a text table with ROI names.
+5.  **Combine and Save Plots:**
+    -   Combine the plots for all timepoints into a single figure.
+    -   Save the combined plot as a PDF file in a specified directory for each region.
+
+```{r}
+# Regions of injection to plot (even more than one)
+regions_injection = c("PARN", "DR", "GPe")
+
+# Create df with grouped data
+d = data_summary(df, varname="Cell.Density", 
+                groupnames=c("TimePoint", "Region.Injection", "ROI")) %>%
+                dplyr::rename(mean = `Cell.Density`)
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(paste0("Analyzing data relative to Region Injection ", region))
+  
+  df_temp = d %>%
+            filter(Region.Injection == region)
+  
+  timepoints = rev(unique(df_temp$TimePoint))
+  
+  # TimePoint plot
+  timepoints_plots = list()
+  
+  #make a plot for each time point
+  for (timepoint in timepoints){
+    
+    t = df_temp %>% 
+           filter(TimePoint == timepoint)
+
+    # Sort the data frame by 'mean' in descending order
+    # Select the first most dense regions
+    t_sorted <- t %>%
+      arrange(desc(mean)) %>%
+      slice_head(n = n_roi_displayed)
+    
+    # to force the ROI to be displayed on the x axis on the same order of the most dense
+    t_sorted <- t_sorted %>%
+      mutate(ROI = factor(ROI, levels = ROI))
+    
+    #print(t_sorted)
+    
+    # Create the bar plot with error bars
+    plot = ggplot(t_sorted, aes(x = ROI, y = mean)) +
+      geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
+      geom_errorbar(aes(ymin = mean - std, ymax = mean + std), 
+                    width = 0.2, color = "red") +
+      labs(title = timepoint, x = paste0("First most dense ", n_roi_displayed, " ROI"), y = "Density") +
+      coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt x-axis labels
+    
+        # Add Table with ROI names if Needed
+    if (full_name_plot){
+      # Filter and merge
+      roi_acronyms <- t_sorted$ROI
+      roi_names <- df_roi_names %>%
+        filter(Acronym %in% roi_acronyms) %>%
+        dplyr::rename(ROI = Acronym)
+      
+      t_sorted <- merge(t_sorted, roi_names, by = "ROI", all.x = TRUE)
+      
+      # Create concatenated column
+      t_sorted <- t_sorted %>%
+        mutate(Acronym_Name = paste(ROI, Name, sep = " --> "))
+      
+      # Create the text_lines with each entry left-aligned
+      text_lines <- paste(t_sorted$Acronym_Name, collapse = "\n")
+      
+      # Create a plot with text annotation
+      text_plot <- ggdraw() + 
+        draw_label(text_lines, size=8, 
+                   hjust=0, vjust=0.5, # how to justify all the text, ex. all aligned to the left
+                   x=0, y=0.6 #coodinate of the text
+                                # x left/right, y up/down
+                   )+
+        theme(plot.margin = margin(0, 0, 0, 0))
+      
+      # Combine the plot and text side by side
+      plot = plot_grid(plot, text_plot, ncol=1, rel_heights = c(3, 1))
+
+    }
+
+    #print(plot)
+    
+    #put plot in list
+    timepoints_plots[[timepoint]] <- plot
+  }
+
+  # Print the combined plot
+  combined_plot <- wrap_plots(timepoints_plots, ncol = length(timepoints_plots))
+  
+  print(combined_plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  ggsave(file.path(dir_images, paste0("barplots_density_different_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 6)
+
+}
+
+```
+
+## Barplot Density Same X-Axis (Unijured as baseline)
+
+**GOAL:**
+
+1.  **Define Regions of Injection:**
+    -   Specify the regions to be analyzed (e.g., "DR").
+2.  **Read Evolution Data:**
+    -   For each specified region, load the data from a CSV file containing evolution metrics.
+3.  **Find Timepoints:**
+    -   Extract and reverse the order of unique timepoints for the region.
+4.  **Create Timepoint Plots:**
+    -   For each timepoint:
+        -   **Uninjured Timepoint:** Identify and save the most dense ROIs based on mean density.
+        -   **Other Timepoints:** Use the previously identified most dense ROIs and sort by the same order.
+        -   Generate bar plots showing mean density with error bars.
+        -   Optionally, add a text table with ROI names.
+5.  **Combine and Save Plots:**
+    -   Combine the plots for all timepoints into a single figure.
+    -   Save the combined plot as a PDF file in a specified directory for each region.
+
+```{r}
+# Regions of injection to plot (even more than one)
+regions_injections = c("DR", "GPe")
+
+# df with mean grouping data
+d = data_summary(df, varname="Cell.Density", 
+                    groupnames=c("TimePoint", "Region.Injection", "ROI")) %>%
+                dplyr::rename(mean = `Cell.Density`)
+
+for (region in regions_injections) {  # Iterate over the region_injection
+  
+  print(region)
+  
+  # df of this region
+  df_temp = d %>% 
+          filter(Region.Injection == region)
+  
+  # Take timepoints
+  timepoints = rev(unique(df_temp$TimePoint))
+      
+  # Take the most dense region of Uninjured
+  roi_dense_uninjured  = df_temp %>%
+      filter(TimePoint == "Uninjured") %>%
+      arrange(desc(mean)) %>%  # Sort in descending order
+      select(ROI) %>%  # Select only the ROI column
+      slice_head(n = n_roi_displayed) %>%
+      mutate(ROI = factor(ROI, levels = ROI))
+  roi_dense_uninjured = as.character(roi_dense_uninjured$ROI)
+  
+  # TimePoint plot
+  timepoints_plots = list()
+  
+  #make a plot for each time point
+  for (timepoint in timepoints){
+    
+    t_sorted <- df_temp %>%
+      filter(TimePoint == timepoint) %>%
+      filter(ROI %in% roi_dense_uninjured) %>%
+      mutate(ROI = factor(ROI, levels = roi_dense_uninjured))
+    
+    # Create the bar plot with error bars
+    plot = ggplot(t_sorted, aes(x = ROI, y = mean)) +
+      geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
+      geom_errorbar(aes(ymin = mean - std, ymax = mean + std), 
+                    width = 0.2, color = "red") +
+      labs(title = timepoint, x = paste0("First most dense ", n_roi_displayed, " ROI"), y = "Density") +
+      coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt x-axis labels
+    
+    # Add Table with ROI names if Needed
+    if (full_name_plot){
+      # Filter and merge
+      roi_acronyms <- t_sorted$ROI
+      roi_names <- df_roi_names %>%
+        filter(Acronym %in% roi_acronyms) %>%
+        dplyr::rename(ROI = Acronym)
+      
+      t_sorted <- merge(t_sorted, roi_names, by = "ROI", all.x = TRUE)
+      
+      # Create concatenated column
+      t_sorted <- t_sorted %>%
+        mutate(Acronym_Name = paste(ROI, Name, sep = " --> ")) 
+      
+      # Create the text_lines with each entry left-aligned
+      text_lines <- paste(t_sorted$Acronym_Name, collapse = "\n")
+      
+      # Create a plot with text annotation
+      text_plot <- ggdraw() + 
+        draw_label(text_lines, size=8, 
+                   hjust=0, vjust=0.5, # how to justify all the text, ex. all aligned to the left
+                   x=0.2, y=0.6 #coodinate of the text
+                                # x left/right, y up/down
+                   )+
+        theme(plot.margin = margin(0, 0, 0, 0))
+      
+      # Combine the plot and text side by side
+      plot = plot_grid(plot, text_plot, ncol=1, rel_heights = c(3, 1))
+
+    }
+
+    #print(plot)
+    
+    #put plot in list
+    timepoints_plots[[timepoint]] <- plot
+    
+  }
+
+  # Print the combined plot
+  combined_plot <- wrap_plots(timepoints_plots, ncol = length(timepoints_plots))
+  print(combined_plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  ggsave(file.path(dir_images, paste0("barplots_density_same_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 6)
+
+
+  
+}
+
+```
+
+## Barplot Density Multiple columns (Unijured as baseline)
+
+```{r}
+# Regions of injection to plot (even more than one)
+regions_injection = c("DR", "GPe")
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(region)
+  
+  d = data_summary(df, varname="Cell.Density", 
+                    groupnames=c("TimePoint", "Region.Injection", "ROI")) %>%
+      dplyr::rename(mean = `Cell.Density`) %>%
+      filter(Region.Injection == region)
+      
+  
+  # Take the most dense region of Uninjured
+  roi_dense_uninjured  = d %>%
+      filter(TimePoint == "Uninjured") %>%
+      arrange(desc(mean)) %>%  # Sort in descending order
+      select(ROI) %>%  # Select only the ROI column
+      slice_head(n = n_roi_displayed) %>%
+      mutate(ROI = factor(ROI, levels = ROI))
+  roi_dense_uninjured = as.character(roi_dense_uninjured$ROI)
+  
+  df_temp = d %>% 
+            filter(ROI %in% roi_dense_uninjured) %>%
+            mutate(TimePoint = factor(TimePoint, levels = desired_order)) %>%
+            arrange(TimePoint)
+  
+  plot = ggplot(data = df_temp, 
+       aes(x = ROI, y = mean, fill = TimePoint)) + 
+       geom_bar(stat = 'identity', position = 'dodge') +
+       geom_errorbar(aes(ymin = mean - std, ymax = mean + std), position = position_dodge(width = 0.7), width = 0.2) +  # Error bars
+       labs( title = paste0("First most dense ", n_roi_displayed, " ROI for Uninjured\nInjection Region: ", region), y = "Density") +
+       coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
+       theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt x-axis labels
+  
+  print(plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  ggsave(file.path(dir_images, paste0("barplots_density_multiple_bars_same_ROI_", n_roi_displayed, ".pdf")), plot, width = 10, height = 6)
+  
+  
+      
+      
+}
+```
+
+## Log(FC) barplots
+
+**GOAL:**
+
+1.  **Define Regions of Injection:**
+    -   Specify the regions to be analyzed (e.g., "DR").
+2.  **Read Evolution Data:**
+    -   For each specified region, load the data from a CSV file containing evolution metrics.
+3.  **Generate Timepoint Comparisons:**
+    -   Create combinations of two timepoints for comparison (e.g., "Uninjured" vs. "Injured").
+4.  **Calculate and Plot Log Fold Change (logFC):**
+    -   For each timepoint combination, calculate the logFC between the two timepoints.
+    -   Handle zero values and missing data appropriately.
+    -   Identify and sort the top and bottom ROIs based on logFC.
+5.  **Create and Customize Plots:**
+    -   Generate bar plots showing the logFC for top and bottom ROIs.
+    -   Optionally add a text table with ROI names.
+    -   Arrange the plots side by side for all timepoint comparisons.
+6.  **Save Plots:**
+    -   Save the combined plots as a PDF file in a specified directory for each region.
+
+```{r}
+# Regions of injection to plot (even more than one)
+regions_injection = c("DR", "GPe")
+
+# Create df with grouped data
+d = data_summary(df, varname="Cell.Density", 
+                groupnames=c("TimePoint", "Region.Injection", "ROI")) %>%
+                dplyr::rename(mean = `Cell.Density`)
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(paste0("Analyzing data relative to Region Injection ", region))
+  
+  df_temp = d %>%
+            filter(Region.Injection == region)
+  
+  timepoints = rev(unique(df_temp$TimePoint))
+  
+  # Comb plot
+  comb_plots = list()
+  
+  for(comb in combinations_timepoints){
+    
+    print(comb)
+    
+    # Names of the 2 classes in this co,bination
+    baseline_class = comb[1] #Nb index start from 1
+    treatment_class = comb[2]
+    
+    if (!(baseline_class %in% timepoints) || !(treatment_class %in% timepoints)) {
+      print(paste(comb, " not possible to calculate, due to lacking data."))
+      next
+    }
+    
+    baseline_data <-  df_temp %>% 
+                      filter(TimePoint == baseline_class) %>% 
+                      select(ROI, mean) %>%
+                      dplyr::rename(mean_baseline = mean)
+    treatment_data <- df_temp %>% 
+                      filter(TimePoint == treatment_class) %>% 
+                      select(ROI, mean) %>%
+                      dplyr::rename(mean_treatment = mean)
+    
+    data = merge(baseline_data, treatment_data, by="ROI")
+    
+    # Calculate logFC and handle extreme cases
+    data <- data %>%
+      mutate(
+        logFC = case_when(
+          mean_baseline == 0 & mean_treatment == 0 ~ 0, # baseline = 0, treatment = 0
+          mean_baseline == 0 & mean_treatment != 0 ~ logFC_bound, # baseline = 0, treatment != 0
+          mean_baseline != 0 & mean_treatment == 0 ~ -logFC_bound, # baseline != 0, treatment = 0
+          mean_baseline != 0 & mean_treatment != 0 ~ log2(mean_treatment / mean_baseline), # normal calculation
+          TRUE ~ NA_real_ # catch-all for unexpected cases
+        ),
+        condition = case_when(
+          is.na(logFC) ~ "NaN",
+          logFC == -logFC_bound ~ "-Inf",
+          logFC == logFC_bound ~ "Inf",
+          TRUE ~ "Normal"
+        )
+      )
+    
+    # Correctly handle extreme logFC values
+    data <- data %>%
+      mutate(
+        logFC = case_when(
+          is.infinite(logFC) & logFC < 0 ~ -logFC_bound, # Replace -Inf with -logFC_bound
+          is.infinite(logFC) & logFC > 0 ~ logFC_bound,  # Replace Inf with logFC_bound
+          TRUE ~ logFC # Keep other values as is
+        )
+      )
+    
+    # Sort by row_mean in descending order and select the top n rows
+    top_rows <- data %>%
+                filter(condition == "Normal") %>%
+                arrange(desc(logFC)) %>%
+                slice_head(n = n_roi_displayed)
+    
+    # Sort by row_mean in ascending order and select the bottom n rows
+    bottom_rows <- data %>%
+                  filter(condition == "Normal") %>%
+                  arrange(logFC) %>% #ascending
+                  slice_head(n = n_roi_displayed)
+    
+    # Take Probelmatic Rows
+    problematic_rows = data %>%
+                       filter(condition %in% c("Inf","-Inf"))
+
+    # Combine  rows
+    combined_rows <- bind_rows(top_rows, bottom_rows, problematic_rows)
+    combined_rows = combined_rows %>% arrange(desc(logFC))
+    
+    # to force the ROI to be displayed on the x axis on the same order of the most dense
+    combined_rows <- combined_rows %>%
+      mutate(ROI = factor(ROI, levels = ROI)) 
+    
+    # fidn max and min bound
+    max_bound <- data %>%
+      filter(condition == "Normal") %>%
+      summarise(max_logFC = max(logFC, na.rm = TRUE)) %>%
+      pull(max_logFC)
+    min_bound <- data %>%
+      filter(condition == "Normal") %>%
+      summarise(min_logFC = min(logFC, na.rm = TRUE)) %>%
+      pull(min_logFC)
+    
+    # Create the bar plot with error bars
+    plot <- ggplot(combined_rows, aes(x = ROI, y = logFC, fill = condition)) +
+      geom_bar(stat = "identity", color = "black") +  # Use color for bar borders
+      labs(
+        title = paste0("Baseline: ", comb[1], "\nTreatment: ", comb[2]),
+        x = paste0("First biggest ", n_roi_displayed, " log(FC)"),
+        y = "log(FC)"
+      ) +
+      coord_cartesian(ylim = c(min_bound, max_bound)) +  # Set y-axis limit
+      theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+      scale_fill_manual(values = c("Normal" = "green", 
+                                   "NaN" = "gray", 
+                                   "Inf" = "red", 
+                                   "-Inf" = "blue"))
+
+    # Add Table with ROI names if Needed
+    if (full_name_plot){
+      
+      t_sorted = combined_rows
+      
+      # Filter and merge
+      roi_acronyms <- t_sorted$ROI
+      roi_names <- df_roi_names %>%
+        filter(Acronym %in% roi_acronyms) %>%
+        dplyr::rename(ROI = Acronym)
+      
+      t_sorted <- merge(t_sorted, roi_names, by = "ROI", all.x = TRUE)
+      
+      # Create concatenated column
+      t_sorted <- t_sorted %>%
+        mutate(Acronym_Name = paste(ROI, Name, sep = " --> ")) 
+      
+      # Create the text_lines with each entry left-aligned
+      text_lines <- paste(t_sorted$Acronym_Name, collapse = "\n")
+      
+      # Create a plot with text annotation
+      text_plot <- ggdraw() + 
+        draw_label(text_lines, size=8, 
+                   hjust=0, vjust=0.5, # how to justify all the text, ex. all aligned to the left
+                   x=0.2, y=0.5 #coodinate of the text
+                                # x left/right, y up/down
+                   )+
+        theme(plot.margin = margin(0, 0, 0, 0))
+      
+      # Combine the plot and text side by side
+      plot = plot_grid(plot, text_plot, ncol=1, rel_heights = c(1,2))
+
+    }
+    
+    #print(plot)
+    
+    #put plot in list
+    comb_plots[[paste0(comb[1], comb[2])]] <- plot
+  }
+
+  # Print the combined plot
+  combined_plot <- wrap_plots(comb_plots, ncol = length(combinations_timepoints))
+  print(combined_plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  ggsave(file.path(dir_images, paste0("barplots_logFC_", n_roi_displayed, ".pdf")), combined_plot, width = 40, height = 15)
+  
+}
+```
+
+## Single Region Evolution
+
+**GOAL:**
+
+1.  **Define Regions and ROIs:**
+    -   Specify the regions of injection (e.g., "DR") and the ROIs to be analyzed (e.g., "Right: PF", "Left: LDT").
+2.  **Read Evolution Data:**
+    -   For each region, load the data from a CSV file containing evolution metrics.
+3.  **Filter and Prepare Data:**
+    -   Select columns related to ROIs and mean values.
+    -   Filter the data to include only the specified ROIs.
+    -   Prepare the data for plotting by transforming from wide to long format, ensuring the order of timepoints is preserved.
+4.  **Generate Line Plots:**
+    -   For each ROI, create a line plot showing the evolution of synapse density over timepoints.
+    -   Customize the plot with labels and a y-axis limit.
+5.  **Save Plots:**
+    -   Save each plot as a PDF file in a specified directory.
+    -   Ensure directory creation if it does not exist and format filenames by cleaning the ROI names.
+
+```{r}
+# Regions of injection to plot (even more than one
+regions_injections = c("DR", "GPe")
+
+# ROIs to analyze
+ROIs = c("Right: PF", "Left: LDT", "Right: nst")
+
+for ( region_injection in regions_injections ){
+  
+  print(region_injection)
+  
+  d = data_summary(df, varname="Cell.Density", 
+                    groupnames=c("TimePoint", "Region.Injection", "ROI"))
+  
+  for ( roi in ROIs ){
+    
+    df_roi = d %>% filter((ROI == roi) & (Region.Injection == region_injection))
+    
+    # Filter data for the current ROI
+    df_roi <- df_roi %>%
+      filter(ROI == roi) %>% 
+      dplyr::rename(mean = `Cell.Density`) %>%
+      mutate(TimePoint = factor(TimePoint, levels = desired_order)) %>%
+      arrange(TimePoint)
+      
+    
+    # Line plot using ggplot2
+    plot <- ggplot(df_roi, aes(x = TimePoint, y = mean,  group = ROI)) +
+            geom_line(color = "blue", size = 1) +
+      geom_errorbar(aes(ymin=mean-std, ymax=mean+std), width = 0.2, color = "red") +
+      geom_point(color = "blue")+
+      coord_cartesian(ylim = c(0, 0.02)) +
+      scale_color_brewer(palette="Paired")+
+      labs(x = "Timepoint", y = "Mean Synapses Density", title = paste0("Evolution of ROI synapses density\n", roi, "\nInjection Region: ", region_injection))#+#theme_minimal()
+    
+    print(plot)
+    
+    #Save the figure
+    dir_images = file.path(base_dir, "images", "single_plot_evolution")
+    #print(dir_images)
+    if (!dir.exists(dir_images)) {
+      dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+    }
+    # Remove commas and spaces
+    roi_clean <- gsub("[, :/]", "", roi)
+    
+    ggsave(file.path(dir_images, paste0("lineplot_evolution_", roi_clean, "_injection_", region_injection, ".pdf")), plot, width = 5, height = 5)
+    
+    
+  }
+}
+```
+
+# TODO
+
+## Vulcano Plot
+
+```{r}
+# Vulcano plot of 
+if (!requireNamespace("DESeq2", quietly = TRUE)) {
+  BiocManager::install("DESeq2")
+}
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  BiocManager::install("tidyverse")
+}
+
+library(DESeq2)
+library(tidyverse)
+library(ggplot2)
+
+# Choose:
+region_injection = "DR"
+control_timepoint = "uninjured"
+treatment_timepoint = "8 weeks"
+
+#count_data: A matrix of count data (rows are genes, columns are samples).
+#col_data: A DataFrame with sample information (including conditions).
+#condition: The variable that differentiates between your conditions.
+
+#prepare count_data
+count_data = df
+count_data = count_data[count_data$`Region.Injection` == region_injection,]
+count_data <- count_data %>%
+  select(ROI, Synapses, `Brain.ID`) %>%
+  pivot_wider(names_from = `Brain.ID`, values_from = Synapses)
+count_data = count_data[,-1]
+
+#prepare col_data
+col_data = df_meta
+col_data = col_data[col_data$`Brain.ID` %in% colnames(count_data),]
+
+# DESeq2 dataset
+dds <- DESeqDataSetFromMatrix(countData = count_data,
+                              colData = col_data,
+                              design = ~ TimePoint)
+
+# Run DESeq analysis
+dds <- DESeq(dds)
+
+
+# Get results
+results <- results(dds)
+
+# Print log fold changes and adjusted p-values
+#print(results$log2FoldChange)
+#print(results$padj)
+
+# Extract results
+results_df <- as.data.frame(results)
+
+# Ensure the results contain the necessary columns
+#head(results_df)
+
+# Filter out rows with NA values if needed
+results_df <- na.omit(results_df)
+
+# Define significance thresholds
+significance_threshold <- 0.05
+fold_change_threshold <- 1
+
+# Create volcano plot
+volcano_plot <- ggplot(results_df, aes(x = log2FoldChange, y = -log10(padj))) +
+  geom_point(aes(color = padj < significance_threshold & abs(log2FoldChange) > fold_change_threshold), alpha = 0.5) +
+  scale_color_manual(values = c("black", "red")) +
+  labs(x = "Log2 Fold Change",
+       y = "-Log10 Adjusted P-Value",
+       title = "Volcano Plot") +
+  #theme_minimal()  +
+  #xlim(-2, 2) +
+  #ylim(0, 1)+
+  geom_vline(xintercept = c(-fold_change_threshold, fold_change_threshold), linetype = "dashed", color = "blue") +
+  geom_hline(yintercept = -log10(significance_threshold), linetype = "dashed", color = "blue")+
+  theme(legend.position = "none")
+
+# Print the plot
+volcano_plot
+
+```
+
+```{r}
+# GOAL:
+  # Take a region of injection (ex "DR)
+  # For each timePoint (ex. "Uninjured")
+    # For each ROI 
+      # Calculate the mean density across the mouse of the timepoit choosen
+  # Take the most "n_roi_displayed" dense region for each time point
+    # (so each timepint will have a differt set of ROI)
+  # Create a barplot for each time point
+    #Put it in the same figure
+
+# Regions of injection to plot (even more than one)
+regions_injection = c("DR")
+
+for (region in regions_injection) {  # Iterate over the region_injection
+  
+  print(region)
+  
+  # Read df evolution
+  df_evolution_region = read_csv(file.path(base_dir, "images", region, "evolution_timeline.csv"))
+  
+  # Find timepoints of this injection region
+  timepoints = df_meta %>% filter(Region.Injection == region) %>% select(TimePoint)
+  timepoints = rev(unique(timepoints$TimePoint))
+  
+  # TimePoint plot
+  timepoints_plots = list()
+  
+  #make a plot for each time point
+  for (timepoint in timepoints){
+    
+    # Name of the mean column and Std in the df
+    means_col_name <- paste0("Mean ", timepoint)
+    stds_col_name <- paste0("Std ", timepoint)
+    
+    # Suset to only columns relative to this timeponr
+    t = df_evolution_region %>% select(ROI, means_col_name, stds_col_name)
+    
+    #change name col
+    names(t)[names(t) == means_col_name] = "means"
+    names(t)[names(t) == stds_col_name] = "stds"
+
+    # Sort the data frame by 'mean' in descending order
+    # Select the first most dense regions
+    t_sorted <- t %>%
+      arrange(desc(means)) %>%
+      slice_head(n = n_roi_displayed)
+    
+    # to force the ROI to be displayed on the x axis on the same order of the most dense
+    t_sorted <- t_sorted %>%
+      mutate(ROI = factor(ROI, levels = ROI))
+    
+    #print(t_sorted)
+    
+    # Create the bar plot with error bars
+    plot = ggplot(t_sorted, aes(x = ROI, y = means)) +
+      geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
+      geom_errorbar(aes(ymin = means - stds, ymax = means + stds), 
+                    width = 0.2, color = "red") +
+      labs(title = timepoint, x = paste0("First most dense ", n_roi_displayed, " ROI"), y = "Density") +
+      coord_cartesian(ylim = c(0, 0.02)) +  # Set y-axis limit
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt x-axis labels
+
+    #print(plot)
+    
+    #put plot in list
+    timepoints_plots[[timepoint]] <- plot
+  }
+
+  # Print the combined plot
+  combined_plot <- wrap_plots(timepoints_plots, ncol = length(timepoints_plots))
+  print(combined_plot)
+  
+  #Save the figure
+  dir_images = file.path(base_dir, "images", region)
+  #print(dir_images)
+  if (!dir.exists(dir_images)) {
+    dir.create(dir_images, recursive = TRUE) #ensure that all intermediate directories are created as well
+  }
+  #ggsave(file.path(dir_images, paste0("barplots_density_different_ROI_", n_roi_displayed, ".pdf")), combined_plot, width = 10, height = 4)
+
+
+  
+```
+
+# Test
+
+```{r}
+
+```
+
+```{r}
+ggplot(df_roi, aes(x = TimePoint, y = mean,  group = ROI)) +
+        geom_line(color = "blue", size = 1) +
+      geom_errorbar(aes(ymin=mean-std, ymax=mean+std), width = 0.2, color = "red") +
+      geom_point(color = "blue")+
+      coord_cartesian(ylim = c(0, 0.02)) +
+      scale_color_brewer(palette="Paired")+
+      labs(x = "Timepoint", y = "Mean Synapses Density", title = paste0("Evolution of ROI synapses density\n", roi, "\nInjection Side: ", region))#+#theme_minimal()
+    
+
+
+
+```

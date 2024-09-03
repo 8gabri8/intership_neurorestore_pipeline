@@ -1,0 +1,2077 @@
+Acronym,Name,Hemisphere ID
+Left: FRP1,"Frontal pole, layer 1",3
+Right: FRP1,"Frontal pole, layer 1",3
+Left: FRP2/3,"Frontal pole, layer 2/3",3
+Right: FRP2/3,"Frontal pole, layer 2/3",3
+Left: FRP5,"Frontal pole, layer 5",3
+Right: FRP5,"Frontal pole, layer 5",3
+Left: FRP6a,"Frontal pole, layer 6a",3
+Right: FRP6a,"Frontal pole, layer 6a",3
+Left: FRP6b,"Frontal pole, layer 6b",3
+Right: FRP6b,"Frontal pole, layer 6b",3
+Left: MO1,"Somatomotor areas, Layer 1",3
+Right: MO1,"Somatomotor areas, Layer 1",3
+Left: MO2/3,"Somatomotor areas, Layer 2/3",3
+Right: MO2/3,"Somatomotor areas, Layer 2/3",3
+Left: MO5,"Somatomotor areas, Layer 5",3
+Right: MO5,"Somatomotor areas, Layer 5",3
+Left: MO6a,"Somatomotor areas, Layer 6a",3
+Right: MO6a,"Somatomotor areas, Layer 6a",3
+Left: MO6b,"Somatomotor areas, Layer 6b",3
+Right: MO6b,"Somatomotor areas, Layer 6b",3
+Left: MOp1,"Primary motor area, Layer 1",3
+Right: MOp1,"Primary motor area, Layer 1",3
+Left: MOp2/3,"Primary motor area, Layer 2/3",3
+Right: MOp2/3,"Primary motor area, Layer 2/3",3
+Left: MOp5,"Primary motor area, Layer 5",3
+Right: MOp5,"Primary motor area, Layer 5",3
+Left: MOp6a,"Primary motor area, Layer 6a",3
+Right: MOp6a,"Primary motor area, Layer 6a",3
+Left: MOp6b,"Primary motor area, Layer 6b",3
+Right: MOp6b,"Primary motor area, Layer 6b",3
+Left: MOs1,"Secondary motor area, layer 1",3
+Right: MOs1,"Secondary motor area, layer 1",3
+Left: MOs2/3,"Secondary motor area, layer 2/3",3
+Right: MOs2/3,"Secondary motor area, layer 2/3",3
+Left: MOs5,"Secondary motor area, layer 5",3
+Right: MOs5,"Secondary motor area, layer 5",3
+Left: MOs6a,"Secondary motor area, layer 6a",3
+Right: MOs6a,"Secondary motor area, layer 6a",3
+Left: MOs6b,"Secondary motor area, layer 6b",3
+Right: MOs6b,"Secondary motor area, layer 6b",3
+Left: SS1,"Somatosensory areas, layer 1",3
+Right: SS1,"Somatosensory areas, layer 1",3
+Left: SS2/3,"Somatosensory areas, layer 2/3",3
+Right: SS2/3,"Somatosensory areas, layer 2/3",3
+Left: SS4,"Somatosensory areas, layer 4",3
+Right: SS4,"Somatosensory areas, layer 4",3
+Left: SS5,"Somatosensory areas, layer 5",3
+Right: SS5,"Somatosensory areas, layer 5",3
+Left: SS6a,"Somatosensory areas, layer 6a",3
+Right: SS6a,"Somatosensory areas, layer 6a",3
+Left: SS6b,"Somatosensory areas, layer 6b",3
+Right: SS6b,"Somatosensory areas, layer 6b",3
+Left: SSp1,"Primary somatosensory area, layer 1",3
+Right: SSp1,"Primary somatosensory area, layer 1",3
+Left: SSp2/3,"Primary somatosensory area, layer 2/3",3
+Right: SSp2/3,"Primary somatosensory area, layer 2/3",3
+Left: SSp4,"Primary somatosensory area, layer 4",3
+Right: SSp4,"Primary somatosensory area, layer 4",3
+Left: SSp5,"Primary somatosensory area, layer 5",3
+Right: SSp5,"Primary somatosensory area, layer 5",3
+Left: SSp6a,"Primary somatosensory area, layer 6a",3
+Right: SSp6a,"Primary somatosensory area, layer 6a",3
+Left: SSp6b,"Primary somatosensory area, layer 6b",3
+Right: SSp6b,"Primary somatosensory area, layer 6b",3
+Left: SSp-n1,"Primary somatosensory area, nose, layer 1",3
+Right: SSp-n1,"Primary somatosensory area, nose, layer 1",3
+Left: SSp-n2/3,"Primary somatosensory area, nose, layer 2/3",3
+Right: SSp-n2/3,"Primary somatosensory area, nose, layer 2/3",3
+Left: SSp-n4,"Primary somatosensory area, nose, layer 4",3
+Right: SSp-n4,"Primary somatosensory area, nose, layer 4",3
+Left: SSp-n5,"Primary somatosensory area, nose, layer 5",3
+Right: SSp-n5,"Primary somatosensory area, nose, layer 5",3
+Left: SSp-n6a,"Primary somatosensory area, nose, layer 6a",3
+Right: SSp-n6a,"Primary somatosensory area, nose, layer 6a",3
+Left: SSp-n6b,"Primary somatosensory area, nose, layer 6b",3
+Right: SSp-n6b,"Primary somatosensory area, nose, layer 6b",3
+Left: SSp-bfd1,"Primary somatosensory area, barrel field, layer 1",3
+Right: SSp-bfd1,"Primary somatosensory area, barrel field, layer 1",3
+Left: SSp-bfd2/3,"Primary somatosensory area, barrel field, layer 2/3",3
+Right: SSp-bfd2/3,"Primary somatosensory area, barrel field, layer 2/3",3
+Left: SSp-bfd4,"Primary somatosensory area, barrel field, layer 4",3
+Right: SSp-bfd4,"Primary somatosensory area, barrel field, layer 4",3
+Left: SSp-bfd5,"Primary somatosensory area, barrel field, layer 5",3
+Right: SSp-bfd5,"Primary somatosensory area, barrel field, layer 5",3
+Left: SSp-bfd6a,"Primary somatosensory area, barrel field, layer 6a",3
+Right: SSp-bfd6a,"Primary somatosensory area, barrel field, layer 6a",3
+Left: SSp-bfd6b,"Primary somatosensory area, barrel field, layer 6b",3
+Right: SSp-bfd6b,"Primary somatosensory area, barrel field, layer 6b",3
+Left: VISrll1,"Rostrolateral lateral visual area, layer 1",3
+Right: VISrll1,"Rostrolateral lateral visual area, layer 1",3
+Left: VISrll2/3,"Rostrolateral lateral visual area, layer 2/3",3
+Right: VISrll2/3,"Rostrolateral lateral visual area, layer 2/3",3
+Left: VISrll4,"Rostrolateral lateral visual area, layer 4",3
+Right: VISrll4,"Rostrolateral lateral visual area, layer 4",3
+Left: VISrll5,"Rostrolateral lateral visual area,layer 5",3
+Right: VISrll5,"Rostrolateral lateral visual area,layer 5",3
+Left: VISrll6a,"Rostrolateral lateral visual area, layer 6a",3
+Right: VISrll6a,"Rostrolateral lateral visual area, layer 6a",3
+Left: VISrll6b,"Rostrolateral lateral visual area, layer 6b",3
+Right: VISrll6b,"Rostrolateral lateral visual area, layer 6b",3
+Left: SSp-ll1,"Primary somatosensory area, lower limb, layer 1",3
+Right: SSp-ll1,"Primary somatosensory area, lower limb, layer 1",3
+Left: SSp-ll2/3,"Primary somatosensory area, lower limb, layer 2/3",3
+Right: SSp-ll2/3,"Primary somatosensory area, lower limb, layer 2/3",3
+Left: SSp-ll4,"Primary somatosensory area, lower limb, layer 4",3
+Right: SSp-ll4,"Primary somatosensory area, lower limb, layer 4",3
+Left: SSp-ll5,"Primary somatosensory area, lower limb, layer 5",3
+Right: SSp-ll5,"Primary somatosensory area, lower limb, layer 5",3
+Left: SSp-ll6a,"Primary somatosensory area, lower limb, layer 6a",3
+Right: SSp-ll6a,"Primary somatosensory area, lower limb, layer 6a",3
+Left: SSp-ll6b,"Primary somatosensory area, lower limb, layer 6b",3
+Right: SSp-ll6b,"Primary somatosensory area, lower limb, layer 6b",3
+Left: SSp-m1,"Primary somatosensory area, mouth, layer 1",3
+Right: SSp-m1,"Primary somatosensory area, mouth, layer 1",3
+Left: SSp-m2/3,"Primary somatosensory area, mouth, layer 2/3",3
+Right: SSp-m2/3,"Primary somatosensory area, mouth, layer 2/3",3
+Left: SSp-m4,"Primary somatosensory area, mouth, layer 4",3
+Right: SSp-m4,"Primary somatosensory area, mouth, layer 4",3
+Left: SSp-m5,"Primary somatosensory area, mouth, layer 5",3
+Right: SSp-m5,"Primary somatosensory area, mouth, layer 5",3
+Left: SSp-m6a,"Primary somatosensory area, mouth, layer 6a",3
+Right: SSp-m6a,"Primary somatosensory area, mouth, layer 6a",3
+Left: SSp-m6b,"Primary somatosensory area, mouth, layer 6b",3
+Right: SSp-m6b,"Primary somatosensory area, mouth, layer 6b",3
+Left: SSp-ul1,"Primary somatosensory area, upper limb, layer 1",3
+Right: SSp-ul1,"Primary somatosensory area, upper limb, layer 1",3
+Left: SSp-ul2/3,"Primary somatosensory area, upper limb, layer 2/3",3
+Right: SSp-ul2/3,"Primary somatosensory area, upper limb, layer 2/3",3
+Left: SSp-ul4,"Primary somatosensory area, upper limb, layer 4",3
+Right: SSp-ul4,"Primary somatosensory area, upper limb, layer 4",3
+Left: SSp-ul5,"Primary somatosensory area, upper limb, layer 5",3
+Right: SSp-ul5,"Primary somatosensory area, upper limb, layer 5",3
+Left: SSp-ul6a,"Primary somatosensory area, upper limb, layer 6a",3
+Right: SSp-ul6a,"Primary somatosensory area, upper limb, layer 6a",3
+Left: SSp-ul6b,"Primary somatosensory area, upper limb, layer 6b",3
+Right: SSp-ul6b,"Primary somatosensory area, upper limb, layer 6b",3
+Left: SSp-tr1,"Primary somatosensory area, trunk, layer 1",3
+Right: SSp-tr1,"Primary somatosensory area, trunk, layer 1",3
+Left: SSp-tr2/3,"Primary somatosensory area, trunk, layer 2/3",3
+Right: SSp-tr2/3,"Primary somatosensory area, trunk, layer 2/3",3
+Left: SSp-tr4,"Primary somatosensory area, trunk, layer 4",3
+Right: SSp-tr4,"Primary somatosensory area, trunk, layer 4",3
+Left: SSp-tr5,"Primary somatosensory area, trunk, layer 5",3
+Right: SSp-tr5,"Primary somatosensory area, trunk, layer 5",3
+Left: SSp-tr6a,"Primary somatosensory area, trunk, layer 6a",3
+Right: SSp-tr6a,"Primary somatosensory area, trunk, layer 6a",3
+Left: SSp-tr6b,"Primary somatosensory area, trunk, layer 6b",3
+Right: SSp-tr6b,"Primary somatosensory area, trunk, layer 6b",3
+Left: SSp-un1,"Primary somatosensory area, unassigned, layer 1",3
+Right: SSp-un1,"Primary somatosensory area, unassigned, layer 1",3
+Left: SSp-un2/3,"Primary somatosensory area, unassigned, layer 2/3",3
+Right: SSp-un2/3,"Primary somatosensory area, unassigned, layer 2/3",3
+Left: SSp-un4,"Primary somatosensory area, unassigned, layer 4",3
+Right: SSp-un4,"Primary somatosensory area, unassigned, layer 4",3
+Left: SSp-un5,"Primary somatosensory area, unassigned, layer 5",3
+Right: SSp-un5,"Primary somatosensory area, unassigned, layer 5",3
+Left: SSp-un6a,"Primary somatosensory area, unassigned, layer 6a",3
+Right: SSp-un6a,"Primary somatosensory area, unassigned, layer 6a",3
+Left: SSp-un6b,"Primary somatosensory area, unassigned, layer 6b",3
+Right: SSp-un6b,"Primary somatosensory area, unassigned, layer 6b",3
+Left: SSs1,"Supplemental somatosensory area, layer 1",3
+Right: SSs1,"Supplemental somatosensory area, layer 1",3
+Left: SSs2/3,"Supplemental somatosensory area, layer 2/3",3
+Right: SSs2/3,"Supplemental somatosensory area, layer 2/3",3
+Left: SSs4,"Supplemental somatosensory area, layer 4",3
+Right: SSs4,"Supplemental somatosensory area, layer 4",3
+Left: SSs5,"Supplemental somatosensory area, layer 5",3
+Right: SSs5,"Supplemental somatosensory area, layer 5",3
+Left: SSs6a,"Supplemental somatosensory area, layer 6a",3
+Right: SSs6a,"Supplemental somatosensory area, layer 6a",3
+Left: SSs6b,"Supplemental somatosensory area, layer 6b",3
+Right: SSs6b,"Supplemental somatosensory area, layer 6b",3
+Left: GU1,"Gustatory areas, layer 1",3
+Right: GU1,"Gustatory areas, layer 1",3
+Left: GU2/3,"Gustatory areas, layer 2/3",3
+Right: GU2/3,"Gustatory areas, layer 2/3",3
+Left: GU4,"Gustatory areas, layer 4",3
+Right: GU4,"Gustatory areas, layer 4",3
+Left: GU5,"Gustatory areas, layer 5",3
+Right: GU5,"Gustatory areas, layer 5",3
+Left: GU6a,"Gustatory areas, layer 6a",3
+Right: GU6a,"Gustatory areas, layer 6a",3
+Left: GU6b,"Gustatory areas, layer 6b",3
+Right: GU6b,"Gustatory areas, layer 6b",3
+Left: VISC1,"Visceral area, layer 1",3
+Right: VISC1,"Visceral area, layer 1",3
+Left: VISC2/3,"Visceral area, layer 2/3",3
+Right: VISC2/3,"Visceral area, layer 2/3",3
+Left: VISC4,"Visceral area, layer 4",3
+Right: VISC4,"Visceral area, layer 4",3
+Left: VISC5,"Visceral area, layer 5",3
+Right: VISC5,"Visceral area, layer 5",3
+Left: VISC6a,"Visceral area, layer 6a",3
+Right: VISC6a,"Visceral area, layer 6a",3
+Left: VISC6b,"Visceral area, layer 6b",3
+Right: VISC6b,"Visceral area, layer 6b",3
+Left: AUDd1,"Dorsal auditory area, layer 1",3
+Right: AUDd1,"Dorsal auditory area, layer 1",3
+Left: AUDd2/3,"Dorsal auditory area, layer 2/3",3
+Right: AUDd2/3,"Dorsal auditory area, layer 2/3",3
+Left: AUDd4,"Dorsal auditory area, layer 4",3
+Right: AUDd4,"Dorsal auditory area, layer 4",3
+Left: AUDd5,"Dorsal auditory area, layer 5",3
+Right: AUDd5,"Dorsal auditory area, layer 5",3
+Left: AUDd6a,"Dorsal auditory area, layer 6a",3
+Right: AUDd6a,"Dorsal auditory area, layer 6a",3
+Left: AUDd6b,"Dorsal auditory area, layer 6b",3
+Right: AUDd6b,"Dorsal auditory area, layer 6b",3
+Left: VISlla1,"Laterolateral anterior visual area, layer 1",3
+Right: VISlla1,"Laterolateral anterior visual area, layer 1",3
+Left: VISlla2/3,"Laterolateral anterior visual area, layer 2/3",3
+Right: VISlla2/3,"Laterolateral anterior visual area, layer 2/3",3
+Left: VISlla4,"Laterolateral anterior visual area, layer 4",3
+Right: VISlla4,"Laterolateral anterior visual area, layer 4",3
+Left: VISlla5,"Laterolateral anterior visual area,layer 5",3
+Right: VISlla5,"Laterolateral anterior visual area,layer 5",3
+Left: VISlla6a,"Laterolateral anterior visual area, layer 6a",3
+Right: VISlla6a,"Laterolateral anterior visual area, layer 6a",3
+Left: VISlla6b,"Laterolateral anterior visual area, layer 6b",3
+Right: VISlla6b,"Laterolateral anterior visual area, layer 6b",3
+Left: AUDp1,"Primary auditory area, layer 1",3
+Right: AUDp1,"Primary auditory area, layer 1",3
+Left: AUDp2/3,"Primary auditory area, layer 2/3",3
+Right: AUDp2/3,"Primary auditory area, layer 2/3",3
+Left: AUDp4,"Primary auditory area, layer 4",3
+Right: AUDp4,"Primary auditory area, layer 4",3
+Left: AUDp5,"Primary auditory area, layer 5",3
+Right: AUDp5,"Primary auditory area, layer 5",3
+Left: AUDp6a,"Primary auditory area, layer 6a",3
+Right: AUDp6a,"Primary auditory area, layer 6a",3
+Left: AUDp6b,"Primary auditory area, layer 6b",3
+Right: AUDp6b,"Primary auditory area, layer 6b",3
+Left: AUDpo1,"Posterior auditory area, layer 1",3
+Right: AUDpo1,"Posterior auditory area, layer 1",3
+Left: AUDpo2/3,"Posterior auditory area, layer 2/3",3
+Right: AUDpo2/3,"Posterior auditory area, layer 2/3",3
+Left: AUDpo4,"Posterior auditory area, layer 4",3
+Right: AUDpo4,"Posterior auditory area, layer 4",3
+Left: AUDpo5,"Posterior auditory area, layer 5",3
+Right: AUDpo5,"Posterior auditory area, layer 5",3
+Left: AUDpo6a,"Posterior auditory area, layer 6a",3
+Right: AUDpo6a,"Posterior auditory area, layer 6a",3
+Left: AUDpo6b,"Posterior auditory area, layer 6b",3
+Right: AUDpo6b,"Posterior auditory area, layer 6b",3
+Left: AUDv1,"Ventral auditory area, layer 1",3
+Right: AUDv1,"Ventral auditory area, layer 1",3
+Left: AUDv2/3,"Ventral auditory area, layer 2/3",3
+Right: AUDv2/3,"Ventral auditory area, layer 2/3",3
+Left: AUDv4,"Ventral auditory area, layer 4",3
+Right: AUDv4,"Ventral auditory area, layer 4",3
+Left: AUDv5,"Ventral auditory area, layer 5",3
+Right: AUDv5,"Ventral auditory area, layer 5",3
+Left: AUDv6a,"Ventral auditory area, layer 6a",3
+Right: AUDv6a,"Ventral auditory area, layer 6a",3
+Left: AUDv6b,"Ventral auditory area, layer 6b",3
+Right: AUDv6b,"Ventral auditory area, layer 6b",3
+Left: VIS1,"Visual areas, layer 1",3
+Right: VIS1,"Visual areas, layer 1",3
+Left: VIS2/3,"Visual areas, layer 2/3",3
+Right: VIS2/3,"Visual areas, layer 2/3",3
+Left: VIS4,"Visual areas, layer 4",3
+Right: VIS4,"Visual areas, layer 4",3
+Left: VIS5,"Visual areas, layer 5",3
+Right: VIS5,"Visual areas, layer 5",3
+Left: VIS6a,"Visual areas, layer 6a",3
+Right: VIS6a,"Visual areas, layer 6a",3
+Left: VIS6b,"Visual areas, layer 6b",3
+Right: VIS6b,"Visual areas, layer 6b",3
+Left: VISal1,"Anterolateral visual area, layer 1",3
+Right: VISal1,"Anterolateral visual area, layer 1",3
+Left: VISal2/3,"Anterolateral visual area, layer 2/3",3
+Right: VISal2/3,"Anterolateral visual area, layer 2/3",3
+Left: VISal4,"Anterolateral visual area, layer 4",3
+Right: VISal4,"Anterolateral visual area, layer 4",3
+Left: VISal5,"Anterolateral visual area, layer 5",3
+Right: VISal5,"Anterolateral visual area, layer 5",3
+Left: VISal6a,"Anterolateral visual area, layer 6a",3
+Right: VISal6a,"Anterolateral visual area, layer 6a",3
+Left: VISal6b,"Anterolateral visual area, layer 6b",3
+Right: VISal6b,"Anterolateral visual area, layer 6b",3
+Left: VISam1,"Anteromedial visual area, layer 1",3
+Right: VISam1,"Anteromedial visual area, layer 1",3
+Left: VISam2/3,"Anteromedial visual area, layer 2/3",3
+Right: VISam2/3,"Anteromedial visual area, layer 2/3",3
+Left: VISam4,"Anteromedial visual area, layer 4",3
+Right: VISam4,"Anteromedial visual area, layer 4",3
+Left: VISam5,"Anteromedial visual area, layer 5",3
+Right: VISam5,"Anteromedial visual area, layer 5",3
+Left: VISam6a,"Anteromedial visual area, layer 6a",3
+Right: VISam6a,"Anteromedial visual area, layer 6a",3
+Left: VISam6b,"Anteromedial visual area, layer 6b",3
+Right: VISam6b,"Anteromedial visual area, layer 6b",3
+Left: VISl1,"Lateral visual area, layer 1",3
+Right: VISl1,"Lateral visual area, layer 1",3
+Left: VISl2/3,"Lateral visual area, layer 2/3",3
+Right: VISl2/3,"Lateral visual area, layer 2/3",3
+Left: VISl4,"Lateral visual area, layer 4",3
+Right: VISl4,"Lateral visual area, layer 4",3
+Left: VISl5,"Lateral visual area, layer 5",3
+Right: VISl5,"Lateral visual area, layer 5",3
+Left: VISl6a,"Lateral visual area, layer 6a",3
+Right: VISl6a,"Lateral visual area, layer 6a",3
+Left: VISl6b,"Lateral visual area, layer 6b",3
+Right: VISl6b,"Lateral visual area, layer 6b",3
+Left: VISp1,"Primary visual area, layer 1",3
+Right: VISp1,"Primary visual area, layer 1",3
+Left: VISp2/3,"Primary visual area, layer 2/3",3
+Right: VISp2/3,"Primary visual area, layer 2/3",3
+Left: VISp4,"Primary visual area, layer 4",3
+Right: VISp4,"Primary visual area, layer 4",3
+Left: VISp5,"Primary visual area, layer 5",3
+Right: VISp5,"Primary visual area, layer 5",3
+Left: VISp6a,"Primary visual area, layer 6a",3
+Right: VISp6a,"Primary visual area, layer 6a",3
+Left: VISp6b,"Primary visual area, layer 6b",3
+Right: VISp6b,"Primary visual area, layer 6b",3
+Left: VISpl1,"Posterolateral visual area, layer 1",3
+Right: VISpl1,"Posterolateral visual area, layer 1",3
+Left: VISpl2/3,"Posterolateral visual area, layer 2/3",3
+Right: VISpl2/3,"Posterolateral visual area, layer 2/3",3
+Left: VISpl4,"Posterolateral visual area, layer 4",3
+Right: VISpl4,"Posterolateral visual area, layer 4",3
+Left: VISpl5,"Posterolateral visual area, layer 5",3
+Right: VISpl5,"Posterolateral visual area, layer 5",3
+Left: VISpl6a,"Posterolateral visual area, layer 6a",3
+Right: VISpl6a,"Posterolateral visual area, layer 6a",3
+Left: VISpl6b,"Posterolateral visual area, layer 6b",3
+Right: VISpl6b,"Posterolateral visual area, layer 6b",3
+Left: VISpm1,"posteromedial visual area, layer 1",3
+Right: VISpm1,"posteromedial visual area, layer 1",3
+Left: VISpm2/3,"posteromedial visual area, layer 2/3",3
+Right: VISpm2/3,"posteromedial visual area, layer 2/3",3
+Left: VISpm4,"posteromedial visual area, layer 4",3
+Right: VISpm4,"posteromedial visual area, layer 4",3
+Left: VISpm5,"posteromedial visual area, layer 5",3
+Right: VISpm5,"posteromedial visual area, layer 5",3
+Left: VISpm6a,"posteromedial visual area, layer 6a",3
+Right: VISpm6a,"posteromedial visual area, layer 6a",3
+Left: VISpm6b,"posteromedial visual area, layer 6b",3
+Right: VISpm6b,"posteromedial visual area, layer 6b",3
+Left: VISli1,"Laterointermediate area, layer 1",3
+Right: VISli1,"Laterointermediate area, layer 1",3
+Left: VISli2/3,"Laterointermediate area, layer 2/3",3
+Right: VISli2/3,"Laterointermediate area, layer 2/3",3
+Left: VISli4,"Laterointermediate area, layer 4",3
+Right: VISli4,"Laterointermediate area, layer 4",3
+Left: VISli5,"Laterointermediate area, layer 5",3
+Right: VISli5,"Laterointermediate area, layer 5",3
+Left: VISli6a,"Laterointermediate area, layer 6a",3
+Right: VISli6a,"Laterointermediate area, layer 6a",3
+Left: VISli6b,"Laterointermediate area, layer 6b",3
+Right: VISli6b,"Laterointermediate area, layer 6b",3
+Left: VISpor1,"Postrhinal area, layer 1",3
+Right: VISpor1,"Postrhinal area, layer 1",3
+Left: VISpor2/3,"Postrhinal area, layer 2/3",3
+Right: VISpor2/3,"Postrhinal area, layer 2/3",3
+Left: VISpor4,"Postrhinal area, layer 4",3
+Right: VISpor4,"Postrhinal area, layer 4",3
+Left: VISpor5,"Postrhinal area, layer 5",3
+Right: VISpor5,"Postrhinal area, layer 5",3
+Left: VISpor6a,"Postrhinal area, layer 6a",3
+Right: VISpor6a,"Postrhinal area, layer 6a",3
+Left: VISpor6b,"Postrhinal area, layer 6b",3
+Right: VISpor6b,"Postrhinal area, layer 6b",3
+Left: ACA1,"Anterior cingulate area, layer 1",3
+Right: ACA1,"Anterior cingulate area, layer 1",3
+Left: ACA2/3,"Anterior cingulate area, layer 2/3",3
+Right: ACA2/3,"Anterior cingulate area, layer 2/3",3
+Left: ACA5,"Anterior cingulate area, layer 5",3
+Right: ACA5,"Anterior cingulate area, layer 5",3
+Left: ACA6a,"Anterior cingulate area, layer 6a",3
+Right: ACA6a,"Anterior cingulate area, layer 6a",3
+Left: ACA6b,"Anterior cingulate area, layer 6b",3
+Right: ACA6b,"Anterior cingulate area, layer 6b",3
+Left: ACAd1,"Anterior cingulate area, dorsal part, layer 1",3
+Right: ACAd1,"Anterior cingulate area, dorsal part, layer 1",3
+Left: ACAd2/3,"Anterior cingulate area, dorsal part, layer 2/3",3
+Right: ACAd2/3,"Anterior cingulate area, dorsal part, layer 2/3",3
+Left: ACAd5,"Anterior cingulate area, dorsal part, layer 5",3
+Right: ACAd5,"Anterior cingulate area, dorsal part, layer 5",3
+Left: ACAd6a,"Anterior cingulate area, dorsal part, layer 6a",3
+Right: ACAd6a,"Anterior cingulate area, dorsal part, layer 6a",3
+Left: ACAd6b,"Anterior cingulate area, dorsal part, layer 6b",3
+Right: ACAd6b,"Anterior cingulate area, dorsal part, layer 6b",3
+Left: ACAv1,"Anterior cingulate area, ventral part, layer 1",3
+Right: ACAv1,"Anterior cingulate area, ventral part, layer 1",3
+Left: ACAv2/3,"Anterior cingulate area, ventral part, layer 2/3",3
+Right: ACAv2/3,"Anterior cingulate area, ventral part, layer 2/3",3
+Left: ACAv5,"Anterior cingulate area, ventral part, layer 5",3
+Right: ACAv5,"Anterior cingulate area, ventral part, layer 5",3
+Left: ACAv6a,"Anterior cingulate area, ventral part, 6a",3
+Right: ACAv6a,"Anterior cingulate area, ventral part, 6a",3
+Left: ACAv6b,"Anterior cingulate area, ventral part, 6b",3
+Right: ACAv6b,"Anterior cingulate area, ventral part, 6b",3
+Left: PL1,"Prelimbic area, layer 1",3
+Right: PL1,"Prelimbic area, layer 1",3
+Left: PL2,"Prelimbic area, layer 2",3
+Right: PL2,"Prelimbic area, layer 2",3
+Left: PL2/3,"Prelimbic area, layer 2/3",3
+Right: PL2/3,"Prelimbic area, layer 2/3",3
+Left: PL5,"Prelimbic area, layer 5",3
+Right: PL5,"Prelimbic area, layer 5",3
+Left: PL6a,"Prelimbic area, layer 6a",3
+Right: PL6a,"Prelimbic area, layer 6a",3
+Left: PL6b,"Prelimbic area, layer 6b",3
+Right: PL6b,"Prelimbic area, layer 6b",3
+Left: ILA1,"Infralimbic area, layer 1",3
+Right: ILA1,"Infralimbic area, layer 1",3
+Left: ILA2,"Infralimbic area, layer 2",3
+Right: ILA2,"Infralimbic area, layer 2",3
+Left: ILA2/3,"Infralimbic area, layer 2/3",3
+Right: ILA2/3,"Infralimbic area, layer 2/3",3
+Left: ILA5,"Infralimbic area, layer 5",3
+Right: ILA5,"Infralimbic area, layer 5",3
+Left: ILA6a,"Infralimbic area, layer 6a",3
+Right: ILA6a,"Infralimbic area, layer 6a",3
+Left: ILA6b,"Infralimbic area, layer 6b",3
+Right: ILA6b,"Infralimbic area, layer 6b",3
+Left: ORB1,"Orbital area, layer 1",3
+Right: ORB1,"Orbital area, layer 1",3
+Left: ORB2/3,"Orbital area, layer 2/3",3
+Right: ORB2/3,"Orbital area, layer 2/3",3
+Left: ORB5,"Orbital area, layer 5",3
+Right: ORB5,"Orbital area, layer 5",3
+Left: ORB6a,"Orbital area, layer 6a",3
+Right: ORB6a,"Orbital area, layer 6a",3
+Left: ORB6b,"Orbital area, layer 6b",3
+Right: ORB6b,"Orbital area, layer 6b",3
+Left: ORBl1,"Orbital area, lateral part, layer 1",3
+Right: ORBl1,"Orbital area, lateral part, layer 1",3
+Left: ORBl2/3,"Orbital area, lateral part, layer 2/3",3
+Right: ORBl2/3,"Orbital area, lateral part, layer 2/3",3
+Left: ORBl5,"Orbital area, lateral part, layer 5",3
+Right: ORBl5,"Orbital area, lateral part, layer 5",3
+Left: ORBl6a,"Orbital area, lateral part, layer 6a",3
+Right: ORBl6a,"Orbital area, lateral part, layer 6a",3
+Left: ORBl6b,"Orbital area, lateral part, layer 6b",3
+Right: ORBl6b,"Orbital area, lateral part, layer 6b",3
+Left: ORBm1,"Orbital area, medial part, layer 1",3
+Right: ORBm1,"Orbital area, medial part, layer 1",3
+Left: ORBm2,"Orbital area, medial part, layer 2",3
+Right: ORBm2,"Orbital area, medial part, layer 2",3
+Left: ORBm2/3,"Orbital area, medial part, layer 2/3",3
+Right: ORBm2/3,"Orbital area, medial part, layer 2/3",3
+Left: ORBm5,"Orbital area, medial part, layer 5",3
+Right: ORBm5,"Orbital area, medial part, layer 5",3
+Left: ORBm6a,"Orbital area, medial part, layer 6a",3
+Right: ORBm6a,"Orbital area, medial part, layer 6a",3
+Left: ORBm6b,"Orbital area, medial part, layer 6b",3
+Right: ORBm6b,"Orbital area, medial part, layer 6b",3
+Left: ORBv,"Orbital area, ventral part",3
+Right: ORBv,"Orbital area, ventral part",3
+Left: ORBvl1,"Orbital area, ventrolateral part, layer 1",3
+Right: ORBvl1,"Orbital area, ventrolateral part, layer 1",3
+Left: ORBvl2/3,"Orbital area, ventrolateral part, layer 2/3",3
+Right: ORBvl2/3,"Orbital area, ventrolateral part, layer 2/3",3
+Left: ORBvl5,"Orbital area, ventrolateral part, layer 5",3
+Right: ORBvl5,"Orbital area, ventrolateral part, layer 5",3
+Left: ORBvl6a,"Orbital area, ventrolateral part, layer 6a",3
+Right: ORBvl6a,"Orbital area, ventrolateral part, layer 6a",3
+Left: ORBvl6b,"Orbital area, ventrolateral part, layer 6b",3
+Right: ORBvl6b,"Orbital area, ventrolateral part, layer 6b",3
+Left: AId1,"Agranular insular area, dorsal part, layer 1",3
+Right: AId1,"Agranular insular area, dorsal part, layer 1",3
+Left: AId2/3,"Agranular insular area, dorsal part, layer 2/3",3
+Right: AId2/3,"Agranular insular area, dorsal part, layer 2/3",3
+Left: AId5,"Agranular insular area, dorsal part, layer 5",3
+Right: AId5,"Agranular insular area, dorsal part, layer 5",3
+Left: AId6a,"Agranular insular area, dorsal part, layer 6a",3
+Right: AId6a,"Agranular insular area, dorsal part, layer 6a",3
+Left: AId6b,"Agranular insular area, dorsal part, layer 6b",3
+Right: AId6b,"Agranular insular area, dorsal part, layer 6b",3
+Left: AIp1,"Agranular insular area, posterior part, layer 1",3
+Right: AIp1,"Agranular insular area, posterior part, layer 1",3
+Left: AIp2/3,"Agranular insular area, posterior part, layer 2/3",3
+Right: AIp2/3,"Agranular insular area, posterior part, layer 2/3",3
+Left: AIp5,"Agranular insular area, posterior part, layer 5",3
+Right: AIp5,"Agranular insular area, posterior part, layer 5",3
+Left: AIp6a,"Agranular insular area, posterior part, layer 6a",3
+Right: AIp6a,"Agranular insular area, posterior part, layer 6a",3
+Left: AIp6b,"Agranular insular area, posterior part, layer 6b",3
+Right: AIp6b,"Agranular insular area, posterior part, layer 6b",3
+Left: AIv1,"Agranular insular area, ventral part, layer 1",3
+Right: AIv1,"Agranular insular area, ventral part, layer 1",3
+Left: AIv2/3,"Agranular insular area, ventral part, layer 2/3",3
+Right: AIv2/3,"Agranular insular area, ventral part, layer 2/3",3
+Left: AIv5,"Agranular insular area, ventral part, layer 5",3
+Right: AIv5,"Agranular insular area, ventral part, layer 5",3
+Left: AIv6a,"Agranular insular area, ventral part, layer 6a",3
+Right: AIv6a,"Agranular insular area, ventral part, layer 6a",3
+Left: AIv6b,"Agranular insular area, ventral part, layer 6b",3
+Right: AIv6b,"Agranular insular area, ventral part, layer 6b",3
+Left: RSPagl1,"Retrosplenial area, lateral agranular part, layer 1",3
+Right: RSPagl1,"Retrosplenial area, lateral agranular part, layer 1",3
+Left: RSPagl2/3,"Retrosplenial area, lateral agranular part, layer 2/3",3
+Right: RSPagl2/3,"Retrosplenial area, lateral agranular part, layer 2/3",3
+Left: RSPagl5,"Retrosplenial area, lateral agranular part, layer 5",3
+Right: RSPagl5,"Retrosplenial area, lateral agranular part, layer 5",3
+Left: RSPagl6a,"Retrosplenial area, lateral agranular part, layer 6a",3
+Right: RSPagl6a,"Retrosplenial area, lateral agranular part, layer 6a",3
+Left: RSPagl6b,"Retrosplenial area, lateral agranular part, layer 6b",3
+Right: RSPagl6b,"Retrosplenial area, lateral agranular part, layer 6b",3
+Left: VISmma1,"Mediomedial anterior visual area, layer 1",3
+Right: VISmma1,"Mediomedial anterior visual area, layer 1",3
+Left: VISmma2/3,"Mediomedial anterior visual area, layer 2/3",3
+Right: VISmma2/3,"Mediomedial anterior visual area, layer 2/3",3
+Left: VISmma4,"Mediomedial anterior visual area, layer 4",3
+Right: VISmma4,"Mediomedial anterior visual area, layer 4",3
+Left: VISmma5,"Mediomedial anterior visual area,layer 5",3
+Right: VISmma5,"Mediomedial anterior visual area,layer 5",3
+Left: VISmma6a,"Mediomedial anterior visual area, layer 6a",3
+Right: VISmma6a,"Mediomedial anterior visual area, layer 6a",3
+Left: VISmma6b,"Mediomedial anterior visual area, layer 6b",3
+Right: VISmma6b,"Mediomedial anterior visual area, layer 6b",3
+Left: VISmmp1,"Mediomedial posterior visual area, layer 1",3
+Right: VISmmp1,"Mediomedial posterior visual area, layer 1",3
+Left: VISmmp2/3,"Mediomedial posterior visual area, layer 2/3",3
+Right: VISmmp2/3,"Mediomedial posterior visual area, layer 2/3",3
+Left: VISmmp4,"Mediomedial posterior visual area, layer 4",3
+Right: VISmmp4,"Mediomedial posterior visual area, layer 4",3
+Left: VISmmp5,"Mediomedial posterior visual area,layer 5",3
+Right: VISmmp5,"Mediomedial posterior visual area,layer 5",3
+Left: VISmmp6a,"Mediomedial posterior visual area, layer 6a",3
+Right: VISmmp6a,"Mediomedial posterior visual area, layer 6a",3
+Left: VISmmp6b,"Mediomedial posterior visual area, layer 6b",3
+Right: VISmmp6b,"Mediomedial posterior visual area, layer 6b",3
+Left: VISm1,"Medial visual area, layer 1",3
+Right: VISm1,"Medial visual area, layer 1",3
+Left: VISm2/3,"Medial visual area, layer 2/3",3
+Right: VISm2/3,"Medial visual area, layer 2/3",3
+Left: VISm4,"Medial visual area, layer 4",3
+Right: VISm4,"Medial visual area, layer 4",3
+Left: VISm5,"Medial visual area,layer 5",3
+Right: VISm5,"Medial visual area,layer 5",3
+Left: VISm6a,"Medial visual area, layer 6a",3
+Right: VISm6a,"Medial visual area, layer 6a",3
+Left: VISm6b,"Medial visual area, layer 6b",3
+Right: VISm6b,"Medial visual area, layer 6b",3
+Left: RSPd1,"Retrosplenial area, dorsal part, layer 1",3
+Right: RSPd1,"Retrosplenial area, dorsal part, layer 1",3
+Left: RSPd2/3,"Retrosplenial area, dorsal part, layer 2/3",3
+Right: RSPd2/3,"Retrosplenial area, dorsal part, layer 2/3",3
+Left: RSPd4,"Retrosplenial area, dorsal part, layer 4",3
+Right: RSPd4,"Retrosplenial area, dorsal part, layer 4",3
+Left: RSPd5,"Retrosplenial area, dorsal part, layer 5",3
+Right: RSPd5,"Retrosplenial area, dorsal part, layer 5",3
+Left: RSPd6a,"Retrosplenial area, dorsal part, layer 6a",3
+Right: RSPd6a,"Retrosplenial area, dorsal part, layer 6a",3
+Left: RSPd6b,"Retrosplenial area, dorsal part, layer 6b",3
+Right: RSPd6b,"Retrosplenial area, dorsal part, layer 6b",3
+Left: RSPv1,"Retrosplenial area, ventral part, layer 1",3
+Right: RSPv1,"Retrosplenial area, ventral part, layer 1",3
+Left: RSPv2,"Retrosplenial area, ventral part, layer 2",3
+Right: RSPv2,"Retrosplenial area, ventral part, layer 2",3
+Left: RSPv2/3,"Retrosplenial area, ventral part, layer 2/3",3
+Right: RSPv2/3,"Retrosplenial area, ventral part, layer 2/3",3
+Left: RSPv5,"Retrosplenial area, ventral part, layer 5",3
+Right: RSPv5,"Retrosplenial area, ventral part, layer 5",3
+Left: RSPv6a,"Retrosplenial area, ventral part, layer 6a",3
+Right: RSPv6a,"Retrosplenial area, ventral part, layer 6a",3
+Left: RSPv6b,"Retrosplenial area, ventral part, layer 6b",3
+Right: RSPv6b,"Retrosplenial area, ventral part, layer 6b",3
+Left: PTLp1,"Posterior parietal association areas, layer 1",3
+Right: PTLp1,"Posterior parietal association areas, layer 1",3
+Left: PTLp2/3,"Posterior parietal association areas, layer 2/3",3
+Right: PTLp2/3,"Posterior parietal association areas, layer 2/3",3
+Left: PTLp4,"Posterior parietal association areas, layer 4",3
+Right: PTLp4,"Posterior parietal association areas, layer 4",3
+Left: PTLp5,"Posterior parietal association areas, layer 5",3
+Right: PTLp5,"Posterior parietal association areas, layer 5",3
+Left: PTLp6a,"Posterior parietal association areas, layer 6a",3
+Right: PTLp6a,"Posterior parietal association areas, layer 6a",3
+Left: PTLp6b,"Posterior parietal association areas, layer 6b",3
+Right: PTLp6b,"Posterior parietal association areas, layer 6b",3
+Left: VISa1,"Anterior area, layer 1",3
+Right: VISa1,"Anterior area, layer 1",3
+Left: VISa2/3,"Anterior area, layer 2/3",3
+Right: VISa2/3,"Anterior area, layer 2/3",3
+Left: VISa4,"Anterior area, layer 4",3
+Right: VISa4,"Anterior area, layer 4",3
+Left: VISa5,"Anterior area, layer 5",3
+Right: VISa5,"Anterior area, layer 5",3
+Left: VISa6a,"Anterior area, layer 6a",3
+Right: VISa6a,"Anterior area, layer 6a",3
+Left: VISa6b,"Anterior area, layer 6b",3
+Right: VISa6b,"Anterior area, layer 6b",3
+Left: VISrl1,"Rostrolateral area, layer 1",3
+Right: VISrl1,"Rostrolateral area, layer 1",3
+Left: VISrl2/3,"Rostrolateral area, layer 2/3",3
+Right: VISrl2/3,"Rostrolateral area, layer 2/3",3
+Left: VISrl4,"Rostrolateral area, layer 4",3
+Right: VISrl4,"Rostrolateral area, layer 4",3
+Left: VISrl5,"Rostrolateral area, layer 5",3
+Right: VISrl5,"Rostrolateral area, layer 5",3
+Left: VISrl6a,"Rostrolateral area, layer 6a",3
+Right: VISrl6a,"Rostrolateral area, layer 6a",3
+Left: VISrl6b,"Rostrolateral area, layer 6b",3
+Right: VISrl6b,"Rostrolateral area, layer 6b",3
+Left: TEa1,"Temporal association areas, layer 1",3
+Right: TEa1,"Temporal association areas, layer 1",3
+Left: TEa2/3,"Temporal association areas, layer 2/3",3
+Right: TEa2/3,"Temporal association areas, layer 2/3",3
+Left: TEa4,"Temporal association areas, layer 4",3
+Right: TEa4,"Temporal association areas, layer 4",3
+Left: TEa5,"Temporal association areas, layer 5",3
+Right: TEa5,"Temporal association areas, layer 5",3
+Left: TEa6a,"Temporal association areas, layer 6a",3
+Right: TEa6a,"Temporal association areas, layer 6a",3
+Left: TEa6b,"Temporal association areas, layer 6b",3
+Right: TEa6b,"Temporal association areas, layer 6b",3
+Left: PERI1,"Perirhinal area, layer 1",3
+Right: PERI1,"Perirhinal area, layer 1",3
+Left: PERI2/3,"Perirhinal area, layer 2/3",3
+Right: PERI2/3,"Perirhinal area, layer 2/3",3
+Left: PERI5,"Perirhinal area, layer 5",3
+Right: PERI5,"Perirhinal area, layer 5",3
+Left: PERI6a,"Perirhinal area, layer 6a",3
+Right: PERI6a,"Perirhinal area, layer 6a",3
+Left: PERI6b,"Perirhinal area, layer 6b",3
+Right: PERI6b,"Perirhinal area, layer 6b",3
+Left: ECT1,Ectorhinal area/Layer 1,3
+Right: ECT1,Ectorhinal area/Layer 1,3
+Left: ECT2/3,Ectorhinal area/Layer 2/3,3
+Right: ECT2/3,Ectorhinal area/Layer 2/3,3
+Left: ECT5,Ectorhinal area/Layer 5,3
+Right: ECT5,Ectorhinal area/Layer 5,3
+Left: ECT6a,Ectorhinal area/Layer 6a,3
+Right: ECT6a,Ectorhinal area/Layer 6a,3
+Left: ECT6b,Ectorhinal area/Layer 6b,3
+Right: ECT6b,Ectorhinal area/Layer 6b,3
+Left: MOBgl,"Main olfactory bulb, glomerular layer",3
+Right: MOBgl,"Main olfactory bulb, glomerular layer",3
+Left: MOBgr,"Main olfactory bulb, granule layer",3
+Right: MOBgr,"Main olfactory bulb, granule layer",3
+Left: MOBipl,"Main olfactory bulb, inner plexiform layer",3
+Right: MOBipl,"Main olfactory bulb, inner plexiform layer",3
+Left: MOBmi,"Main olfactory bulb, mitral layer",3
+Right: MOBmi,"Main olfactory bulb, mitral layer",3
+Left: MOBopl,"Main olfactory bulb, outer plexiform layer",3
+Right: MOBopl,"Main olfactory bulb, outer plexiform layer",3
+Left: AOBgl,"Accessory olfactory bulb, glomerular layer",3
+Right: AOBgl,"Accessory olfactory bulb, glomerular layer",3
+Left: AOBgr,"Accessory olfactory bulb, granular layer",3
+Right: AOBgr,"Accessory olfactory bulb, granular layer",3
+Left: AOBmi,"Accessory olfactory bulb, mitral layer",3
+Right: AOBmi,"Accessory olfactory bulb, mitral layer",3
+Left: AONd,"Anterior olfactory nucleus, dorsal part",3
+Right: AONd,"Anterior olfactory nucleus, dorsal part",3
+Left: AONe,"Anterior olfactory nucleus, external part",3
+Right: AONe,"Anterior olfactory nucleus, external part",3
+Left: AONl,"Anterior olfactory nucleus, lateral part",3
+Right: AONl,"Anterior olfactory nucleus, lateral part",3
+Left: AONm,"Anterior olfactory nucleus, medial part",3
+Right: AONm,"Anterior olfactory nucleus, medial part",3
+Left: AONpv,"Anterior olfactory nucleus, posteroventral part",3
+Right: AONpv,"Anterior olfactory nucleus, posteroventral part",3
+Left: AON1,"Anterior olfactory nucleus, layer 1",3
+Right: AON1,"Anterior olfactory nucleus, layer 1",3
+Left: AON2,"Anterior olfactory nucleus, layer 2",3
+Right: AON2,"Anterior olfactory nucleus, layer 2",3
+Left: TTd1-4,"Taenia tecta, dorsal part, layers 1-4",3
+Right: TTd1-4,"Taenia tecta, dorsal part, layers 1-4",3
+Left: TTd1,"Taenia tecta, dorsal part, layer 1",3
+Right: TTd1,"Taenia tecta, dorsal part, layer 1",3
+Left: TTd2,"Taenia tecta, dorsal part, layer 2",3
+Right: TTd2,"Taenia tecta, dorsal part, layer 2",3
+Left: TTd3,"Taenia tecta, dorsal part, layer 3",3
+Right: TTd3,"Taenia tecta, dorsal part, layer 3",3
+Left: TTd4,"Taenia tecta, dorsal part, layer 4",3
+Right: TTd4,"Taenia tecta, dorsal part, layer 4",3
+Left: TTv1-3,"Taenia tecta, ventral part, layers 1-3",3
+Right: TTv1-3,"Taenia tecta, ventral part, layers 1-3",3
+Left: TTv1,"Taenia tecta, ventral part, layer 1",3
+Right: TTv1,"Taenia tecta, ventral part, layer 1",3
+Left: TTv2,"Taenia tecta, ventral part, layer 2",3
+Right: TTv2,"Taenia tecta, ventral part, layer 2",3
+Left: TTv3,"Taenia tecta, ventral part, layer 3",3
+Right: TTv3,"Taenia tecta, ventral part, layer 3",3
+Left: DP1,"Dorsal peduncular area, layer 1",3
+Right: DP1,"Dorsal peduncular area, layer 1",3
+Left: DP2,"Dorsal peduncular area, layer 2",3
+Right: DP2,"Dorsal peduncular area, layer 2",3
+Left: DP2/3,"Dorsal peduncular area, layer 2/3",3
+Right: DP2/3,"Dorsal peduncular area, layer 2/3",3
+Left: DP5,"Dorsal peduncular area, layer 5",3
+Right: DP5,"Dorsal peduncular area, layer 5",3
+Left: DP6a,"Dorsal peduncular area, layer 6a",3
+Right: DP6a,"Dorsal peduncular area, layer 6a",3
+Left: PIR1-3,"Piriform area, layers 1-3",3
+Right: PIR1-3,"Piriform area, layers 1-3",3
+Left: PIR1,"Piriform area, molecular layer",3
+Right: PIR1,"Piriform area, molecular layer",3
+Left: PIR2,"Piriform area, pyramidal layer",3
+Right: PIR2,"Piriform area, pyramidal layer",3
+Left: PIR3,"Piriform area, polymorph layer",3
+Right: PIR3,"Piriform area, polymorph layer",3
+Left: NLOT1-3,"Nucleus of the lateral olfactory tract, layers 1-3",3
+Right: NLOT1-3,"Nucleus of the lateral olfactory tract, layers 1-3",3
+Left: NLOT1,"Nucleus of the lateral olfactory tract, molecular layer",3
+Right: NLOT1,"Nucleus of the lateral olfactory tract, molecular layer",3
+Left: NLOT2,"Nucleus of the lateral olfactory tract, pyramidal layer",3
+Right: NLOT2,"Nucleus of the lateral olfactory tract, pyramidal layer",3
+Left: NLOT3,"Nucleus of the lateral olfactory tract, layer 3",3
+Right: NLOT3,"Nucleus of the lateral olfactory tract, layer 3",3
+Left: COAa1,"Cortical amygdalar area, anterior part, layer 1",3
+Right: COAa1,"Cortical amygdalar area, anterior part, layer 1",3
+Left: COAa2,"Cortical amygdalar area, anterior part, layer 2",3
+Right: COAa2,"Cortical amygdalar area, anterior part, layer 2",3
+Left: COAa3,"Cortical amygdalar area, anterior part, layer 3",3
+Right: COAa3,"Cortical amygdalar area, anterior part, layer 3",3
+Left: COApl1-2,"Cortical amygdalar area, posterior part, lateral zone, layers 1-2",3
+Right: COApl1-2,"Cortical amygdalar area, posterior part, lateral zone, layers 1-2",3
+Left: COApl1-3,"Cortical amygdalar area, posterior part, lateral zone, layers 1-3",3
+Right: COApl1-3,"Cortical amygdalar area, posterior part, lateral zone, layers 1-3",3
+Left: COApl1,"Cortical amygdalar area, posterior part, lateral zone, layer 1",3
+Right: COApl1,"Cortical amygdalar area, posterior part, lateral zone, layer 1",3
+Left: COApl2,"Cortical amygdalar area, posterior part, lateral zone, layer 2",3
+Right: COApl2,"Cortical amygdalar area, posterior part, lateral zone, layer 2",3
+Left: COApl3,"Cortical amygdalar area, posterior part, lateral zone, layer 3",3
+Right: COApl3,"Cortical amygdalar area, posterior part, lateral zone, layer 3",3
+Left: COApm1-2,"Cortical amygdalar area, posterior part, medial zone, layers 1-2",3
+Right: COApm1-2,"Cortical amygdalar area, posterior part, medial zone, layers 1-2",3
+Left: COApm1-3,"Cortical amygdalar area, posterior part, medial zone, layers 1-3",3
+Right: COApm1-3,"Cortical amygdalar area, posterior part, medial zone, layers 1-3",3
+Left: COApm1,"Cortical amygdalar area, posterior part, medial zone, layer 1",3
+Right: COApm1,"Cortical amygdalar area, posterior part, medial zone, layer 1",3
+Left: COApm2,"Cortical amygdalar area, posterior part, medial zone, layer 2",3
+Right: COApm2,"Cortical amygdalar area, posterior part, medial zone, layer 2",3
+Left: COApm3,"Cortical amygdalar area, posterior part, medial zone, layer 3",3
+Right: COApm3,"Cortical amygdalar area, posterior part, medial zone, layer 3",3
+Left: PAA1-3,"Piriform-amygdalar area, layers 1-3",3
+Right: PAA1-3,"Piriform-amygdalar area, layers 1-3",3
+Left: PAA1,"Piriform-amygdalar area, molecular layer",3
+Right: PAA1,"Piriform-amygdalar area, molecular layer",3
+Left: PAA2,"Piriform-amygdalar area, pyramidal layer",3
+Right: PAA2,"Piriform-amygdalar area, pyramidal layer",3
+Left: PAA3,"Piriform-amygdalar area, polymorph layer",3
+Right: PAA3,"Piriform-amygdalar area, polymorph layer",3
+Left: TR1-3,"Postpiriform transition area, layers 1-3",3
+Right: TR1-3,"Postpiriform transition area, layers 1-3",3
+Left: TR1,"Postpiriform transition area, layers 1",3
+Right: TR1,"Postpiriform transition area, layers 1",3
+Left: TR2,"Postpiriform transition area, layers 2",3
+Right: TR2,"Postpiriform transition area, layers 2",3
+Left: TR3,"Postpiriform transition area, layers 3",3
+Right: TR3,"Postpiriform transition area, layers 3",3
+Left: CA1slm,"Field CA1, stratum lacunosum-moleculare",3
+Right: CA1slm,"Field CA1, stratum lacunosum-moleculare",3
+Left: CA1so,"Field CA1, stratum oriens",3
+Right: CA1so,"Field CA1, stratum oriens",3
+Left: CA1sp,"Field CA1, pyramidal layer",3
+Right: CA1sp,"Field CA1, pyramidal layer",3
+Left: CA1sr,"Field CA1, stratum radiatum",3
+Right: CA1sr,"Field CA1, stratum radiatum",3
+Left: CA2slm,"Field CA2, stratum lacunosum-moleculare",3
+Right: CA2slm,"Field CA2, stratum lacunosum-moleculare",3
+Left: CA2so,"Field CA2, stratum oriens",3
+Right: CA2so,"Field CA2, stratum oriens",3
+Left: CA2sp,"Field CA2, pyramidal layer",3
+Right: CA2sp,"Field CA2, pyramidal layer",3
+Left: CA2sr,"Field CA2, stratum radiatum",3
+Right: CA2sr,"Field CA2, stratum radiatum",3
+Left: CA3slm,"Field CA3, stratum lacunosum-moleculare",3
+Right: CA3slm,"Field CA3, stratum lacunosum-moleculare",3
+Left: CA3slu,"Field CA3, stratum lucidum",3
+Right: CA3slu,"Field CA3, stratum lucidum",3
+Left: CA3so,"Field CA3, stratum oriens",3
+Right: CA3so,"Field CA3, stratum oriens",3
+Left: CA3sp,"Field CA3, pyramidal layer",3
+Right: CA3sp,"Field CA3, pyramidal layer",3
+Left: CA3sr,"Field CA3, stratum radiatum",3
+Right: CA3sr,"Field CA3, stratum radiatum",3
+Left: DG-mo,"Dentate gyrus, molecular layer",3
+Right: DG-mo,"Dentate gyrus, molecular layer",3
+Left: DG-po,"Dentate gyrus, polymorph layer",3
+Right: DG-po,"Dentate gyrus, polymorph layer",3
+Left: DG-sg,"Dentate gyrus, granule cell layer",3
+Right: DG-sg,"Dentate gyrus, granule cell layer",3
+Left: DG-sgz,"Dentate gyrus, subgranular zone",3
+Right: DG-sgz,"Dentate gyrus, subgranular zone",3
+Left: DGcr-mo,"Dentate gyrus crest, molecular layer",3
+Right: DGcr-mo,"Dentate gyrus crest, molecular layer",3
+Left: DGcr-po,"Dentate gyrus crest, polymorph layer",3
+Right: DGcr-po,"Dentate gyrus crest, polymorph layer",3
+Left: DGcr-sg,"Dentate gyrus crest, granule cell layer",3
+Right: DGcr-sg,"Dentate gyrus crest, granule cell layer",3
+Left: DGlb-mo,"Dentate gyrus lateral blade, molecular layer",3
+Right: DGlb-mo,"Dentate gyrus lateral blade, molecular layer",3
+Left: DGlb-po,"Dentate gyrus lateral blade, polymorph layer",3
+Right: DGlb-po,"Dentate gyrus lateral blade, polymorph layer",3
+Left: DGlb-sg,"Dentate gyrus lateral blade, granule cell layer",3
+Right: DGlb-sg,"Dentate gyrus lateral blade, granule cell layer",3
+Left: DGmb-mo,"Dentate gyrus medial blade, molecular layer",3
+Right: DGmb-mo,"Dentate gyrus medial blade, molecular layer",3
+Left: DGmb-po,"Dentate gyrus medial blade, polymorph layer",3
+Right: DGmb-po,"Dentate gyrus medial blade, polymorph layer",3
+Left: DGmb-sg,"Dentate gyrus medial blade, granule cell layer",3
+Right: DGmb-sg,"Dentate gyrus medial blade, granule cell layer",3
+Left: FC,Fasciola cinerea,3
+Right: FC,Fasciola cinerea,3
+Left: IG,Induseum griseum,3
+Right: IG,Induseum griseum,3
+Left: ENTl1,"Entorhinal area, lateral part, layer 1",3
+Right: ENTl1,"Entorhinal area, lateral part, layer 1",3
+Left: ENTl2,"Entorhinal area, lateral part, layer 2",3
+Right: ENTl2,"Entorhinal area, lateral part, layer 2",3
+Left: ENTl2/3,"Entorhinal area, lateral part, layer 2/3",3
+Right: ENTl2/3,"Entorhinal area, lateral part, layer 2/3",3
+Left: ENTl2a,"Entorhinal area, lateral part, layer 2a",3
+Right: ENTl2a,"Entorhinal area, lateral part, layer 2a",3
+Left: ENTl2b,"Entorhinal area, lateral part, layer 2b",3
+Right: ENTl2b,"Entorhinal area, lateral part, layer 2b",3
+Left: ENTl3,"Entorhinal area, lateral part, layer 3",3
+Right: ENTl3,"Entorhinal area, lateral part, layer 3",3
+Left: ENTl4,"Entorhinal area, lateral part, layer 4",3
+Right: ENTl4,"Entorhinal area, lateral part, layer 4",3
+Left: ENTl4/5,"Entorhinal area, lateral part, layer 4/5",3
+Right: ENTl4/5,"Entorhinal area, lateral part, layer 4/5",3
+Left: ENTl5,"Entorhinal area, lateral part, layer 5",3
+Right: ENTl5,"Entorhinal area, lateral part, layer 5",3
+Left: ENTl5/6,"Entorhinal area, lateral part, layer 5/6",3
+Right: ENTl5/6,"Entorhinal area, lateral part, layer 5/6",3
+Left: ENTl6a,"Entorhinal area, lateral part, layer 6a",3
+Right: ENTl6a,"Entorhinal area, lateral part, layer 6a",3
+Left: ENTl6b,"Entorhinal area, lateral part, layer 6b",3
+Right: ENTl6b,"Entorhinal area, lateral part, layer 6b",3
+Left: ENTm1,"Entorhinal area, medial part, dorsal zone, layer 1",3
+Right: ENTm1,"Entorhinal area, medial part, dorsal zone, layer 1",3
+Left: ENTm2,"Entorhinal area, medial part, dorsal zone, layer 2",3
+Right: ENTm2,"Entorhinal area, medial part, dorsal zone, layer 2",3
+Left: ENTm2a,"Entorhinal area, medial part, dorsal zone, layer 2a",3
+Right: ENTm2a,"Entorhinal area, medial part, dorsal zone, layer 2a",3
+Left: ENTm2b,"Entorhinal area, medial part, dorsal zone, layer 2b",3
+Right: ENTm2b,"Entorhinal area, medial part, dorsal zone, layer 2b",3
+Left: ENTm3,"Entorhinal area, medial part, dorsal zone, layer 3",3
+Right: ENTm3,"Entorhinal area, medial part, dorsal zone, layer 3",3
+Left: ENTm4,"Entorhinal area, medial part, dorsal zone, layer 4",3
+Right: ENTm4,"Entorhinal area, medial part, dorsal zone, layer 4",3
+Left: ENTm5,"Entorhinal area, medial part, dorsal zone, layer 5",3
+Right: ENTm5,"Entorhinal area, medial part, dorsal zone, layer 5",3
+Left: ENTm5/6,"Entorhinal area, medial part, dorsal zone, layer 5/6",3
+Right: ENTm5/6,"Entorhinal area, medial part, dorsal zone, layer 5/6",3
+Left: ENTm6,"Entorhinal area, medial part, dorsal zone, layer 6",3
+Right: ENTm6,"Entorhinal area, medial part, dorsal zone, layer 6",3
+Left: ENTmv1,"Entorhinal area, medial part, ventral zone, layer 1",3
+Right: ENTmv1,"Entorhinal area, medial part, ventral zone, layer 1",3
+Left: ENTmv2,"Entorhinal area, medial part, ventral zone, layer 2",3
+Right: ENTmv2,"Entorhinal area, medial part, ventral zone, layer 2",3
+Left: ENTmv3,"Entorhinal area, medial part, ventral zone, layer 3",3
+Right: ENTmv3,"Entorhinal area, medial part, ventral zone, layer 3",3
+Left: ENTmv4,"Entorhinal area, medial part, ventral zone, layer 4",3
+Right: ENTmv4,"Entorhinal area, medial part, ventral zone, layer 4",3
+Left: ENTmv5/6,"Entorhinal area, medial part, ventral zone, layer 5/6",3
+Right: ENTmv5/6,"Entorhinal area, medial part, ventral zone, layer 5/6",3
+Left: PAR1,"Parasubiculum, layer 1",3
+Right: PAR1,"Parasubiculum, layer 1",3
+Left: PAR2,"Parasubiculum, layer 2",3
+Right: PAR2,"Parasubiculum, layer 2",3
+Left: PAR3,"Parasubiculum, layer 3",3
+Right: PAR3,"Parasubiculum, layer 3",3
+Left: POST1,"Postsubiculum, layer 1",3
+Right: POST1,"Postsubiculum, layer 1",3
+Left: POST2,"Postsubiculum, layer 2",3
+Right: POST2,"Postsubiculum, layer 2",3
+Left: POST3,"Postsubiculum, layer 3",3
+Right: POST3,"Postsubiculum, layer 3",3
+Left: PRE1,"Presubiculum, layer 1",3
+Right: PRE1,"Presubiculum, layer 1",3
+Left: PRE2,"Presubiculum, layer 2",3
+Right: PRE2,"Presubiculum, layer 2",3
+Left: PRE3,"Presubiculum, layer 3",3
+Right: PRE3,"Presubiculum, layer 3",3
+Left: SUBd-m,"Subiculum, dorsal part, molecular layer",3
+Right: SUBd-m,"Subiculum, dorsal part, molecular layer",3
+Left: SUBd-sp,"Subiculum, dorsal part, pyramidal layer",3
+Right: SUBd-sp,"Subiculum, dorsal part, pyramidal layer",3
+Left: SUBd-sr,"Subiculum, dorsal part, stratum radiatum",3
+Right: SUBd-sr,"Subiculum, dorsal part, stratum radiatum",3
+Left: SUBv-m,"Subiculum, ventral part, molecular layer",3
+Right: SUBv-m,"Subiculum, ventral part, molecular layer",3
+Left: SUBv-sp,"Subiculum, ventral part, pyramidal layer",3
+Right: SUBv-sp,"Subiculum, ventral part, pyramidal layer",3
+Left: SUBv-sr,"Subiculum, ventral part, stratum radiatum",3
+Right: SUBv-sr,"Subiculum, ventral part, stratum radiatum",3
+Left: ProSd-m,"Prosubiculum, dorsal part, molecular layer",3
+Right: ProSd-m,"Prosubiculum, dorsal part, molecular layer",3
+Left: ProSd-sp,"Prosubiculum, dorsal part, pyramidal layer",3
+Right: ProSd-sp,"Prosubiculum, dorsal part, pyramidal layer",3
+Left: ProSd-sr,"Prosubiculum, dorsal part, stratum radiatum",3
+Right: ProSd-sr,"Prosubiculum, dorsal part, stratum radiatum",3
+Left: ProSv-m,"Prosubiculum, ventral part, molecular layer",3
+Right: ProSv-m,"Prosubiculum, ventral part, molecular layer",3
+Left: ProSv-sp,"Prosubiculum, ventral part, pyramidal layer",3
+Right: ProSv-sp,"Prosubiculum, ventral part, pyramidal layer",3
+Left: Prosv-sr,"Prosubiculum, ventral part, stratum radiatum",3
+Right: Prosv-sr,"Prosubiculum, ventral part, stratum radiatum",3
+Left: HATA,Hippocampo-amygdalar transition area,3
+Right: HATA,Hippocampo-amygdalar transition area,3
+Left: APr,Area prostriata,3
+Right: APr,Area prostriata,3
+Left: 6b,"Layer 6b, isocortex",3
+Right: 6b,"Layer 6b, isocortex",3
+Left: CLA,Claustrum,3
+Right: CLA,Claustrum,3
+Left: EPd,"Endopiriform nucleus, dorsal part",3
+Right: EPd,"Endopiriform nucleus, dorsal part",3
+Left: EPv,"Endopiriform nucleus, ventral part",3
+Right: EPv,"Endopiriform nucleus, ventral part",3
+Left: LA,Lateral amygdalar nucleus,3
+Right: LA,Lateral amygdalar nucleus,3
+Left: BLAa,"Basolateral amygdalar nucleus, anterior part",3
+Right: BLAa,"Basolateral amygdalar nucleus, anterior part",3
+Left: BLAp,"Basolateral amygdalar nucleus, posterior part",3
+Right: BLAp,"Basolateral amygdalar nucleus, posterior part",3
+Left: BLAv,"Basolateral amygdalar nucleus, ventral part",3
+Right: BLAv,"Basolateral amygdalar nucleus, ventral part",3
+Left: BMAa,"Basomedial amygdalar nucleus, anterior part",3
+Right: BMAa,"Basomedial amygdalar nucleus, anterior part",3
+Left: BMAp,"Basomedial amygdalar nucleus, posterior part",3
+Right: BMAp,"Basomedial amygdalar nucleus, posterior part",3
+Left: PA,Posterior amygdalar nucleus,3
+Right: PA,Posterior amygdalar nucleus,3
+Left: CP,Caudoputamen,3
+Right: CP,Caudoputamen,3
+Left: ACB,Nucleus accumbens,3
+Right: ACB,Nucleus accumbens,3
+Left: FS,Fundus of striatum,3
+Right: FS,Fundus of striatum,3
+Left: isl,Islands of Calleja,3
+Right: isl,Islands of Calleja,3
+Left: islm,Major island of Calleja,3
+Right: islm,Major island of Calleja,3
+Left: OT1-3,"Olfactory tubercle, layers 1-3",3
+Right: OT1-3,"Olfactory tubercle, layers 1-3",3
+Left: OT1,"Olfactory tubercle, molecular layer",3
+Right: OT1,"Olfactory tubercle, molecular layer",3
+Left: OT2,"Olfactory tubercle, pyramidal layer",3
+Right: OT2,"Olfactory tubercle, pyramidal layer",3
+Left: OT3,"Olfactory tubercle, polymorph layer",3
+Right: OT3,"Olfactory tubercle, polymorph layer",3
+Left: LSS,Lateral strip of striatum,3
+Right: LSS,Lateral strip of striatum,3
+Left: LSc,"Lateral septal nucleus, caudal (caudodorsal) part",3
+Right: LSc,"Lateral septal nucleus, caudal (caudodorsal) part",3
+Left: LSr,"Lateral septal nucleus, rostral (rostroventral) part",3
+Right: LSr,"Lateral septal nucleus, rostral (rostroventral) part",3
+Left: LSv,"Lateral septal nucleus, ventral part",3
+Right: LSv,"Lateral septal nucleus, ventral part",3
+Left: SF,Septofimbrial nucleus,3
+Right: SF,Septofimbrial nucleus,3
+Left: SH,Septohippocampal nucleus,3
+Right: SH,Septohippocampal nucleus,3
+Left: AAA,Anterior amygdalar area,3
+Right: AAA,Anterior amygdalar area,3
+Left: BA,Bed nucleus of the accessory olfactory tract,3
+Right: BA,Bed nucleus of the accessory olfactory tract,3
+Left: CEAc,"Central amygdalar nucleus, capsular part",3
+Right: CEAc,"Central amygdalar nucleus, capsular part",3
+Left: CEAl,"Central amygdalar nucleus, lateral part",3
+Right: CEAl,"Central amygdalar nucleus, lateral part",3
+Left: CEAm,"Central amygdalar nucleus, medial part",3
+Right: CEAm,"Central amygdalar nucleus, medial part",3
+Left: IA,Intercalated amygdalar nucleus,3
+Right: IA,Intercalated amygdalar nucleus,3
+Left: MEAad,"Medial amygdalar nucleus, anterodorsal part",3
+Right: MEAad,"Medial amygdalar nucleus, anterodorsal part",3
+Left: MEAav,"Medial amygdalar nucleus, anteroventral part",3
+Right: MEAav,"Medial amygdalar nucleus, anteroventral part",3
+Left: MEApd-a,"Medial amygdalar nucleus, posterodorsal part, sublayer a",3
+Right: MEApd-a,"Medial amygdalar nucleus, posterodorsal part, sublayer a",3
+Left: MEApd-b,"Medial amygdalar nucleus, posterodorsal part, sublayer b",3
+Right: MEApd-b,"Medial amygdalar nucleus, posterodorsal part, sublayer b",3
+Left: MEApd-c,"Medial amygdalar nucleus, posterodorsal part, sublayer c",3
+Right: MEApd-c,"Medial amygdalar nucleus, posterodorsal part, sublayer c",3
+Left: MEApv,"Medial amygdalar nucleus, posteroventral part",3
+Right: MEApv,"Medial amygdalar nucleus, posteroventral part",3
+Left: GPe,"Globus pallidus, external segment",3
+Right: GPe,"Globus pallidus, external segment",3
+Left: GPi,"Globus pallidus, internal segment",3
+Right: GPi,"Globus pallidus, internal segment",3
+Left: SI,Substantia innominata,3
+Right: SI,Substantia innominata,3
+Left: MA,Magnocellular nucleus,3
+Right: MA,Magnocellular nucleus,3
+Left: MS,Medial septal nucleus,3
+Right: MS,Medial septal nucleus,3
+Left: NDB,Diagonal band nucleus,3
+Right: NDB,Diagonal band nucleus,3
+Left: TRS,Triangular nucleus of septum,3
+Right: TRS,Triangular nucleus of septum,3
+Left: BSTal,"Bed nuclei of the stria terminalis, anterior division, anterolateral area",3
+Right: BSTal,"Bed nuclei of the stria terminalis, anterior division, anterolateral area",3
+Left: BSTam,"Bed nuclei of the stria terminalis, anterior division, anteromedial area",3
+Right: BSTam,"Bed nuclei of the stria terminalis, anterior division, anteromedial area",3
+Left: BSTdm,"Bed nuclei of the stria terminalis, anterior division, dorsomedial nucleus",3
+Right: BSTdm,"Bed nuclei of the stria terminalis, anterior division, dorsomedial nucleus",3
+Left: BSTfu,"Bed nuclei of the stria terminalis, anterior division, fusiform nucleus",3
+Right: BSTfu,"Bed nuclei of the stria terminalis, anterior division, fusiform nucleus",3
+Left: BSTju,"Bed nuclei of the stria terminalis, anterior division, juxtacapsular nucleus",3
+Right: BSTju,"Bed nuclei of the stria terminalis, anterior division, juxtacapsular nucleus",3
+Left: BSTmg,"Bed nuclei of the stria terminalis, anterior division, magnocellular nucleus",3
+Right: BSTmg,"Bed nuclei of the stria terminalis, anterior division, magnocellular nucleus",3
+Left: BSTov,"Bed nuclei of the stria terminalis, anterior division, oval nucleus",3
+Right: BSTov,"Bed nuclei of the stria terminalis, anterior division, oval nucleus",3
+Left: BSTrh,"Bed nuclei of the stria terminalis, anterior division, rhomboid nucleus",3
+Right: BSTrh,"Bed nuclei of the stria terminalis, anterior division, rhomboid nucleus",3
+Left: BSTv,"Bed nuclei of the stria terminalis, anterior division, ventral nucleus",3
+Right: BSTv,"Bed nuclei of the stria terminalis, anterior division, ventral nucleus",3
+Left: BSTd,"Bed nuclei of the stria terminalis, posterior division, dorsal nucleus",3
+Right: BSTd,"Bed nuclei of the stria terminalis, posterior division, dorsal nucleus",3
+Left: BSTpr,"Bed nuclei of the stria terminalis, posterior division, principal nucleus",3
+Right: BSTpr,"Bed nuclei of the stria terminalis, posterior division, principal nucleus",3
+Left: BSTif,"Bed nuclei of the stria terminalis, posterior division, interfascicular nucleus",3
+Right: BSTif,"Bed nuclei of the stria terminalis, posterior division, interfascicular nucleus",3
+Left: BSTtr,"Bed nuclei of the stria terminalis, posterior division, transverse nucleus",3
+Right: BSTtr,"Bed nuclei of the stria terminalis, posterior division, transverse nucleus",3
+Left: BSTse,"Bed nuclei of the stria terminalis, posterior division, strial extension",3
+Right: BSTse,"Bed nuclei of the stria terminalis, posterior division, strial extension",3
+Left: BAC,Bed nucleus of the anterior commissure,3
+Right: BAC,Bed nucleus of the anterior commissure,3
+Left: VAL,Ventral anterior-lateral complex of the thalamus,3
+Right: VAL,Ventral anterior-lateral complex of the thalamus,3
+Left: VM,Ventral medial nucleus of the thalamus,3
+Right: VM,Ventral medial nucleus of the thalamus,3
+Left: VPL,Ventral posterolateral nucleus of the thalamus,3
+Right: VPL,Ventral posterolateral nucleus of the thalamus,3
+Left: VPLpc,"Ventral posterolateral nucleus of the thalamus, parvicellular part",3
+Right: VPLpc,"Ventral posterolateral nucleus of the thalamus, parvicellular part",3
+Left: VPM,Ventral posteromedial nucleus of the thalamus,3
+Right: VPM,Ventral posteromedial nucleus of the thalamus,3
+Left: VPMpc,"Ventral posteromedial nucleus of the thalamus, parvicellular part",3
+Right: VPMpc,"Ventral posteromedial nucleus of the thalamus, parvicellular part",3
+Left: PoT,Posterior triangular thalamic nucleus,3
+Right: PoT,Posterior triangular thalamic nucleus,3
+Left: SPFm,"Subparafascicular nucleus, magnocellular part",3
+Right: SPFm,"Subparafascicular nucleus, magnocellular part",3
+Left: SPFp,"Subparafascicular nucleus, parvicellular part",3
+Right: SPFp,"Subparafascicular nucleus, parvicellular part",3
+Left: SPA,Subparafascicular area,3
+Right: SPA,Subparafascicular area,3
+Left: PP,Peripeduncular nucleus,3
+Right: PP,Peripeduncular nucleus,3
+Left: MGd,"Medial geniculate complex, dorsal part",3
+Right: MGd,"Medial geniculate complex, dorsal part",3
+Left: MGv,"Medial geniculate complex, ventral part",3
+Right: MGv,"Medial geniculate complex, ventral part",3
+Left: MGm,"Medial geniculate complex, medial part",3
+Right: MGm,"Medial geniculate complex, medial part",3
+Left: LGd-sh,"Dorsal part of the lateral geniculate complex, shell",3
+Right: LGd-sh,"Dorsal part of the lateral geniculate complex, shell",3
+Left: LGd-co,"Dorsal part of the lateral geniculate complex, core",3
+Right: LGd-co,"Dorsal part of the lateral geniculate complex, core",3
+Left: LGd-ip,"Dorsal part of the lateral geniculate complex, ipsilateral zone",3
+Right: LGd-ip,"Dorsal part of the lateral geniculate complex, ipsilateral zone",3
+Left: LP,Lateral posterior nucleus of the thalamus,3
+Right: LP,Lateral posterior nucleus of the thalamus,3
+Left: PO,Posterior complex of the thalamus,3
+Right: PO,Posterior complex of the thalamus,3
+Left: POL,Posterior limiting nucleus of the thalamus,3
+Right: POL,Posterior limiting nucleus of the thalamus,3
+Left: SGN,Suprageniculate nucleus,3
+Right: SGN,Suprageniculate nucleus,3
+Left: Eth,Ethmoid nucleus of the thalamus,3
+Right: Eth,Ethmoid nucleus of the thalamus,3
+Left: REth,Retroethmoid nucleus,3
+Right: REth,Retroethmoid nucleus,3
+Left: AV,Anteroventral nucleus of thalamus,3
+Right: AV,Anteroventral nucleus of thalamus,3
+Left: AMd,"Anteromedial nucleus, dorsal part",3
+Right: AMd,"Anteromedial nucleus, dorsal part",3
+Left: AMv,"Anteromedial nucleus, ventral part",3
+Right: AMv,"Anteromedial nucleus, ventral part",3
+Left: AD,Anterodorsal nucleus,3
+Right: AD,Anterodorsal nucleus,3
+Left: IAM,Interanteromedial nucleus of the thalamus,3
+Right: IAM,Interanteromedial nucleus of the thalamus,3
+Left: IAD,Interanterodorsal nucleus of the thalamus,3
+Right: IAD,Interanterodorsal nucleus of the thalamus,3
+Left: LD,Lateral dorsal nucleus of thalamus,3
+Right: LD,Lateral dorsal nucleus of thalamus,3
+Left: IMD,Intermediodorsal nucleus of the thalamus,3
+Right: IMD,Intermediodorsal nucleus of the thalamus,3
+Left: MDc,"Mediodorsal nucleus of the thalamus, central part",3
+Right: MDc,"Mediodorsal nucleus of the thalamus, central part",3
+Left: MDl,"Mediodorsal nucleus of the thalamus, lateral part",3
+Right: MDl,"Mediodorsal nucleus of the thalamus, lateral part",3
+Left: MDm,"Mediodorsal nucleus of the thalamus, medial part",3
+Right: MDm,"Mediodorsal nucleus of the thalamus, medial part",3
+Left: SMT,Submedial nucleus of the thalamus,3
+Right: SMT,Submedial nucleus of the thalamus,3
+Left: PR,Perireunensis nucleus,3
+Right: PR,Perireunensis nucleus,3
+Left: PVT,Paraventricular nucleus of the thalamus,3
+Right: PVT,Paraventricular nucleus of the thalamus,3
+Left: PT,Parataenial nucleus,3
+Right: PT,Parataenial nucleus,3
+Left: RE,Nucleus of reuniens,3
+Right: RE,Nucleus of reuniens,3
+Left: Xi,Xiphoid thalamic nucleus,3
+Right: Xi,Xiphoid thalamic nucleus,3
+Left: RH,Rhomboid nucleus,3
+Right: RH,Rhomboid nucleus,3
+Left: CM,Central medial nucleus of the thalamus,3
+Right: CM,Central medial nucleus of the thalamus,3
+Left: PCN,Paracentral nucleus,3
+Right: PCN,Paracentral nucleus,3
+Left: CL,Central lateral nucleus of the thalamus,3
+Right: CL,Central lateral nucleus of the thalamus,3
+Left: PF,Parafascicular nucleus,3
+Right: PF,Parafascicular nucleus,3
+Left: PIL,Posterior intralaminar thalamic nucleus,3
+Right: PIL,Posterior intralaminar thalamic nucleus,3
+Left: RT,Reticular nucleus of the thalamus,3
+Right: RT,Reticular nucleus of the thalamus,3
+Left: IGL,Intergeniculate leaflet of the lateral geniculate complex,3
+Right: IGL,Intergeniculate leaflet of the lateral geniculate complex,3
+Left: IntG,Intermediate geniculate nucleus,3
+Right: IntG,Intermediate geniculate nucleus,3
+Left: LGvl,"Ventral part of the lateral geniculate complex, lateral zone",3
+Right: LGvl,"Ventral part of the lateral geniculate complex, lateral zone",3
+Left: LGvm,"Ventral part of the lateral geniculate complex, medial zone",3
+Right: LGvm,"Ventral part of the lateral geniculate complex, medial zone",3
+Left: SubG,Subgeniculate nucleus,3
+Right: SubG,Subgeniculate nucleus,3
+Left: MH,Medial habenula,3
+Right: MH,Medial habenula,3
+Left: LH,Lateral habenula,3
+Right: LH,Lateral habenula,3
+Left: PIN,Pineal body,3
+Right: PIN,Pineal body,3
+Left: SO,Supraoptic nucleus,3
+Right: SO,Supraoptic nucleus,3
+Left: NC,Nucleus circularis,3
+Right: NC,Nucleus circularis,3
+Left: PVHam,"Paraventricular hypothalamic nucleus, magnocellular division, anterior magnocellular part",3
+Right: PVHam,"Paraventricular hypothalamic nucleus, magnocellular division, anterior magnocellular part",3
+Left: PVHmm,"Paraventricular hypothalamic nucleus, magnocellular division, medial magnocellular part",3
+Right: PVHmm,"Paraventricular hypothalamic nucleus, magnocellular division, medial magnocellular part",3
+Left: PVHpml,"Paraventricular hypothalamic nucleus, magnocellular division, posterior magnocellular part, lateral zone",3
+Right: PVHpml,"Paraventricular hypothalamic nucleus, magnocellular division, posterior magnocellular part, lateral zone",3
+Left: PVHpmm,"Paraventricular hypothalamic nucleus, magnocellular division, posterior magnocellular part, medial zone",3
+Right: PVHpmm,"Paraventricular hypothalamic nucleus, magnocellular division, posterior magnocellular part, medial zone",3
+Left: PVHap,"Paraventricular hypothalamic nucleus, parvicellular division, anterior parvicellular part",3
+Right: PVHap,"Paraventricular hypothalamic nucleus, parvicellular division, anterior parvicellular part",3
+Left: PVHmpd,"Paraventricular hypothalamic nucleus, parvicellular division, medial parvicellular part, dorsal zone",3
+Right: PVHmpd,"Paraventricular hypothalamic nucleus, parvicellular division, medial parvicellular part, dorsal zone",3
+Left: PVHpv,"Paraventricular hypothalamic nucleus, parvicellular division, periventricular part",3
+Right: PVHpv,"Paraventricular hypothalamic nucleus, parvicellular division, periventricular part",3
+Left: PVa,"Periventricular hypothalamic nucleus, anterior part",3
+Right: PVa,"Periventricular hypothalamic nucleus, anterior part",3
+Left: PVi,"Periventricular hypothalamic nucleus, intermediate part",3
+Right: PVi,"Periventricular hypothalamic nucleus, intermediate part",3
+Left: ARH,Arcuate hypothalamic nucleus,3
+Right: ARH,Arcuate hypothalamic nucleus,3
+Left: ADP,Anterodorsal preoptic nucleus,3
+Right: ADP,Anterodorsal preoptic nucleus,3
+Left: AHA,Anterior hypothalamic area,3
+Right: AHA,Anterior hypothalamic area,3
+Left: AVP,Anteroventral preoptic nucleus,3
+Right: AVP,Anteroventral preoptic nucleus,3
+Left: AVPV,Anteroventral periventricular nucleus,3
+Right: AVPV,Anteroventral periventricular nucleus,3
+Left: DMHa,"Dorsomedial nucleus of the hypothalamus, anterior part",3
+Right: DMHa,"Dorsomedial nucleus of the hypothalamus, anterior part",3
+Left: DMHp,"Dorsomedial nucleus of the hypothalamus, posterior part",3
+Right: DMHp,"Dorsomedial nucleus of the hypothalamus, posterior part",3
+Left: DMHv,"Dorsomedial nucleus of the hypothalamus, ventral part",3
+Right: DMHv,"Dorsomedial nucleus of the hypothalamus, ventral part",3
+Left: MEPO,Median preoptic nucleus,3
+Right: MEPO,Median preoptic nucleus,3
+Left: MPO,Medial preoptic area,3
+Right: MPO,Medial preoptic area,3
+Left: OV,Vascular organ of the lamina terminalis,3
+Right: OV,Vascular organ of the lamina terminalis,3
+Left: PD,Posterodorsal preoptic nucleus,3
+Right: PD,Posterodorsal preoptic nucleus,3
+Left: PS,Parastrial nucleus,3
+Right: PS,Parastrial nucleus,3
+Left: PSCH,Suprachiasmatic preoptic nucleus,3
+Right: PSCH,Suprachiasmatic preoptic nucleus,3
+Left: PVp,"Periventricular hypothalamic nucleus, posterior part",3
+Right: PVp,"Periventricular hypothalamic nucleus, posterior part",3
+Left: PVpo,"Periventricular hypothalamic nucleus, preoptic part",3
+Right: PVpo,"Periventricular hypothalamic nucleus, preoptic part",3
+Left: SBPV,Subparaventricular zone,3
+Right: SBPV,Subparaventricular zone,3
+Left: SCH,Suprachiasmatic nucleus,3
+Right: SCH,Suprachiasmatic nucleus,3
+Left: SFO,Subfornical organ,3
+Right: SFO,Subfornical organ,3
+Left: VMPO,Ventromedial preoptic nucleus,3
+Right: VMPO,Ventromedial preoptic nucleus,3
+Left: VLPO,Ventrolateral preoptic nucleus,3
+Right: VLPO,Ventrolateral preoptic nucleus,3
+Left: AHNa,"Anterior hypothalamic nucleus, anterior part",3
+Right: AHNa,"Anterior hypothalamic nucleus, anterior part",3
+Left: AHNc,"Anterior hypothalamic nucleus, central part",3
+Right: AHNc,"Anterior hypothalamic nucleus, central part",3
+Left: AHNd,"Anterior hypothalamic nucleus, dorsal part",3
+Right: AHNd,"Anterior hypothalamic nucleus, dorsal part",3
+Left: AHNp,"Anterior hypothalamic nucleus, posterior part",3
+Right: AHNp,"Anterior hypothalamic nucleus, posterior part",3
+Left: LM,Lateral mammillary nucleus,3
+Right: LM,Lateral mammillary nucleus,3
+Left: MMme,"Medial mammillary nucleus, median part",3
+Right: MMme,"Medial mammillary nucleus, median part",3
+Left: MMl,"Medial mammillary nucleus, lateral part",3
+Right: MMl,"Medial mammillary nucleus, lateral part",3
+Left: MMm,"Medial mammillary nucleus, medial part",3
+Right: MMm,"Medial mammillary nucleus, medial part",3
+Left: MMp,"Medial mammillary nucleus, posterior part",3
+Right: MMp,"Medial mammillary nucleus, posterior part",3
+Left: MMd,"Medial mammillary nucleus, dorsal part",3
+Right: MMd,"Medial mammillary nucleus, dorsal part",3
+Left: SUMl,"Supramammillary nucleus, lateral part",3
+Right: SUMl,"Supramammillary nucleus, lateral part",3
+Left: SUMm,"Supramammillary nucleus, medial part",3
+Right: SUMm,"Supramammillary nucleus, medial part",3
+Left: TMd,"Tuberomammillary nucleus, dorsal part",3
+Right: TMd,"Tuberomammillary nucleus, dorsal part",3
+Left: TMv,"Tuberomammillary nucleus, ventral part",3
+Right: TMv,"Tuberomammillary nucleus, ventral part",3
+Left: MPNc,"Medial preoptic nucleus, central part",3
+Right: MPNc,"Medial preoptic nucleus, central part",3
+Left: MPNl,"Medial preoptic nucleus, lateral part",3
+Right: MPNl,"Medial preoptic nucleus, lateral part",3
+Left: MPNm,"Medial preoptic nucleus, medial part",3
+Right: MPNm,"Medial preoptic nucleus, medial part",3
+Left: PMd,Dorsal premammillary nucleus,3
+Right: PMd,Dorsal premammillary nucleus,3
+Left: PMv,Ventral premammillary nucleus,3
+Right: PMv,Ventral premammillary nucleus,3
+Left: PVHdp,"Paraventricular hypothalamic nucleus, descending division, dorsal parvicellular part",3
+Right: PVHdp,"Paraventricular hypothalamic nucleus, descending division, dorsal parvicellular part",3
+Left: PVHf,"Paraventricular hypothalamic nucleus, descending division, forniceal part",3
+Right: PVHf,"Paraventricular hypothalamic nucleus, descending division, forniceal part",3
+Left: PVHlp,"Paraventricular hypothalamic nucleus, descending division, lateral parvicellular part",3
+Right: PVHlp,"Paraventricular hypothalamic nucleus, descending division, lateral parvicellular part",3
+Left: PVHmpv,"Paraventricular hypothalamic nucleus, descending division, medial parvicellular part, ventral zone",3
+Right: PVHmpv,"Paraventricular hypothalamic nucleus, descending division, medial parvicellular part, ventral zone",3
+Left: VMHa,"Ventromedial hypothalamic nucleus, anterior part",3
+Right: VMHa,"Ventromedial hypothalamic nucleus, anterior part",3
+Left: VMHc,"Ventromedial hypothalamic nucleus, central part",3
+Right: VMHc,"Ventromedial hypothalamic nucleus, central part",3
+Left: VMHdm,"Ventromedial hypothalamic nucleus, dorsomedial part",3
+Right: VMHdm,"Ventromedial hypothalamic nucleus, dorsomedial part",3
+Left: VMHvl,"Ventromedial hypothalamic nucleus, ventrolateral part",3
+Right: VMHvl,"Ventromedial hypothalamic nucleus, ventrolateral part",3
+Left: PH,Posterior hypothalamic nucleus,3
+Right: PH,Posterior hypothalamic nucleus,3
+Left: LHA,Lateral hypothalamic area,3
+Right: LHA,Lateral hypothalamic area,3
+Left: LPO,Lateral preoptic area,3
+Right: LPO,Lateral preoptic area,3
+Left: PST,Preparasubthalamic nucleus,3
+Right: PST,Preparasubthalamic nucleus,3
+Left: PSTN,Parasubthalamic nucleus,3
+Right: PSTN,Parasubthalamic nucleus,3
+Left: PeF,Perifornical nucleus,3
+Right: PeF,Perifornical nucleus,3
+Left: RCH,Retrochiasmatic area,3
+Right: RCH,Retrochiasmatic area,3
+Left: STN,Subthalamic nucleus,3
+Right: STN,Subthalamic nucleus,3
+Left: TU,Tuberal nucleus,3
+Right: TU,Tuberal nucleus,3
+Left: A13,Dopaminergic A13 group,3
+Right: A13,Dopaminergic A13 group,3
+Left: FF,Fields of Forel,3
+Right: FF,Fields of Forel,3
+Left: ME,Median eminence,3
+Right: ME,Median eminence,3
+Left: SCop,"Superior colliculus, optic layer",3
+Right: SCop,"Superior colliculus, optic layer",3
+Left: SCsg,"Superior colliculus, superficial gray layer",3
+Right: SCsg,"Superior colliculus, superficial gray layer",3
+Left: SCzo,"Superior colliculus, zonal layer",3
+Right: SCzo,"Superior colliculus, zonal layer",3
+Left: ICc,"Inferior colliculus, central nucleus",3
+Right: ICc,"Inferior colliculus, central nucleus",3
+Left: ICd,"Inferior colliculus, dorsal nucleus",3
+Right: ICd,"Inferior colliculus, dorsal nucleus",3
+Left: ICe,"Inferior colliculus, external nucleus",3
+Right: ICe,"Inferior colliculus, external nucleus",3
+Left: NB,Nucleus of the brachium of the inferior colliculus,3
+Right: NB,Nucleus of the brachium of the inferior colliculus,3
+Left: SAG,Nucleus sagulum,3
+Right: SAG,Nucleus sagulum,3
+Left: PBG,Parabigeminal nucleus,3
+Right: PBG,Parabigeminal nucleus,3
+Left: MEV,Midbrain trigeminal nucleus,3
+Right: MEV,Midbrain trigeminal nucleus,3
+Left: SCO,Subcommissural organ,3
+Right: SCO,Subcommissural organ,3
+Left: SNr,"Substantia nigra, reticular part",3
+Right: SNr,"Substantia nigra, reticular part",3
+Left: VTA,Ventral tegmental area,3
+Right: VTA,Ventral tegmental area,3
+Left: PN,Paranigral nucleus,3
+Right: PN,Paranigral nucleus,3
+Left: RR,"Midbrain reticular nucleus, retrorubral area",3
+Right: RR,"Midbrain reticular nucleus, retrorubral area",3
+Left: MRNm,"Midbrain reticular nucleus, magnocellular part",3
+Right: MRNm,"Midbrain reticular nucleus, magnocellular part",3
+Left: MRNmg,"Midbrain reticular nucleus, magnocellular part, general",3
+Right: MRNmg,"Midbrain reticular nucleus, magnocellular part, general",3
+Left: MRNp,"Midbrain reticular nucleus, parvicellular part",3
+Right: MRNp,"Midbrain reticular nucleus, parvicellular part",3
+Left: SCdg,"Superior colliculus, motor related, deep gray layer",3
+Right: SCdg,"Superior colliculus, motor related, deep gray layer",3
+Left: SCdw,"Superior colliculus, motor related, deep white layer",3
+Right: SCdw,"Superior colliculus, motor related, deep white layer",3
+Left: SCiw,"Superior colliculus, motor related, intermediate white layer",3
+Right: SCiw,"Superior colliculus, motor related, intermediate white layer",3
+Left: SCig-a,"Superior colliculus, motor related, intermediate gray layer, sublayer a",3
+Right: SCig-a,"Superior colliculus, motor related, intermediate gray layer, sublayer a",3
+Left: SCig-b,"Superior colliculus, motor related, intermediate gray layer, sublayer b",3
+Right: SCig-b,"Superior colliculus, motor related, intermediate gray layer, sublayer b",3
+Left: SCig-c,"Superior colliculus, motor related, intermediate gray layer, sublayer c",3
+Right: SCig-c,"Superior colliculus, motor related, intermediate gray layer, sublayer c",3
+Left: PRC,Precommissural nucleus,3
+Right: PRC,Precommissural nucleus,3
+Left: INC,Interstitial nucleus of Cajal,3
+Right: INC,Interstitial nucleus of Cajal,3
+Left: ND,Nucleus of Darkschewitsch,3
+Right: ND,Nucleus of Darkschewitsch,3
+Left: Su3,Supraoculomotor periaqueductal gray,3
+Right: Su3,Supraoculomotor periaqueductal gray,3
+Left: APN,Anterior pretectal nucleus,3
+Right: APN,Anterior pretectal nucleus,3
+Left: MPT,Medial pretectal area,3
+Right: MPT,Medial pretectal area,3
+Left: NOT,Nucleus of the optic tract,3
+Right: NOT,Nucleus of the optic tract,3
+Left: NPC,Nucleus of the posterior commissure,3
+Right: NPC,Nucleus of the posterior commissure,3
+Left: OP,Olivary pretectal nucleus,3
+Right: OP,Olivary pretectal nucleus,3
+Left: PPT,Posterior pretectal nucleus,3
+Right: PPT,Posterior pretectal nucleus,3
+Left: RPF,Retroparafascicular nucleus,3
+Right: RPF,Retroparafascicular nucleus,3
+Left: InCo,Intercollicular nucleus,3
+Right: InCo,Intercollicular nucleus,3
+Left: CUN,Cuneiform nucleus,3
+Right: CUN,Cuneiform nucleus,3
+Left: RN,Red nucleus,3
+Right: RN,Red nucleus,3
+Left: III,Oculomotor nucleus,3
+Right: III,Oculomotor nucleus,3
+Left: MA3,Medial accesory oculomotor nucleus,3
+Right: MA3,Medial accesory oculomotor nucleus,3
+Left: EW,Edinger-Westphal nucleus,3
+Right: EW,Edinger-Westphal nucleus,3
+Left: IV,Trochlear nucleus,3
+Right: IV,Trochlear nucleus,3
+Left: Pa4,Paratrochlear nucleus,3
+Right: Pa4,Paratrochlear nucleus,3
+Left: VTN,Ventral tegmental nucleus,3
+Right: VTN,Ventral tegmental nucleus,3
+Left: AT,Anterior tegmental nucleus,3
+Right: AT,Anterior tegmental nucleus,3
+Left: LT,Lateral terminal nucleus of the accessory optic tract,3
+Right: LT,Lateral terminal nucleus of the accessory optic tract,3
+Left: DT,Dorsal terminal nucleus of the accessory optic tract,3
+Right: DT,Dorsal terminal nucleus of the accessory optic tract,3
+Left: MT,Medial terminal nucleus of the accessory optic tract,3
+Right: MT,Medial terminal nucleus of the accessory optic tract,3
+Left: SNl,"Substantia nigra, lateral part",3
+Right: SNl,"Substantia nigra, lateral part",3
+Left: SNc,"Substantia nigra, compact part",3
+Right: SNc,"Substantia nigra, compact part",3
+Left: PPN,Pedunculopontine nucleus,3
+Right: PPN,Pedunculopontine nucleus,3
+Left: IF,Interfascicular nucleus raphe,3
+Right: IF,Interfascicular nucleus raphe,3
+Left: IPR,"Interpeduncular nucleus, rostral",3
+Right: IPR,"Interpeduncular nucleus, rostral",3
+Left: IPC,"Interpeduncular nucleus, caudal",3
+Right: IPC,"Interpeduncular nucleus, caudal",3
+Left: IPA,"Interpeduncular nucleus, apical",3
+Right: IPA,"Interpeduncular nucleus, apical",3
+Left: IPL,"Interpeduncular nucleus, lateral",3
+Right: IPL,"Interpeduncular nucleus, lateral",3
+Left: IPI,"Interpeduncular nucleus, intermediate",3
+Right: IPI,"Interpeduncular nucleus, intermediate",3
+Left: IPDM,"Interpeduncular nucleus, dorsomedial",3
+Right: IPDM,"Interpeduncular nucleus, dorsomedial",3
+Left: IPDL,"Interpeduncular nucleus, dorsolateral",3
+Right: IPDL,"Interpeduncular nucleus, dorsolateral",3
+Left: IPRL,"Interpeduncular nucleus, rostrolateral",3
+Right: IPRL,"Interpeduncular nucleus, rostrolateral",3
+Left: RL,Rostral linear nucleus raphe,3
+Right: RL,Rostral linear nucleus raphe,3
+Left: CLI,Central linear nucleus raphe,3
+Right: CLI,Central linear nucleus raphe,3
+Left: DR,Dorsal nucleus raphe,3
+Right: DR,Dorsal nucleus raphe,3
+Left: NLLd,"Nucleus of the lateral lemniscus, dorsal part",3
+Right: NLLd,"Nucleus of the lateral lemniscus, dorsal part",3
+Left: NLLh,"Nucleus of the lateral lemniscus, horizontal part",3
+Right: NLLh,"Nucleus of the lateral lemniscus, horizontal part",3
+Left: NLLv,"Nucleus of the lateral lemniscus, ventral part",3
+Right: NLLv,"Nucleus of the lateral lemniscus, ventral part",3
+Left: PSV,Principal sensory nucleus of the trigeminal,3
+Right: PSV,Principal sensory nucleus of the trigeminal,3
+Left: KF,Koelliker-Fuse subnucleus,3
+Right: KF,Koelliker-Fuse subnucleus,3
+Left: PBlc,"Parabrachial nucleus, lateral division, central lateral part",3
+Right: PBlc,"Parabrachial nucleus, lateral division, central lateral part",3
+Left: PBld,"Parabrachial nucleus, lateral division, dorsal lateral part",3
+Right: PBld,"Parabrachial nucleus, lateral division, dorsal lateral part",3
+Left: PBle,"Parabrachial nucleus, lateral division, external lateral part",3
+Right: PBle,"Parabrachial nucleus, lateral division, external lateral part",3
+Left: PBls,"Parabrachial nucleus, lateral division, superior lateral part",3
+Right: PBls,"Parabrachial nucleus, lateral division, superior lateral part",3
+Left: PBlv,"Parabrachial nucleus, lateral division, ventral lateral part",3
+Right: PBlv,"Parabrachial nucleus, lateral division, ventral lateral part",3
+Left: PBme,"Parabrachial nucleus, medial division, external medial part",3
+Right: PBme,"Parabrachial nucleus, medial division, external medial part",3
+Left: PBmm,"Parabrachial nucleus, medial division, medial medial part",3
+Right: PBmm,"Parabrachial nucleus, medial division, medial medial part",3
+Left: PBmv,"Parabrachial nucleus, medial division, ventral medial part",3
+Right: PBmv,"Parabrachial nucleus, medial division, ventral medial part",3
+Left: POR,"Superior olivary complex, periolivary region",3
+Right: POR,"Superior olivary complex, periolivary region",3
+Left: SOCm,"Superior olivary complex, medial part",3
+Right: SOCm,"Superior olivary complex, medial part",3
+Left: SOCl,"Superior olivary complex, lateral part",3
+Right: SOCl,"Superior olivary complex, lateral part",3
+Left: B,Barrington's nucleus,3
+Right: B,Barrington's nucleus,3
+Left: DTN,Dorsal tegmental nucleus,3
+Right: DTN,Dorsal tegmental nucleus,3
+Left: LTN,Lateral tegmental nucleus,3
+Right: LTN,Lateral tegmental nucleus,3
+Left: PDTg,Posterodorsal tegmental nucleus,3
+Right: PDTg,Posterodorsal tegmental nucleus,3
+Left: PCG,Pontine central gray,3
+Right: PCG,Pontine central gray,3
+Left: PG,Pontine gray,3
+Right: PG,Pontine gray,3
+Left: PRNc,"Pontine reticular nucleus, caudal part",3
+Right: PRNc,"Pontine reticular nucleus, caudal part",3
+Left: PRNv,"Pontine reticular nucleus, ventral part",3
+Right: PRNv,"Pontine reticular nucleus, ventral part",3
+Left: SG,Supragenual nucleus,3
+Right: SG,Supragenual nucleus,3
+Left: SSN,Superior salivatory nucleus,3
+Right: SSN,Superior salivatory nucleus,3
+Left: SUT,Supratrigeminal nucleus,3
+Right: SUT,Supratrigeminal nucleus,3
+Left: TRN,Tegmental reticular nucleus,3
+Right: TRN,Tegmental reticular nucleus,3
+Left: V,Motor nucleus of trigeminal,3
+Right: V,Motor nucleus of trigeminal,3
+Left: P5,Peritrigeminal zone,3
+Right: P5,Peritrigeminal zone,3
+Left: Acs5,Accessory trigeminal nucleus,3
+Right: Acs5,Accessory trigeminal nucleus,3
+Left: PC5,Parvicellular motor 5 nucleus,3
+Right: PC5,Parvicellular motor 5 nucleus,3
+Left: I5,Intertrigeminal nucleus,3
+Right: I5,Intertrigeminal nucleus,3
+Left: CSl,"Superior central nucleus raphe, lateral part",3
+Right: CSl,"Superior central nucleus raphe, lateral part",3
+Left: CSm,"Superior central nucleus raphe, medial part",3
+Right: CSm,"Superior central nucleus raphe, medial part",3
+Left: LC,Locus ceruleus,3
+Right: LC,Locus ceruleus,3
+Left: LDT,Laterodorsal tegmental nucleus,3
+Right: LDT,Laterodorsal tegmental nucleus,3
+Left: NI,Nucleus incertus,3
+Right: NI,Nucleus incertus,3
+Left: PRNr,Pontine reticular nucleus,3
+Right: PRNr,Pontine reticular nucleus,3
+Left: RPO,Nucleus raphe pontis,3
+Right: RPO,Nucleus raphe pontis,3
+Left: SLC,Subceruleus nucleus,3
+Right: SLC,Subceruleus nucleus,3
+Left: SLD,Sublaterodorsal nucleus,3
+Right: SLD,Sublaterodorsal nucleus,3
+Left: AP,Area postrema,3
+Right: AP,Area postrema,3
+Left: CNlam,Granular lamina of the cochlear nuclei,3
+Right: CNlam,Granular lamina of the cochlear nuclei,3
+Left: CNspg,"Cochlear nucleus, subpedunclular granular region",3
+Right: CNspg,"Cochlear nucleus, subpedunclular granular region",3
+Left: DCO,Dorsal cochlear nucleus,3
+Right: DCO,Dorsal cochlear nucleus,3
+Left: VCO,Ventral cochlear nucleus,3
+Right: VCO,Ventral cochlear nucleus,3
+Left: CU,Cuneate nucleus,3
+Right: CU,Cuneate nucleus,3
+Left: GR,Gracile nucleus,3
+Right: GR,Gracile nucleus,3
+Left: ECU,External cuneate nucleus,3
+Right: ECU,External cuneate nucleus,3
+Left: NTB,Nucleus of the trapezoid body,3
+Right: NTB,Nucleus of the trapezoid body,3
+Left: NTSce,"Nucleus of the solitary tract, central part",3
+Right: NTSce,"Nucleus of the solitary tract, central part",3
+Left: NTSco,"Nucleus of the solitary tract, commissural part",3
+Right: NTSco,"Nucleus of the solitary tract, commissural part",3
+Left: NTSge,"Nucleus of the solitary tract, gelatinous part",3
+Right: NTSge,"Nucleus of the solitary tract, gelatinous part",3
+Left: NTSl,"Nucleus of the solitary tract, lateral part",3
+Right: NTSl,"Nucleus of the solitary tract, lateral part",3
+Left: NTSm,"Nucleus of the solitary tract, medial part",3
+Right: NTSm,"Nucleus of the solitary tract, medial part",3
+Left: SPVC,"Spinal nucleus of the trigeminal, caudal part",3
+Right: SPVC,"Spinal nucleus of the trigeminal, caudal part",3
+Left: SPVI,"Spinal nucleus of the trigeminal, interpolar part",3
+Right: SPVI,"Spinal nucleus of the trigeminal, interpolar part",3
+Left: SPVOcdm,"Spinal nucleus of the trigeminal, oral part, caudal dorsomedial part",3
+Right: SPVOcdm,"Spinal nucleus of the trigeminal, oral part, caudal dorsomedial part",3
+Left: SPVOmdmd,"Spinal nucleus of the trigeminal, oral part, middle dorsomedial part, dorsal zone",3
+Right: SPVOmdmd,"Spinal nucleus of the trigeminal, oral part, middle dorsomedial part, dorsal zone",3
+Left: SPVOmdmv,"Spinal nucleus of the trigeminal, oral part, middle dorsomedial part, ventral zone",3
+Right: SPVOmdmv,"Spinal nucleus of the trigeminal, oral part, middle dorsomedial part, ventral zone",3
+Left: SPVOrdm,"Spinal nucleus of the trigeminal, oral part, rostral dorsomedial part",3
+Right: SPVOrdm,"Spinal nucleus of the trigeminal, oral part, rostral dorsomedial part",3
+Left: SPVOvl,"Spinal nucleus of the trigeminal, oral part, ventrolateral part",3
+Right: SPVOvl,"Spinal nucleus of the trigeminal, oral part, ventrolateral part",3
+Left: Pa5,Paratrigeminal nucleus,3
+Right: Pa5,Paratrigeminal nucleus,3
+Left: z,Nucleus z,3
+Right: z,Nucleus z,3
+Left: VI,Abducens nucleus,3
+Right: VI,Abducens nucleus,3
+Left: ACVI,Accessory abducens nucleus,3
+Right: ACVI,Accessory abducens nucleus,3
+Left: VII,Facial motor nucleus,3
+Right: VII,Facial motor nucleus,3
+Left: ACVII,Accessory facial motor nucleus,3
+Right: ACVII,Accessory facial motor nucleus,3
+Left: EV,Efferent vestibular nucleus,3
+Right: EV,Efferent vestibular nucleus,3
+Left: AMBd,"Nucleus ambiguus, dorsal division",3
+Right: AMBd,"Nucleus ambiguus, dorsal division",3
+Left: AMBv,"Nucleus ambiguus, ventral division",3
+Right: AMBv,"Nucleus ambiguus, ventral division",3
+Left: DMX,Dorsal motor nucleus of the vagus nerve,3
+Right: DMX,Dorsal motor nucleus of the vagus nerve,3
+Left: ECO,Efferent cochlear group,3
+Right: ECO,Efferent cochlear group,3
+Left: GRN,Gigantocellular reticular nucleus,3
+Right: GRN,Gigantocellular reticular nucleus,3
+Left: ICB,Infracerebellar nucleus,3
+Right: ICB,Infracerebellar nucleus,3
+Left: IO,Inferior olivary complex,3
+Right: IO,Inferior olivary complex,3
+Left: IRN,Intermediate reticular nucleus,3
+Right: IRN,Intermediate reticular nucleus,3
+Left: ISN,Inferior salivatory nucleus,3
+Right: ISN,Inferior salivatory nucleus,3
+Left: LIN,Linear nucleus of the medulla,3
+Right: LIN,Linear nucleus of the medulla,3
+Left: LRNm,"Lateral reticular nucleus, magnocellular part",3
+Right: LRNm,"Lateral reticular nucleus, magnocellular part",3
+Left: LRNp,"Lateral reticular nucleus, parvicellular part",3
+Right: LRNp,"Lateral reticular nucleus, parvicellular part",3
+Left: MARN,Magnocellular reticular nucleus,3
+Right: MARN,Magnocellular reticular nucleus,3
+Left: MDRNd,"Medullary reticular nucleus, dorsal part",3
+Right: MDRNd,"Medullary reticular nucleus, dorsal part",3
+Left: MDRNv,"Medullary reticular nucleus, ventral part",3
+Right: MDRNv,"Medullary reticular nucleus, ventral part",3
+Left: PARN,Parvicellular reticular nucleus,3
+Right: PARN,Parvicellular reticular nucleus,3
+Left: PAS,Parasolitary nucleus,3
+Right: PAS,Parasolitary nucleus,3
+Left: PGRNd,"Paragigantocellular reticular nucleus, dorsal part",3
+Right: PGRNd,"Paragigantocellular reticular nucleus, dorsal part",3
+Left: PGRNl,"Paragigantocellular reticular nucleus, lateral part",3
+Right: PGRNl,"Paragigantocellular reticular nucleus, lateral part",3
+Left: NIS,Nucleus intercalatus,3
+Right: NIS,Nucleus intercalatus,3
+Left: NR,Nucleus of Roller,3
+Right: NR,Nucleus of Roller,3
+Left: PRP,Nucleus prepositus,3
+Right: PRP,Nucleus prepositus,3
+Left: PMR,Paramedian reticular nucleus,3
+Right: PMR,Paramedian reticular nucleus,3
+Left: PPYd,"Parapyramidal nucleus, deep part",3
+Right: PPYd,"Parapyramidal nucleus, deep part",3
+Left: PPYs,"Parapyramidal nucleus, superficial part",3
+Right: PPYs,"Parapyramidal nucleus, superficial part",3
+Left: LAV,Lateral vestibular nucleus,3
+Right: LAV,Lateral vestibular nucleus,3
+Left: MV,Medial vestibular nucleus,3
+Right: MV,Medial vestibular nucleus,3
+Left: SPIV,Spinal vestibular nucleus,3
+Right: SPIV,Spinal vestibular nucleus,3
+Left: SUV,Superior vestibular nucleus,3
+Right: SUV,Superior vestibular nucleus,3
+Left: x,Nucleus x,3
+Right: x,Nucleus x,3
+Left: XII,Hypoglossal nucleus,3
+Right: XII,Hypoglossal nucleus,3
+Left: y,Nucleus y,3
+Right: y,Nucleus y,3
+Left: INV,Interstitial nucleus of the vestibular nerve,3
+Right: INV,Interstitial nucleus of the vestibular nerve,3
+Left: RM,Nucleus raphe magnus,3
+Right: RM,Nucleus raphe magnus,3
+Left: RPA,Nucleus raphe pallidus,3
+Right: RPA,Nucleus raphe pallidus,3
+Left: RO,Nucleus raphe obscurus,3
+Right: RO,Nucleus raphe obscurus,3
+Left: CBXmo,"Cerebellar cortex, molecular layer",3
+Right: CBXmo,"Cerebellar cortex, molecular layer",3
+Left: CBXpu,"Cerebellar cortex, Purkinje layer",3
+Right: CBXpu,"Cerebellar cortex, Purkinje layer",3
+Left: CBXgr,"Cerebellar cortex, granular layer",3
+Right: CBXgr,"Cerebellar cortex, granular layer",3
+Left: LINGmo,"Lingula (I), molecular layer",3
+Right: LINGmo,"Lingula (I), molecular layer",3
+Left: LINGpu,"Lingula (I), Purkinje layer",3
+Right: LINGpu,"Lingula (I), Purkinje layer",3
+Left: LINGgr,"Lingula (I), granular layer",3
+Right: LINGgr,"Lingula (I), granular layer",3
+Left: CENT2mo,"Lobule II, molecular layer",3
+Right: CENT2mo,"Lobule II, molecular layer",3
+Left: CENT2pu,"Lobule II, Purkinje layer",3
+Right: CENT2pu,"Lobule II, Purkinje layer",3
+Left: CENT2gr,"Lobule II, granular layer",3
+Right: CENT2gr,"Lobule II, granular layer",3
+Left: CENT3mo,"Lobule III, molecular layer",3
+Right: CENT3mo,"Lobule III, molecular layer",3
+Left: CENT3pu,"Lobule III, Purkinje layer",3
+Right: CENT3pu,"Lobule III, Purkinje layer",3
+Left: CENT3gr,"Lobule III, granular layer",3
+Right: CENT3gr,"Lobule III, granular layer",3
+Left: CUL4mo,"Lobule IV, molecular layer",3
+Right: CUL4mo,"Lobule IV, molecular layer",3
+Left: CUL4pu,"Lobule IV, Purkinje layer",3
+Right: CUL4pu,"Lobule IV, Purkinje layer",3
+Left: CUL4gr,"Lobule IV, granular layer",3
+Right: CUL4gr,"Lobule IV, granular layer",3
+Left: CUL5mo,"Lobule V, molecular layer",3
+Right: CUL5mo,"Lobule V, molecular layer",3
+Left: CUL5pu,"Lobule V, Purkinje layer",3
+Right: CUL5pu,"Lobule V, Purkinje layer",3
+Left: CUL5gr,"Lobule V, granular layer",3
+Right: CUL5gr,"Lobule V, granular layer",3
+"Left: CUL4, 5mo","Lobules IV-V, molecular layer",3
+"Right: CUL4, 5mo","Lobules IV-V, molecular layer",3
+"Left: CUL4, 5pu","Lobules IV-V, Purkinje layer",3
+"Right: CUL4, 5pu","Lobules IV-V, Purkinje layer",3
+"Left: CUL4, 5gr","Lobules IV-V, granular layer",3
+"Right: CUL4, 5gr","Lobules IV-V, granular layer",3
+Left: DECmo,"Declive (VI), molecular layer",3
+Right: DECmo,"Declive (VI), molecular layer",3
+Left: DECpu,"Declive (VI), Purkinje layer",3
+Right: DECpu,"Declive (VI), Purkinje layer",3
+Left: DECgr,"Declive (VI), granular layer",3
+Right: DECgr,"Declive (VI), granular layer",3
+Left: FOTUmo,"Folium-tuber vermis (VII), molecular layer",3
+Right: FOTUmo,"Folium-tuber vermis (VII), molecular layer",3
+Left: FOTUpu,"Folium-tuber vermis (VII), Purkinje layer",3
+Right: FOTUpu,"Folium-tuber vermis (VII), Purkinje layer",3
+Left: FOTUgr,"Folium-tuber vermis (VII), granular layer",3
+Right: FOTUgr,"Folium-tuber vermis (VII), granular layer",3
+Left: PYRmo,"Pyramus (VIII), molecular layer",3
+Right: PYRmo,"Pyramus (VIII), molecular layer",3
+Left: PYRpu,"Pyramus (VIII), Purkinje layer",3
+Right: PYRpu,"Pyramus (VIII), Purkinje layer",3
+Left: PYRgr,"Pyramus (VIII), granular layer",3
+Right: PYRgr,"Pyramus (VIII), granular layer",3
+Left: UVUmo,"Uvula (IX), molecular layer",3
+Right: UVUmo,"Uvula (IX), molecular layer",3
+Left: UVUpu,"Uvula (IX), Purkinje layer",3
+Right: UVUpu,"Uvula (IX), Purkinje layer",3
+Left: UVUgr,"Uvula (IX), granular layer",3
+Right: UVUgr,"Uvula (IX), granular layer",3
+Left: NODmo,"Nodulus (X), molecular layer",3
+Right: NODmo,"Nodulus (X), molecular layer",3
+Left: NODpu,"Nodulus (X), Purkinje layer",3
+Right: NODpu,"Nodulus (X), Purkinje layer",3
+Left: NODgr,"Nodulus (X), granular layer",3
+Right: NODgr,"Nodulus (X), granular layer",3
+Left: SIMmo,"Simple lobule, molecular layer",3
+Right: SIMmo,"Simple lobule, molecular layer",3
+Left: SIMpu,"Simple lobule, Purkinje layer",3
+Right: SIMpu,"Simple lobule, Purkinje layer",3
+Left: SIMgr,"Simple lobule, granular layer",3
+Right: SIMgr,"Simple lobule, granular layer",3
+Left: ANcr1mo,"Crus 1, molecular layer",3
+Right: ANcr1mo,"Crus 1, molecular layer",3
+Left: ANcr1pu,"Crus 1, Purkinje layer",3
+Right: ANcr1pu,"Crus 1, Purkinje layer",3
+Left: ANcr1gr,"Crus 1, granular layer",3
+Right: ANcr1gr,"Crus 1, granular layer",3
+Left: ANcr2mo,"Crus 2, molecular layer",3
+Right: ANcr2mo,"Crus 2, molecular layer",3
+Left: ANcr2pu,"Crus 2, Purkinje layer",3
+Right: ANcr2pu,"Crus 2, Purkinje layer",3
+Left: ANcr2gr,"Crus 2, granular layer",3
+Right: ANcr2gr,"Crus 2, granular layer",3
+Left: PRMmo,"Paramedian lobule, molecular layer",3
+Right: PRMmo,"Paramedian lobule, molecular layer",3
+Left: PRMpu,"Paramedian lobule, Purkinje layer",3
+Right: PRMpu,"Paramedian lobule, Purkinje layer",3
+Left: PRMgr,"Paramedian lobule, granular layer",3
+Right: PRMgr,"Paramedian lobule, granular layer",3
+Left: COPYmo,"Copula pyramidis, molecular layer",3
+Right: COPYmo,"Copula pyramidis, molecular layer",3
+Left: COPYpu,"Copula pyramidis, Purkinje layer",3
+Right: COPYpu,"Copula pyramidis, Purkinje layer",3
+Left: COPYgr,"Copula pyramidis, granular layer",3
+Right: COPYgr,"Copula pyramidis, granular layer",3
+Left: PFLmo,"Paraflocculus, molecular layer",3
+Right: PFLmo,"Paraflocculus, molecular layer",3
+Left: PFLpu,"Paraflocculus, Purkinje layer",3
+Right: PFLpu,"Paraflocculus, Purkinje layer",3
+Left: PFLgr,"Paraflocculus, granular layer",3
+Right: PFLgr,"Paraflocculus, granular layer",3
+Left: FLmo,"Flocculus, molecular layer",3
+Right: FLmo,"Flocculus, molecular layer",3
+Left: FLpu,"Flocculus, Purkinje layer",3
+Right: FLpu,"Flocculus, Purkinje layer",3
+Left: FLgr,"Flocculus, granular layer",3
+Right: FLgr,"Flocculus, granular layer",3
+Left: FN,Fastigial nucleus,3
+Right: FN,Fastigial nucleus,3
+Left: IP,Interposed nucleus,3
+Right: IP,Interposed nucleus,3
+Left: DN,Dentate nucleus,3
+Right: DN,Dentate nucleus,3
+Left: VeCB,Vestibulocerebellar nucleus,3
+Right: VeCB,Vestibulocerebellar nucleus,3
+Left: tn,terminal nerve,3
+Right: tn,terminal nerve,3
+Left: von,vomeronasal nerve,3
+Right: von,vomeronasal nerve,3
+Left: onl,olfactory nerve layer of main olfactory bulb,3
+Right: onl,olfactory nerve layer of main olfactory bulb,3
+Left: lot,"lateral olfactory tract, body",3
+Right: lot,"lateral olfactory tract, body",3
+Left: lotd,dorsal limb,3
+Right: lotd,dorsal limb,3
+Left: aolt,accessory olfactory tract,3
+Right: aolt,accessory olfactory tract,3
+Left: aco,"anterior commissure, olfactory limb",3
+Right: aco,"anterior commissure, olfactory limb",3
+Left: aot,accessory optic tract,3
+Right: aot,accessory optic tract,3
+Left: bsc,brachium of the superior colliculus,3
+Right: bsc,brachium of the superior colliculus,3
+Left: csc,superior colliculus commissure,3
+Right: csc,superior colliculus commissure,3
+Left: och,optic chiasm,3
+Right: och,optic chiasm,3
+Left: opt,optic tract,3
+Right: opt,optic tract,3
+Left: ttp,tectothalamic pathway,3
+Right: ttp,tectothalamic pathway,3
+Left: mlf,medial longitudinal fascicle,3
+Right: mlf,medial longitudinal fascicle,3
+Left: pc,posterior commissure,3
+Right: pc,posterior commissure,3
+Left: IVd,trochlear nerve decussation,3
+Right: IVd,trochlear nerve decussation,3
+Left: VIn,abducens nerve,3
+Right: VIn,abducens nerve,3
+Left: moV,motor root of the trigeminal nerve,3
+Right: moV,motor root of the trigeminal nerve,3
+Left: mtV,midbrain tract of the trigeminal nerve,3
+Right: mtV,midbrain tract of the trigeminal nerve,3
+Left: sptV,spinal tract of the trigeminal nerve,3
+Right: sptV,spinal tract of the trigeminal nerve,3
+Left: iVIIn,intermediate nerve,3
+Right: iVIIn,intermediate nerve,3
+Left: gVIIn,genu of the facial nerve,3
+Right: gVIIn,genu of the facial nerve,3
+Left: cvb,efferent cochleovestibular bundle,3
+Right: cvb,efferent cochleovestibular bundle,3
+Left: vVIIIn,vestibular nerve,3
+Right: vVIIIn,vestibular nerve,3
+Left: tb,trapezoid body,3
+Right: tb,trapezoid body,3
+Left: ias,intermediate acoustic stria,3
+Right: ias,intermediate acoustic stria,3
+Left: das,dorsal acoustic stria,3
+Right: das,dorsal acoustic stria,3
+Left: ll,lateral lemniscus,3
+Right: ll,lateral lemniscus,3
+Left: cic,inferior colliculus commissure,3
+Right: cic,inferior colliculus commissure,3
+Left: bic,brachium of the inferior colliculus,3
+Right: bic,brachium of the inferior colliculus,3
+Left: IXn,glossopharyngeal nerve,3
+Right: IXn,glossopharyngeal nerve,3
+Left: ts,solitary tract,3
+Right: ts,solitary tract,3
+Left: XIn,accessory spinal nerve,3
+Right: XIn,accessory spinal nerve,3
+Left: XIIn,hypoglossal nerve,3
+Right: XIIn,hypoglossal nerve,3
+Left: vrt,ventral roots,3
+Right: vrt,ventral roots,3
+Left: dl,dorsolateral fascicle,3
+Right: dl,dorsolateral fascicle,3
+Left: dcm,dorsal commissure of the spinal cord,3
+Right: dcm,dorsal commissure of the spinal cord,3
+Left: vc,ventral commissure of the spinal cord,3
+Right: vc,ventral commissure of the spinal cord,3
+Left: fpr,fasciculus proprius,3
+Right: fpr,fasciculus proprius,3
+Left: cuf,cuneate fascicle,3
+Right: cuf,cuneate fascicle,3
+Left: grf,gracile fascicle,3
+Right: grf,gracile fascicle,3
+Left: iaf,internal arcuate fibers,3
+Right: iaf,internal arcuate fibers,3
+Left: ml,medial lemniscus,3
+Right: ml,medial lemniscus,3
+Left: sttl,lateral spinothalamic tract,3
+Right: sttl,lateral spinothalamic tract,3
+Left: sttv,ventral spinothalamic tract,3
+Right: sttv,ventral spinothalamic tract,3
+Left: scrt,spinocervical tract,3
+Right: scrt,spinocervical tract,3
+Left: sop,spino-olivary pathway,3
+Right: sop,spino-olivary pathway,3
+Left: srp,spinoreticular pathway,3
+Right: srp,spinoreticular pathway,3
+Left: svp,spinovestibular pathway,3
+Right: svp,spinovestibular pathway,3
+Left: stp,spinotectal pathway,3
+Right: stp,spinotectal pathway,3
+Left: shp,spinohypothalamic pathway,3
+Right: shp,spinohypothalamic pathway,3
+Left: hht,hypothalamohypophysial tract,3
+Right: hht,hypothalamohypophysial tract,3
+Left: cbc,cerebellar commissure,3
+Right: cbc,cerebellar commissure,3
+Left: sct,spinocerebellar tract,3
+Right: sct,spinocerebellar tract,3
+Left: uf,uncinate fascicle,3
+Right: uf,uncinate fascicle,3
+Left: sctv,ventral spinocerebellar tract,3
+Right: sctv,ventral spinocerebellar tract,3
+Left: mcp,middle cerebellar peduncle,3
+Right: mcp,middle cerebellar peduncle,3
+Left: sctd,dorsal spinocerebellar tract,3
+Right: sctd,dorsal spinocerebellar tract,3
+Left: cct,cuneocerebellar tract,3
+Right: cct,cuneocerebellar tract,3
+Left: jrb,juxtarestiform body,3
+Right: jrb,juxtarestiform body,3
+Left: oct,olivocerebellar tract,3
+Right: oct,olivocerebellar tract,3
+Left: rct,reticulocerebellar tract,3
+Right: rct,reticulocerebellar tract,3
+Left: tct,trigeminocerebellar tract,3
+Right: tct,trigeminocerebellar tract,3
+Left: arb,arbor vitae,3
+Right: arb,arbor vitae,3
+Left: scwm,supra-callosal cerebral white matter,3
+Right: scwm,supra-callosal cerebral white matter,3
+Left: ec,external capsule,3
+Right: ec,external capsule,3
+Left: ee,"corpus callosum, extreme capsule",3
+Right: ee,"corpus callosum, extreme capsule",3
+Left: ccg,genu of corpus callosum,3
+Right: ccg,genu of corpus callosum,3
+Left: fp,"corpus callosum, posterior forceps",3
+Right: fp,"corpus callosum, posterior forceps",3
+Left: ccr,"corpus callosum, rostrum",3
+Right: ccr,"corpus callosum, rostrum",3
+Left: ccb,"corpus callosum, body",3
+Right: ccb,"corpus callosum, body",3
+Left: ccs,"corpus callosum, splenium",3
+Right: ccs,"corpus callosum, splenium",3
+Left: int,internal capsule,3
+Right: int,internal capsule,3
+Left: cpd,cerebal peduncle,3
+Right: cpd,cerebal peduncle,3
+Left: cte,corticotectal tract,3
+Right: cte,corticotectal tract,3
+Left: crt,corticorubral tract,3
+Right: crt,corticorubral tract,3
+Left: cpt,corticopontine tract,3
+Right: cpt,corticopontine tract,3
+Left: cbt,corticobulbar tract,3
+Right: cbt,corticobulbar tract,3
+Left: py,pyramid,3
+Right: py,pyramid,3
+Left: pyd,pyramidal decussation,3
+Right: pyd,pyramidal decussation,3
+Left: cstc,"corticospinal tract, crossed",3
+Right: cstc,"corticospinal tract, crossed",3
+Left: cstu,"corticospinal tract, uncrossed",3
+Right: cstu,"corticospinal tract, uncrossed",3
+Left: em,external medullary lamina of the thalamus,3
+Right: em,external medullary lamina of the thalamus,3
+Left: im,internal medullary lamina of the thalamus,3
+Right: im,internal medullary lamina of the thalamus,3
+Left: mtc,middle thalamic commissure,3
+Right: mtc,middle thalamic commissure,3
+Left: tp,thalamic peduncles,3
+Right: tp,thalamic peduncles,3
+Left: or,optic radiation,3
+Right: or,optic radiation,3
+Left: ar,auditory radiation,3
+Right: ar,auditory radiation,3
+Left: pap,pallidothalamic pathway,3
+Right: pap,pallidothalamic pathway,3
+Left: nst,nigrostriatal tract,3
+Right: nst,nigrostriatal tract,3
+Left: ntt,nigrothalamic fibers,3
+Right: ntt,nigrothalamic fibers,3
+Left: ptf,pallidotegmental fascicle,3
+Right: ptf,pallidotegmental fascicle,3
+Left: snp,striatonigral pathway,3
+Right: snp,striatonigral pathway,3
+Left: stf,subthalamic fascicle,3
+Right: stf,subthalamic fascicle,3
+Left: tspd,direct tectospinal pathway,3
+Right: tspd,direct tectospinal pathway,3
+Left: dtd,doral tegmental decussation,3
+Right: dtd,doral tegmental decussation,3
+Left: tspc,crossed tectospinal pathway,3
+Right: tspc,crossed tectospinal pathway,3
+Left: vtd,ventral tegmental decussation,3
+Right: vtd,ventral tegmental decussation,3
+Left: rrt,rubroreticular tract,3
+Right: rrt,rubroreticular tract,3
+Left: ctb,central tegmental bundle,3
+Right: ctb,central tegmental bundle,3
+Left: rstl,"retriculospinal tract, lateral part",3
+Right: rstl,"retriculospinal tract, lateral part",3
+Left: rstm,"retriculospinal tract, medial part",3
+Right: rstm,"retriculospinal tract, medial part",3
+Left: vsp,vestibulospinal pathway,3
+Right: vsp,vestibulospinal pathway,3
+Left: amc,amygdalar capsule,3
+Right: amc,amygdalar capsule,3
+Left: apd,ansa peduncularis,3
+Right: apd,ansa peduncularis,3
+Left: act,"anterior commissure, temporal limb",3
+Right: act,"anterior commissure, temporal limb",3
+Left: cing,cingulum bundle,3
+Right: cing,cingulum bundle,3
+Left: alv,alveus,3
+Right: alv,alveus,3
+Left: df,dorsal fornix,3
+Right: df,dorsal fornix,3
+Left: fi,fimbria,3
+Right: fi,fimbria,3
+Left: db,precommissural fornix diagonal band,3
+Right: db,precommissural fornix diagonal band,3
+Left: mct,medial corticohypothalamic tract,3
+Right: mct,medial corticohypothalamic tract,3
+Left: fx,columns of the fornix,3
+Right: fx,columns of the fornix,3
+Left: dhc,dorsal hippocampal commissure,3
+Right: dhc,dorsal hippocampal commissure,3
+Left: vhc,ventral hippocampal commissure,3
+Right: vhc,ventral hippocampal commissure,3
+Left: per,perforant path,3
+Right: per,perforant path,3
+Left: ab,angular path,3
+Right: ab,angular path,3
+Left: lab,longitudinal association bundle,3
+Right: lab,longitudinal association bundle,3
+Left: stc,commissural branch of stria terminalis,3
+Right: stc,commissural branch of stria terminalis,3
+Left: mfb,medial forebrain bundle,3
+Right: mfb,medial forebrain bundle,3
+Left: vlt,ventrolateral hypothalamic tract,3
+Right: vlt,ventrolateral hypothalamic tract,3
+Left: poc,preoptic commissure,3
+Right: poc,preoptic commissure,3
+Left: supa,"supraoptic commissures, anterior",3
+Right: supa,"supraoptic commissures, anterior",3
+Left: supd,"supraoptic commissures, dorsal",3
+Right: supd,"supraoptic commissures, dorsal",3
+Left: supv,"supraoptic commissures, ventral",3
+Right: supv,"supraoptic commissures, ventral",3
+Left: pmx,premammillary commissure,3
+Right: pmx,premammillary commissure,3
+Left: smd,supramammillary decussation,3
+Right: smd,supramammillary decussation,3
+Left: phpd,"propriohypothalamic pathways, dorsal",3
+Right: phpd,"propriohypothalamic pathways, dorsal",3
+Left: phpl,"propriohypothalamic pathways, lateral",3
+Right: phpl,"propriohypothalamic pathways, lateral",3
+Left: phpm,"propriohypothalamic pathways, medial",3
+Right: phpm,"propriohypothalamic pathways, medial",3
+Left: phpv,"propriohypothalamic pathways, ventral",3
+Right: phpv,"propriohypothalamic pathways, ventral",3
+Left: pvbh,periventricular bundle of the hypothalamus,3
+Right: pvbh,periventricular bundle of the hypothalamus,3
+Left: pm,principal mammillary tract,3
+Right: pm,principal mammillary tract,3
+Left: mtt,mammillothalamic tract,3
+Right: mtt,mammillothalamic tract,3
+Left: mtg,mammillotegmental tract,3
+Right: mtg,mammillotegmental tract,3
+Left: mp,mammillary peduncle,3
+Right: mp,mammillary peduncle,3
+Left: pvbt,periventricular bundle of the thalamus,3
+Right: pvbt,periventricular bundle of the thalamus,3
+Left: sm,stria medullaris,3
+Right: sm,stria medullaris,3
+Left: fr,fasciculus retroflexus,3
+Right: fr,fasciculus retroflexus,3
+Left: hbc,habenular commissure,3
+Right: hbc,habenular commissure,3
+Left: PIS,pineal stalk,3
+Right: PIS,pineal stalk,3
+Left: dlf,dorsal longitudinal fascicle,3
+Right: dlf,dorsal longitudinal fascicle,3
+Left: dtt,dorsal tegmental tract,3
+Right: dtt,dorsal tegmental tract,3
+Left: RC,rhinocele,3
+Right: RC,rhinocele,3
+Left: SEZ,subependymal zone,3
+Right: SEZ,subependymal zone,3
+Left: chpl,choroid plexus,3
+Right: chpl,choroid plexus,3
+Left: chfl,choroid fissure,3
+Right: chfl,choroid fissure,3
+Left: IVF,interventricular foramen,3
+Right: IVF,interventricular foramen,3
+Left: V3,third ventricle,3
+Right: V3,third ventricle,3
+Left: AQ,cerebral aqueduct,3
+Right: AQ,cerebral aqueduct,3
+Left: V4r,lateral recess,3
+Right: V4r,lateral recess,3
+Left: c,"central canal, spinal cord/medulla",3
+Right: c,"central canal, spinal cord/medulla",3
+Left: eg,endorhinal groove,3
+Right: eg,endorhinal groove,3
+Left: hf,hippocampal fissure,3
+Right: hf,hippocampal fissure,3
+Left: rf,rhinal fissure,3
+Right: rf,rhinal fissure,3
+Left: ri,rhinal incisure,3
+Right: ri,rhinal incisure,3
+Left: pce,precentral fissure,3
+Right: pce,precentral fissure,3
+Left: pcf,preculminate fissure,3
+Right: pcf,preculminate fissure,3
+Left: pri,primary fissure,3
+Right: pri,primary fissure,3
+Left: psf,posterior superior fissure,3
+Right: psf,posterior superior fissure,3
+Left: ppf,prepyramidal fissure,3
+Right: ppf,prepyramidal fissure,3
+Left: sec,secondary fissure,3
+Right: sec,secondary fissure,3
+Left: plf,posterolateral fissure,3
+Right: plf,posterolateral fissure,3
+Left: nf,nodular fissure,3
+Right: nf,nodular fissure,3
+Left: sif,simple fissure,3
+Right: sif,simple fissure,3
+Left: icf,intercrural fissure,3
+Right: icf,intercrural fissure,3
+Left: apf,ansoparamedian fissure,3
+Right: apf,ansoparamedian fissure,3
+Left: ipf,intraparafloccular fissure,3
+Right: ipf,intraparafloccular fissure,3
+Left: pms,paramedian sulcus,3
+Right: pms,paramedian sulcus,3
+Left: pfs,parafloccular sulcus,3
+Right: pfs,parafloccular sulcus,3
+Left: IPF,Interpeduncular fossa,3
+Right: IPF,Interpeduncular fossa,3
+Left: retina,retina,3
+Right: retina,retina,3
