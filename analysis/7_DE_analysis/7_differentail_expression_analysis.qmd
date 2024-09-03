@@ -28,6 +28,8 @@ library(tidyr)
 library(dplyr)
 library(tibble)
 library(forcats)
+library(gridExtra)
+
 ```
 
 # Differential_activity.R Function
@@ -246,7 +248,7 @@ differential_activity = function(input,
 region_injection = "DR"
 # Save folder
 save_path = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
-
+    # EX."/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
 
 
 ### TO CHNAGE AT OCCURENCE
@@ -261,6 +263,37 @@ n_roi_diplayed = 20
 df_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains.csv")
 df_meta_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains_meta.csv")
 
+```
+
+# Create Folders
+
+```{r}
+lineplots_folder = file.path(save_path, "LinePlots")
+disconnection_folder = file.path(lineplots_folder, "Disconnetion")
+newconnections_folder = file.path(lineplots_folder, "NewConnections")
+recoverydown_folder = file.path(lineplots_folder, "RecoveryDown")
+recoveryup_folder = file.path(lineplots_folder, "RecoveryUp")
+
+# Create the directories if they do not exist
+if (!dir.exists(lineplots_folder)) {
+  dir.create(lineplots_folder, recursive = TRUE)
+}
+
+if (!dir.exists(disconnection_folder)) {
+  dir.create(disconnection_folder, recursive = TRUE)
+}
+
+if (!dir.exists(newconnections_folder)) {
+  dir.create(newconnections_folder, recursive = TRUE)
+}
+
+if (!dir.exists(recoverydown_folder)) {
+  dir.create(recoverydown_folder, recursive = TRUE)
+}
+
+if (!dir.exists(recoveryup_folder)) {
+  dir.create(recoveryup_folder, recursive = TRUE)
+}
 ```
 
 # Run DE analysis
@@ -506,29 +539,29 @@ write.csv(df_rank, paste0(save_path, "/rank_roi_archetypes_", region_injection, 
 ```{r}
 #+++++++++++++++++++++++++
 # Function to calculate the mean, standard deviation (SD), and standard error (SE)
-# for each group
+# for each group and include a column with the list of values used for calculation
 #+++++++++++++++++++++++++
 # data : a data frame
 # varname : the name of a column containing the variable to be summarized
 # groupnames : vector of column names to be used as grouping variables
-data_summary <- function(data, varname, groupnames){
-  #require(plyr)
-  
-  # Function to calculate mean, standard deviation, and standard error
-  summary_func <- function(x, col){
+data_summary <- function(data, varname, groupnames) {
+  # Function to calculate mean, standard deviation, standard error, and values list
+  summary_func <- function(x, col) {
     n <- sum(!is.na(x[[col]]))  # Number of non-missing values
-    mean_val <- mean(x[[col]], na.rm=TRUE)  # Mean
-    sd_val <- sd(x[[col]], na.rm=TRUE)  # Standard Deviation
+    mean_val <- mean(x[[col]], na.rm = TRUE)  # Mean
+    sd_val <- sd(x[[col]], na.rm = TRUE)  # Standard Deviation
     se_val <- sd_val / sqrt(n)  # Standard Error
+    values_list <- x[[col]][!is.na(x[[col]])]  # List of non-missing values
     
-    c(mean = mean_val, std = sd_val, se = se_val)
+    # Convert the list of values to a single string
+    values_str <- paste(values_list, collapse = ", ")
+    
+    # Return a data frame for each group
+    return(data.frame(mean = mean_val, std = sd_val, se = se_val, values = values_str, stringsAsFactors = FALSE))
   }
   
   # Apply the summary function to each group
-  data_sum <- ddply(data, groupnames, .fun=summary_func, varname)
-  
-  # Rename the 'mean' column to the variable name
-  #data_sum <- rename(data_sum, c("mean" = varname))
+  data_sum <- plyr::ddply(data, groupnames, .fun = summary_func, varname)
   
   return(data_sum)
 }
@@ -571,27 +604,48 @@ for (arch in archetypes){
     df_roi <- df_roi %>%
               mutate(TimePoint = factor(TimePoint, levels = desired_order)) %>%
               arrange(TimePoint)
+    
+    # Parse the 'values' column to extract individual data points --> for jitter plot
+    df_values <- df_roi %>%
+      rowwise() %>%
+      mutate(Synapses = strsplit(values, ", ")) %>%
+      unnest(cols = Synapses) %>%
+      mutate(Synapses = as.numeric(Synapses))
       
     
-    # Line plot using ggplot2
-    plot <- ggplot(df_roi, aes(x = TimePoint, y = mean, group = ROI)) +
-      geom_line(color = "blue", size = 1) +
-      geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2, color = "red") +
-      geom_point(color = "blue") +
+    # Create the LINEPLOTS with jitter dots
+    plot_lineplot <- ggplot(df_roi, aes(x = TimePoint, y = mean, group = ROI)) +
+      geom_line(color = "skyblue", size = 1) +  # Line plot for the mean values
+      geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2, color = "red") +  # Error bars for SE
+      geom_point(color = "blue") +  # Points for the mean values
+      geom_jitter(data = df_values, aes(x = TimePoint, y = Synapses), width = 0, height = 0, color = "black", alpha = 0.5) +  # Jittered points for individual data
       labs(x = "Timepoint", y = "Mean Synapses Count", 
-           title = paste0("Evolution of ROI synapses count\n", roi, "\nInjection Region: ", region_injection))
+           title = paste0("Evolution of ROI synapses count\n", "ROI: ", df_roi$ROI[1], "\nInjection Region: ", df_roi$Region.Injection[1]))  # Axis labels and title
+    
+    # Create the BARPLOT with jitter dots
+    plot_barplot <- ggplot(df_roi, aes(x = TimePoint, y = mean, fill = ROI)) +
+      geom_col(fill = "skyblue",color = "black", position = position_dodge(width = 0.8), width = 0.7) +  # Bar plot for mean values
+      geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2, color = "red", position = position_dodge(width = 0.8)) +  # Error bars for SE
+      geom_jitter(data = df_values, aes(x = TimePoint, y = Synapses), width = 0, height = 0, color = "black", alpha = 0.7, size = 2) +  # Jittered points for individual data
+      labs(x = "Timepoint", y = "Mean Synapses Count", 
+           title = paste0("Evolution of ROI synapses count\nROI: ", df_roi$ROI[1], "\nInjection Region: ", df_roi$Region.Injection[1])) +  # Axis labels and title
+      #theme_minimal() +  # Minimal theme for clarity
+      theme(legend.position = "none")  # Remove legend if not needed
+    
+    # Arrange the plots in a single row
+    plot = grid.arrange(plot_lineplot, plot_barplot, ncol = 2)
 
+    # Print the plot
     print(plot)
     
     #Save the figure
     roi_clean <- gsub("[, :/]", "", roi)
-    path_plot = paste0(save_path, "/Lineplots/", arch, "/", roi_clean, ".pdf")
-    ggsave(path_plot, plot, width = 5, height = 5)
+    path_plot = file.path(lineplots_folder, arch, paste0(roi_clean, ".pdf"))
+    ggsave(path_plot, plot, width = 15, height = 10)
   
   
   }
     
-
 }
 
 ```

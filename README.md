@@ -53,6 +53,8 @@ Run the script **[1_create_csv_whole_brain.py](analysis/1_create_csv_whole_brain
 ## All Brains DataFrame
 To semplify the future operations all the values of the brains are put together in one single csv file. DO so using the script **[2_create_csv_all_brains.py](analysis/2_create_csv_all_brains.py)**
 
+You can use the **NOT finished** script **[check_outliers.py](analysis/check_outliers.py)** to visualize if some outliers are present and change the csv accordingly.
+
 ## Single Brain Analysis
 Once we obtained the csv file for each brain, we can perform a simple analysis of the realtive data.
 Here are reported a series of scripts for this type of analysis:
