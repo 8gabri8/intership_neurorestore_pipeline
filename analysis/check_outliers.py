@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import sys
 
 
 """
@@ -10,7 +11,12 @@ This script is used to manage the outliers in the final csv file.
 
 Strategy:
 1) Check if any otliers is present
-2) Change its value with a specific valu
+2) Create a csv file with all the putative outliers 
+3) Manually check if whcih region are outliers
+    - open Qupath and checck visually
+    - put True in the col "IsOutliers" of the csv file if it is really an otulers
+    - save the csv file as all_putative_outliers_checked.csv
+4) Change its value with a specific valu
 """
 
 ##############################################
@@ -19,8 +25,10 @@ Strategy:
 
 # path big csv
 path_csv = "/home/gabri/Downloads/all_brains.csv"
+# path base folder
+base_folder = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset"
 #thr_z_score over which a ROI is considered an outlier
-thr_z_score = 4
+thr_z_score = 10
 
 df_original = pd.read_csv(path_csv)
 df = df_original.copy()
@@ -31,114 +39,143 @@ df = df[df["TimePoint"] == "Uninjured"]
 df = df[df["IsLeaf"] == True]
 
 ##############################################
+### USEFUL FUNCTIONS #########################
+##############################################
+def find_dir(base_directory, name_dir):
+    for root, dirs, files in os.walk(base_directory):
+        if name_dir in dirs:
+            return os.path.join(root, name_dir)
+    return None  # Return None if the directory is not found
+
+
+##############################################
 ### SEARCH OUTLIERS ##########################
 ##############################################
 
-##########################
-### DENSITY VALUES
+# df with all the putative outliers ROIs of differt brains
+df_all_out = pd.DataFrame()
 
-# Calculate z-score
-mean = np.mean(df["Cell Density"])
-std = np.std(df["Cell Density"])
-df["z-score"] = ( df["Cell Density"] - mean ) / std
-out = df[np.abs(df["z-score"]) > thr_z_score][["ROI", "Brain ID", "z-score"]]
-out = out.sort_values(by="z-score")
-print(f"\n\nOutliers based on |z-score| > {thr_z_score} (tot={len(out)}): \n {out.to_string()} \n Unique regions {out['ROI'].unique()}")
+brain_IDs = df["Brain ID"].unique()
 
-fig, ax = plt.subplots(figsize=(20, 6))
-ax.bar(x = range(len(df["z-score"])), height=df["z-score"])
-plt.title("Z-score")
+for ID in brain_IDs:
 
+    print(f"Analyzing brain {ID}")
 
-# Scatter Plot Synapses Vs Area
-fig, ax = plt.subplots(figsize=(20, 6))
-sns.scatterplot(x='Area', y='Synapses', data=df, hue='Cell Density', palette='viridis', size='Cell Density', sizes=(50, 200))
-ax.set_title('Synapses vs Area')
-ax.set_xlabel('Area')
-ax.set_ylabel('Synapses')
-ax.grid(True)
-ax.set_xscale('log')
-ax.set_yscale('log')
+    mouse_dir = find_dir(base_folder, str(ID))
 
+    if mouse_dir ==  None: 
+        print(f"\tATTENTION: No folder found for sample {ID}")
+        continue
 
-## Scatter Plot Synapses Vs Area --> With Names
-fig, ax = plt.subplots(figsize=(10, 6))
-scatter = sns.scatterplot(
-    x='Area', y='Synapses', data=df, hue='Cell Density', palette='viridis', size='Cell Density', sizes=(50, 200)
-)
-ax.set_title('Synapses vs Area')
-ax.set_xlabel('Area')
-ax.set_ylabel('Synapses')
-ax.grid(True)
-ax.set_xscale('log')
-ax.set_yscale('log')
+    ##########################
+    ### DENSITY VALUES PER BRAIN_ID
 
-# Label each point with 'ROI-Brain ID'
-for i, row in df.iterrows():
-    label = f"{row['ROI']}-{row['Brain ID']}"  # Construct the label text
-    ax.text(
-        row['Area'],  # X coordinate
-        row['Synapses'],  # Y coordinate
-        label,  # Text label
-        fontsize=9,  # Font size of the label
-        ha='right',  # Horizontal alignment
-        va='bottom',  # Vertical alignment
-        color='black'  # Text color
+    ### Select data of isngle mouse
+    df_mouse = df[df["Brain ID"] == ID].copy()
+
+    ### Calculate z-score
+    mean = np.mean(df_mouse["Cell Density"])
+    std = np.std(df_mouse["Cell Density"])
+    df_mouse["z-score"] = ( df_mouse["Cell Density"] - mean ) / std
+    out = df_mouse[np.abs(df_mouse["z-score"]) > thr_z_score][["ROI", "Brain ID", "z-score"]]
+    out = out.sort_values(by="z-score")
+
+    ### Print Outliers based on z-score
+    print(f"""Outliers based on |z-score| > {thr_z_score} (tot={len(out)}):\n{out.to_string()}""")
+
+    ### Save out csv
+    out.to_csv(os.path.join(mouse_dir, "Results", "putative_outliers_based_on_zscore.csv"), index = False)
+    
+    ### Scatter Plot Synapses Vs Area --> With Names
+    fig, ax = plt.subplots(figsize=(10, 6))
+    scatter = sns.scatterplot(
+        x='Area', y='Synapses', data=df_mouse, hue='Cell Density', palette='viridis', size='Cell Density', sizes=(50, 200)
     )
+    ax.set_title('Synapses vs Area')
+    ax.set_xlabel('Area')
+    ax.set_ylabel('Synapses')
+    ax.grid(True)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
 
-# Show the plot
-plt.show()
+    # Label each point with 'ROI-Brain ID'
+    for i, row in df_mouse.iterrows():
+        label = f"{row['ROI']}-{row['Brain ID']}"  # Construct the label text
+        ax.text(
+            row['Area'],  # X coordinate
+            row['Synapses'],  # Y coordinate
+            label,  # Text label
+            fontsize=9,  # Font size of the label
+            ha='right',  # Horizontal alignment
+            va='bottom',  # Vertical alignment
+            color='black'  # Text color
+        )
+
+    # Show the plot
+    #plt.show()
+
+    # Add single mice to all out
+    df_all_out = pd.concat([df_all_out, out], ignore_index=True)
+
+    # Save plot
+    fig.savefig(os.path.join(mouse_dir, "Results", "scatterplot_area_synapses_density_with_names.pdf"))
+
+    print("\n")
+
+# Add column
+df_all_out["IsOutlier"] = [1] * len(df_all_out) # put a column to say if a region is really an otulier
+# save df all out
+df_all_out.to_csv(os.path.join(base_folder, "Results", "all_putative_outliers.csv"), index=False)
 
 
-# Using Quartiles --> not very usefule as I have only few samples (even 2)
-Q1 = df['Cell Density'].quantile(0.25)
-Q3 = df['Cell Density'].quantile(0.75)
-IQR = Q3 - Q1
-# Define outlier thresholds
-lower_bound = Q1 - 1.5 * IQR
-upper_bound = Q3 + 1.5 * IQR
-outliers = df[(df['Cell Density'] < lower_bound) | (df['Cell Density'] > upper_bound)] # Identify outliers
+##############################################
+### WAIT FOR THE USER TO MANUALLY CHECK ######
 
-print("\n\nOutliers Density based on quartiles:")
-print(outliers)
+user_input = input("""\n\nPlease check the file all_putative_outliers.csv and create a copy of it. In the column \"isOutlier\" put 1 if it is a real ourlier after manually checking it. \nWhen you have done, please press a key: """)
 
-##########################
-### SYNAPSES COUNTS
-
-# In this case, because we do not normalize by the are as in density, we can only fidn outliers within the SAME ROI
-
-# Function to calculate Z-scores and identify outliers
-def find_outliers_z_score(group, threshold=thr_z_score):
-    mean = group['Synapses'].mean()
-    std = group['Synapses'].std()
-    group['z-score'] = (group['Synapses'] - mean) / std
-    return group[np.abs(group['z-score']) > threshold]
-
-# Group by ROI and apply the outlier detection function
-outliers = df.groupby('ROI').apply(find_outliers_z_score).reset_index(drop=True)
-
-# Display the outliers
-print(f"\n\nOutliers Synapses count within each ROI based on Z-score (tot={len(outliers)}):")
-print(outliers)
-
+##############################################
 
 ##############################################
 ### MANAGE OUTLIERS ##########################
 ##############################################
 
-# Write down the outliers
-roi_out = ["Left: ISN"],
-brainID_out = ["589"]
+# read manully check
+try:
+    df = pd.read_csv(os.path.join(base_folder, "Results", "all_putative_outliers_checked.csv"))
+except FileNotFoundError:
+    print("Manually revised CSV not yet created")
+    sys.exit(0)
 
-
+### Choose the stratefy to manage outliers
 # Strategy I° : put 0
 # Strategy II° : put NaN
+# Strategy III° : remove row
 
-value = 0
+strategy = 4
 
-for roi, id in zip(roi_out, brainID_out):
-    df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = value
-    df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = value
+if strategy == 1:
+    for i, row in df.iterrows():
+        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+            continue
+        roi = row["ROI"]
+        id = row["Brain ID"]
+        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = 0
+        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = 0
+elif strategy == 2:
+    for i, row in df.iterrows():
+        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+            continue
+        roi = row["ROI"]
+        id = row["Brain ID"]
+        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = None
+        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = None
+elif strategy == 3:
+    for i, row in df.iterrows():
+        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+            continue
+        roi = row["ROI"]
+        id = row["Brain ID"]
+        df_original = df_original.drop(df_original[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi)].index)
 
 
 # Save results
