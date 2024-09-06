@@ -569,6 +569,44 @@ data_summary <- function(data, varname, groupnames) {
 ```
 
 ```{r}
+#### Normalize Synapses Count
+
+# ATTENTION IN THIS NEW DF `Synapses` col refer to the Normalised counts
+
+# Extract unique Brain IDs
+brain_IDs <- unique(df_all$Brain.ID)
+
+# Make a copy of df_all
+df_norm <- df_all
+
+# Initialize Normalised Synapses column with zeros
+df_norm$`Normalised Synapses` <- 0
+
+# Calculate normalized Synapses counts
+for (ID in brain_IDs) {
+  # Get the total synapses for the current brain ID in the 'leaf' regions
+  tot_synapses <- df_all %>%
+    filter((Brain.ID == ID) & (IsLeaf == "True")) %>% #True is read as stirng
+    summarise(Total = sum(Synapses, na.rm = "True")) %>%
+    pull(Total)
+  
+  if (is.na(tot_synapses) || (tot_synapses == 0)) {
+    message(paste("\tATTENTION: brain", ID, "has no synapses."))
+  } else {
+    # Normalize synapses counts
+    df_norm <- df_norm %>%
+      mutate(`Normalised Synapses` = ifelse(Brain.ID == ID, Synapses / tot_synapses, `Normalised Synapses`))
+  }
+}
+
+# call the normilsed Synapses col as just Synapses
+df_norm = df_norm %>%
+          mutate(Synapses = NULL) %>%
+          rename(Synapses = `Normalised Synapses`)
+
+```
+
+```{r}
 # Order of the x-axis of various plots
 desired_order <- c("Uninjured", "1 weeks", "8 weeks")
 
@@ -587,9 +625,17 @@ for (arch in archetypes){
   }
   
   # Extarct values relatvie to the rois and refion inecjetion
-  df_ROIs = df_all[(df_all$`Region.Injection` == region_injection) &
-                  (df_all$ROI %in% ROI_significant_arch),
+  normalise_synapses = TRUE
+  if(normalise_synapses == TRUE){
+    df_ROIs = df_norm[(df_norm$`Region.Injection` == region_injection) &
+                  (df_norm$ROI %in% ROI_significant_arch),
                   ]
+  }
+  else{
+    df_ROIs = df_all[(df_all$`Region.Injection` == region_injection) &
+                    (df_all$ROI %in% ROI_significant_arch),
+                    ]
+  }
   
   # calculate mean, std and sem for each ROI of SYNAPSES COUNT
   ds = data_summary(df_ROIs , 
