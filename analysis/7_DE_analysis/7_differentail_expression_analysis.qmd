@@ -8,7 +8,7 @@ Run DE analysis for a specific injection region. The default test used is **edge
 
 **ATTENTION**:\
 - This analysis focuses on "Synapses" counts.\
-- The significance of a region is determined using the adjusted p-value (p-value-adj).\
+- If normalization is tagged the RLE method is choosen for normlaization - The significance of a region is determined using the adjusted p-value (p-value-adj).\
 - The analysis is performed only on the leaves (terminal nodes).
 
 **Customizing Your Analysis**:\
@@ -102,7 +102,8 @@ differential_activity = function(input,
                 tryCatch({
                   if(normalise == TRUE){
                     y = DGEList(counts = input, group = targets$label) %>%
-                      calcNormFactors(method = 'TMM') %>%
+                      #calcNormFactors(method = 'TMM') %>
+                      calcNormFactors(method = 'RLE') %>%
                       estimateDisp(design)
                   } else{
                     y = DGEList(counts = input, group = targets$label) %>%
@@ -590,13 +591,20 @@ for (arch in archetypes){
                   (df_all$ROI %in% ROI_significant_arch),
                   ]
   
-  # calculate mean, std and sem for each ROI
+  # calculate mean, std and sem for each ROI of SYNAPSES COUNT
   ds = data_summary(df_ROIs , 
                     varname="Synapses", 
                     groupnames=c("TimePoint", "Region.Injection", "ROI"))
   
+  # calculate mean, std and sem for each ROI of DENSITY
+  ds_density = data_summary(df_ROIs , 
+                    varname="Cell.Density", 
+                    groupnames=c("TimePoint", "Region.Injection", "ROI"))
+  
   # Plot for each ROI
   for ( roi in ROI_significant_arch ){
+    
+    ### FOR SYNAPSES COUNT
   
     df_roi = ds %>% filter((ROI == roi))
     
@@ -632,8 +640,43 @@ for (arch in archetypes){
       #theme_minimal() +  # Minimal theme for clarity
       theme(legend.position = "none")  # Remove legend if not needed
     
+    
+    
+    
+    
+    ### FOR DENSITY
+    
+    df_roi = ds_density %>% filter((ROI == roi))
+    
+    # Filter data for the current ROI
+    df_roi <- df_roi %>%
+              mutate(TimePoint = factor(TimePoint, levels = desired_order)) %>%
+              arrange(TimePoint)
+    
+    # Parse the 'values' column to extract individual data points --> for jitter plot
+    df_values <- df_roi %>%
+      rowwise() %>%
+      mutate(Cell.Density = strsplit(values, ", ")) %>%
+      unnest(cols = Cell.Density) %>%
+      mutate(Cell.Density = as.numeric(Cell.Density))
+      
+    
+    # Create the LINEPLOTS with jitter dots
+    plot_lineplot_density <- ggplot(df_roi, aes(x = TimePoint, y = mean, group = ROI)) +
+      geom_line(color = "skyblue", size = 1) +  # Line plot for the mean values
+      geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2, color = "red") +  # Error bars for SE
+      geom_point(color = "blue") +  # Points for the mean values
+      geom_jitter(data = df_values, aes(x = TimePoint, y = Cell.Density), width = 0, height = 0, color = "black", alpha = 0.5) +  # Jittered points for individual data
+      labs(x = "Timepoint", y = "Mean Density", 
+           title = paste0("Evolution of ROI Density\n", "ROI: ", df_roi$ROI[1], "\nInjection Region: ", df_roi$Region.Injection[1]))  # Axis labels and title
+    
+    
+    
+    
+    ### SAVE
+    
     # Arrange the plots in a single row
-    plot = grid.arrange(plot_lineplot, plot_barplot, ncol = 2)
+    plot = grid.arrange(plot_lineplot, plot_barplot, plot_lineplot_density, ncol = 3)
 
     # Print the plot
     print(plot)
@@ -641,11 +684,11 @@ for (arch in archetypes){
     #Save the figure
     roi_clean <- gsub("[, :/]", "", roi)
     path_plot = file.path(lineplots_folder, arch, paste0(roi_clean, ".pdf"))
-    ggsave(path_plot, plot, width = 15, height = 10)
-  
+    ggsave(path_plot, plot, width = 15, height = 7)
+    
   
   }
-    
+
 }
 
 ```
