@@ -1,4 +1,4 @@
-name: base
+name: brainrender-env
 channels:
   - conda-forge
 dependencies:

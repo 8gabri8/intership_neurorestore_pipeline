@@ -7,16 +7,29 @@ import sys
 
 
 """
-This script is used to manage the outliers in the final csv file.
+# Outlier Management Script
 
-Strategy:
-1) Check if any otliers is present
-2) Create a csv file with all the putative outliers 
-3) Manually check if whcih region are outliers
-    - open Qupath and checck visually
-    - put True in the col "IsOutliers" of the csv file if it is really an otulers
-    - save the csv file as all_putative_outliers_checked.csv
-4) Change its value with a specific valu
+This script automates the detection of potential outliers in a dataset containing brain region data, and then enables the user to manually validate these outliers before applying changes to the dataset.
+
+## Workflow:
+1. **Identify Potential Outliers**:
+    - The script calculates z-scores based on the "Cell Density" column for each brain region.
+    - Regions with an absolute z-score greater than a user-defined threshold (`thr_z_score`) are flagged as putative outliers.
+    - The script creates a CSV file named `all_putative_outliers.csv` with these flagged regions.
+    
+2. **Manual Verification**:
+    - The user manually reviews the `all_putative_outliers.csv` file and marks real outliers by setting the "IsOutlier" column to 1 (leave it as 0 otherwise).
+    - Save this reviewed file as `all_putative_outliers_checked.csv`.
+
+3. **Outlier Management**:
+    - The script reads the manually checked file (`all_putative_outliers_checked.csv`).
+    - Based on the chosen strategy, the script will remove the verified outliers:
+      - Removes rows flagged as outliers from the main CSV (`all_brains.csv`).
+      - Removes corresponding rows from individual brain files located in `_measurments/whole_brain.csv`.
+
+      
+**ATTENTION**: 
+If you really want to change the original dataframes, uncommenent the lines in the final part of the script where the df are ovewritten.
 """
 
 ##############################################
@@ -30,6 +43,13 @@ base_folder = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical
 #thr_z_score over which a ROI is considered an outlier
 thr_z_score = 10
 
+### Choose the stratefy to manage outliers
+# Strategy I° : put 0
+# Strategy II° : put NaN
+# Strategy III° : remove row
+
+strategy = 3
+
 df_original = pd.read_csv(path_csv)
 df = df_original.copy()
 
@@ -41,11 +61,30 @@ df = df[df["IsLeaf"] == True]
 ##############################################
 ### USEFUL FUNCTIONS #########################
 ##############################################
-def find_dir(base_directory, name_dir):
-    for root, dirs, files in os.walk(base_directory):
-        if name_dir in dirs:
-            return os.path.join(root, name_dir)
-    return None  # Return None if the directory is not found
+
+def find_dir(base_dir, name_dir_to_search):
+    """
+    Searches for a subfolder with a specific name within the given base directory.
+
+    Parameters:
+    - base_dir: The path of the base directory to search within (string).
+    - name_dir_to_search: The name of the subfolder to search for (string).
+
+    Returns:
+    - The full path of the subfolder if found, or None if not found.
+    """
+    # Ensure the base directory exists
+    if not os.path.isdir(base_dir):
+        raise ValueError(f"The base directory '{base_dir}' does not exist or is not a directory.")
+    
+    # Walk through the directory tree
+    for root, dirs, files in os.walk(base_dir):
+        if name_dir_to_search in dirs:
+            # Return the full path to the subfolder
+            return os.path.join(root, name_dir_to_search)
+    
+    # Return None if the subfolder was not found
+    return None
 
 
 ##############################################
@@ -146,37 +185,63 @@ except FileNotFoundError:
     print("Manually revised CSV not yet created")
     sys.exit(0)
 
-### Choose the stratefy to manage outliers
-# Strategy I° : put 0
-# Strategy II° : put NaN
-# Strategy III° : remove row
-
-strategy = 4
-
 if strategy == 1:
-    for i, row in df.iterrows():
-        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
-            continue
-        roi = row["ROI"]
-        id = row["Brain ID"]
-        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = 0
-        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = 0
+    print("Not completely Implemented.")
+    # for i, row in df.iterrows():
+    #     if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+    #         continue
+    #     roi = row["ROI"]
+    #     id = row["Brain ID"]
+    #     df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = 0
+    #     df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = 0
+    
 elif strategy == 2:
-    for i, row in df.iterrows():
-        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
-            continue
-        roi = row["ROI"]
-        id = row["Brain ID"]
-        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = None
-        df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = None
+    print("Not completely Implemented.")
+    # for i, row in df.iterrows():
+    #     if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+    #         continue
+    #     roi = row["ROI"]
+    #     id = row["Brain ID"]
+    #     df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Synapses"]] = None
+    #     df_original.loc[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi), ["Cell Density"]] = None
+
 elif strategy == 3:
+
+    ##### REMOVE FROM ALL_BRAINS.CSV
     for i, row in df.iterrows():
         if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
             continue
         roi = row["ROI"]
         id = row["Brain ID"]
         df_original = df_original.drop(df_original[(df_original["Brain ID"] == id) & (df_original["ROI"] == roi)].index)
+    
+    # Save results--> UNCOMMENT TO REALLY CHNAGE DF
+    #pd.write_csv(df_original, path_csv)
 
 
-# Save results
-#pd.write_csv(df_original, path_csv)
+    ###### REMOVE FROM SINGLE WHOLE_BRAIN.CSV
+    for i, row in df.iterrows():
+        if row["IsOutlier"] == 0: #if it not a real outlier after manually checkin do not do notheinf
+            continue
+
+        # Ectartc brain ID of relative to this outlier
+        id = row["Brain ID"]
+        roi = row["ROI"]
+
+        #Find the Brain folder
+        mouse_dir = find_dir(base_folder, str(ID))
+        if mouse_dir ==  None: 
+            print(f"\tATTENTION: No folder found for sample {ID}, ROI {roi}")
+            continue#Find the Brain folder
+
+        #load csv
+        mouse_csv = pd.read_csv(os.path.join(mouse_dir, "_Measurements", "whole_brain.csv"))
+
+        # Remove row
+        mouse_csv = mouse_csv.drop(mouse_csv[mouse_csv["ROI"] == roi].index)
+
+        ### Save out csv --> UNCOMMENT TO REALLY CHNAGE DF
+        #mouse_csv.to_csv(os.path.join(mouse_dir, "_Measurements", "whole_brain.csv"))
+
+
+
