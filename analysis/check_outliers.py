@@ -37,9 +37,9 @@ If you really want to change the original dataframes, uncommenent the lines in t
 ##############################################
 
 # path big csv
-path_csv = "/home/gabri/Downloads/all_brains.csv"
+path_csv = "/Volumes/CERVICAL/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains.csv"
 # path base folder
-base_folder = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset"
+base_folder = "/Volumes/CERVICAL/CERVICAL_ID/Connectome_analysis/Final_dataset"
 #thr_z_score over which a ROI is considered an outlier
 thr_z_score = 10
 

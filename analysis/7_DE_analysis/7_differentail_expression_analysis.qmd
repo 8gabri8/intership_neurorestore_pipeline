@@ -248,7 +248,7 @@ differential_activity = function(input,
 # Select one region of Injection
 region_injection = "DR"
 # Save folder
-save_path = "/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
+save_path = "/Volumes/CERVICAL/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
     # EX."/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/DR/Results"
 
 
@@ -261,8 +261,8 @@ p_value = 0.05
 # How many most differt ROI display
 n_roi_diplayed = 20
 # Load data
-df_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains.csv")
-df_meta_all = read.csv("/run/user/1000/gvfs/smb-share:server=upcourtinenas,share=cervical/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains_meta.csv")
+df_all = read.csv("/Volumes/CERVICAL/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains.csv")
+df_meta_all = read.csv("/Volumes/CERVICAL/CERVICAL_ID/Connectome_analysis/Final_dataset/Results/all_brains_meta.csv")
 
 ```
 
@@ -409,7 +409,7 @@ a1_rank = da %>%
   arrange(sum_rank) %>%
   dplyr::select(region, sum_rank) %>%
   distinct() %>%
-  tail(n_roi_diplayed) %>%# Takr the one with biggest ranks
+  head(n_roi_diplayed) %>%# Takr the one with biggest ranks
   mutate(archetype = arch_a1, region_injection = region_injection)
 
 
@@ -443,7 +443,7 @@ a2_rank = da %>%
   arrange(sum_rank) %>%
   dplyr::select(region, sum_rank) %>%
   distinct() %>%
-  tail(n_roi_diplayed) %>%
+  head(n_roi_diplayed) %>%
   mutate(archetype = arch_a2, region_injection = region_injection)
 
 
@@ -477,18 +477,18 @@ a3_rank = da %>%
   arrange(sum_rank) %>%
   dplyr::select(region, sum_rank) %>%
   distinct() %>%
-  tail(n_roi_diplayed) %>%
+  head(n_roi_diplayed) %>%
   mutate(archetype = arch_a3, region_injection = region_injection)
 
 
 
-## Archetype 4: UN < 1w and 1w < 8w --> New Connections
+## Archetype 4: UN < 1w and UN < 8w --> New Connections
 ## (region gradually becoming more and more active to compensate 
 ## for the loss of function)
 arch_a4 = "NewConnections"
 a4 = da %>%
   filter(p_val_adj < 0.05) %>%
-  filter(direction %in% c("Uninjured < 1 weeks", "1 weeks < 8 weeks")) %>%
+  filter(direction %in% c("Uninjured < 1 weeks", "Uninjured < 8 weeks")) %>%
   # ask which ones have both criteria
   group_by(region) %>%
   mutate(count = n()) %>%
@@ -498,7 +498,7 @@ a4 = da %>%
 
 # try looking by rank even if they are not significant
 a4_rank = da %>%
-  filter(direction %in% c("Uninjured < 1 weeks", "1 weeks < 8 weeks")) %>%
+  filter(direction %in% c("Uninjured < 1 weeks", "Uninjured < 8 weeks")) %>%
   # ask which ones have both criteria
   group_by(region) %>%
   mutate(count = n()) %>%
@@ -512,7 +512,7 @@ a4_rank = da %>%
   arrange(sum_rank) %>%
   dplyr::select(region, sum_rank) %>%
   distinct() %>%
-  tail(n_roi_diplayed) %>%
+  head(n_roi_diplayed) %>%
   mutate(archetype = arch_a4, region_injection = region_injection)
 
 

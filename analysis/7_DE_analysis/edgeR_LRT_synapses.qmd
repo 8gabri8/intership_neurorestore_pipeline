@@ -8,13 +8,9 @@ editor: visual
 
 As shown, the data is overdispersed (Mean != Var) and follows a Negative Binomial (NB) distribution.
 
-This scripts perform differential expression analysis on the synapses count relative to our study.
-The method used is EdgeR and the statistical test is LRT.
+This scripts perform differential expression analysis on the synapses count relative to our study. The method used is EdgeR and the statistical test is LRT.
 
-It can be run in 2 differtn ways:
-- Manually: where most of the steps performed by edgeR are visible, so more paramter tuning is possible.
-- Automatically: based on differential_activity.R script (from nrutils library) set to use edgeR with LRT.
-
+It can be run in 2 differtn ways: - Manually: where most of the steps performed by edgeR are visible, so more paramter tuning is possible. - Automatically: based on differential_activity.R script (from nrutils library) set to use edgeR with LRT.
 
 # Libraries
 
@@ -83,8 +79,6 @@ print(design_matrix)
 
 ```
 
-
-
 ## Manual Edge R: LRT
 
 -   edgeR is a software package used for the analysis of differential gene expression in RNA-Seq and other count-based data.
@@ -130,6 +124,7 @@ print(res)
 ```
 
 ## Automatic EdgeR: LRT
+
 ```{r}
 # Attention the name of the conditipon columns shoudl be "labels"
 df_meta_changed = df_meta
@@ -150,19 +145,8 @@ da = differential_activity(input = counts,
 print(da)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 # Differential_activity.R Function
+
 ```{r}
 library(forcats)
 
@@ -367,7 +351,3 @@ differential_activity = function(input,
   
 }
 ```
-
-
-
-
